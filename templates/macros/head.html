@@ -28,7 +28,7 @@
 
     <!-- Resource Hints for better performance -->
     {% if config.extra.gtag and config.extra.gtag != "" %}
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     {% endif %}
 
@@ -186,10 +186,6 @@
     
     <!-- Preload critical fonts -->
     <link rel="preload" href="{{ get_url(path="fonts/Pretendard-Regular.woff") | safe }}" as="font" type="font/woff" crossorigin>
-    
-    <!-- KaTeX CSS - lazy load -->
-    <link rel="preload" href="{{ get_url(path="css/katex.min.css") | safe }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="{{ get_url(path="css/katex.min.css") | safe }}"></noscript>
 
     <!-- Defer non-critical scripts -->
     <script defer src="{{ get_url(path="js/copy_code.js") | safe }}"></script>
@@ -199,22 +195,44 @@
     <script>
         // Lazy load KaTeX and Mermaid when needed
         window.addEventListener('DOMContentLoaded', function() {
-            // Check for both KaTeX and Mermaid elements in one pass
-            var katexElements = document.querySelectorAll('.katex-inline');
+            // Check for both KaTeX inline and block elements in one pass
+            var katexInlineElements = document.querySelectorAll('.katex-inline');
+            var katexBlockElements = document.querySelectorAll('.katex-block');
+            var hasKatex = katexInlineElements.length > 0 || katexBlockElements.length > 0;
             var hasMermaid = document.querySelector('.mermaid');
             
-            // Load KaTeX if inline math elements are present
-            if (katexElements.length > 0) {
+            // Load KaTeX if math elements are present
+            if (hasKatex) {
+                // Load KaTeX CSS first
+                var katexCSS = document.createElement('link');
+                katexCSS.rel = 'stylesheet';
+                katexCSS.href = '{{ get_url(path="css/katex.min.css") | safe }}';
+                document.head.appendChild(katexCSS);
+                
+                // Load KaTeX JS
                 var katexScript = document.createElement('script');
                 katexScript.src = '{{ get_url(path="js/katex.min.js") | safe }}';
                 katexScript.onload = function() {
-                    // Render KaTeX inline elements
-                    katexElements.forEach(function(elem) {
+                    // Render inline elements
+                    katexInlineElements.forEach(function(elem) {
                         var texContent = elem.textContent || elem.innerText;
                         try {
                             katex.render(texContent, elem, { 
                                 throwOnError: false,
-                                displayMode: false  // Inline mode
+                                displayMode: false
+                            });
+                        } catch(e) {
+                            console.error('KaTeX render error:', e);
+                        }
+                    });
+                    
+                    // Render block elements
+                    katexBlockElements.forEach(function(elem) {
+                        var texContent = elem.textContent || elem.innerText;
+                        try {
+                            katex.render(texContent, elem, { 
+                                throwOnError: false,
+                                displayMode: true
                             });
                         } catch(e) {
                             console.error('KaTeX render error:', e);

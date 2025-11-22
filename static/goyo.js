@@ -143,6 +143,11 @@ function formatSearchResultItem(item, terms) {
 }
 
 function initSearch() {
+  // Only initialize if search dependencies are loaded
+  if (typeof Fuse === 'undefined' || !window.searchIndex) {
+    return;
+  }
+
   var $searchInput = document.getElementById("search");
   if (!$searchInput) {
     return;
@@ -413,6 +418,11 @@ function initToc() {
 }
 
 function initMath() {
+  // Only render if KaTeX is loaded
+  if (typeof katex === 'undefined') {
+    return;
+  }
+
   // Render all inline math elements
   var mathElements = document.querySelectorAll(".katex-inline");
   mathElements.forEach(function (element) {
