@@ -198,14 +198,19 @@
     <script>
         // Lazy load KaTeX when math elements are detected
         window.addEventListener('DOMContentLoaded', function() {
-            if (document.querySelector('.katex-inline')) {
+            var katexElements = document.querySelectorAll('.katex-inline');
+            if (katexElements.length > 0) {
                 var katexScript = document.createElement('script');
                 katexScript.src = '{{ get_url(path="js/katex.min.js") | safe }}';
                 katexScript.onload = function() {
-                    // Auto-render KaTeX elements
-                    document.querySelectorAll('.katex-inline').forEach(function(elem) {
+                    // Render KaTeX inline elements
+                    katexElements.forEach(function(elem) {
+                        var texContent = elem.textContent || elem.innerText;
                         try {
-                            katex.render(elem.textContent, elem, { throwOnError: false });
+                            katex.render(texContent, elem, { 
+                                throwOnError: false,
+                                displayMode: false  // Inline mode
+                            });
                         } catch(e) {
                             console.error('KaTeX render error:', e);
                         }

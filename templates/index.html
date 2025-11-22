@@ -136,7 +136,19 @@
         <!-- Lazy load search functionality -->
         <script>
             var searchLoaded = false;
-            function loadSearchLibraries() {
+            var searchLoadCallbacks = [];
+            
+            function loadSearchLibraries(callback) {
+                // If already loaded, execute callback immediately
+                if (searchLoaded && typeof Fuse !== 'undefined' && window.searchIndex) {
+                    if (callback) callback();
+                    return;
+                }
+                
+                // Add callback to queue
+                if (callback) searchLoadCallbacks.push(callback);
+                
+                // If already loading, don't start again
                 if (searchLoaded) return;
                 searchLoaded = true;
                 
@@ -148,6 +160,11 @@
                 fuseScript.onload = function() {
                     var searchIndexScript = document.createElement('script');
                     searchIndexScript.src = '{{ get_url(path="search_index." ~ lang ~ ".js") | safe }}';
+                    searchIndexScript.onload = function() {
+                        // Execute all queued callbacks
+                        searchLoadCallbacks.forEach(function(cb) { cb(); });
+                        searchLoadCallbacks = [];
+                    };
                     document.body.appendChild(searchIndexScript);
                 };
                 
