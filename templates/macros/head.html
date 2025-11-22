@@ -26,6 +26,12 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Resource Hints for better performance -->
+    {% if config.extra.gtag and config.extra.gtag != "" %}
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    {% endif %}
+
     <!-- Initialize theme and brightness before CSS loads to prevent FOUC -->
     <script>
         (function() {
@@ -62,18 +68,20 @@
                     src: url('{{ get_url(path=font_path) | safe }}') format("woff");
                     font-weight: 400;
                     font-style: normal;
+                    font-display: swap;
                 }
             {% endif %}
             body {
                 font-family: "{{ config.extra.custom_font_name | default(value='CustomFont') }}", sans-serif;
             }
         {% else %}
-            {# Default Pretendard font #}
+            {# Default Pretendard font with font-display swap for better performance #}
             @font-face {
                 font-family: "Pretendard-Regular";
                 src: url('{{ get_url(path="fonts/Pretendard-Regular.woff") | safe }}') format("woff");
                 font-weight: 400;
                 font-style: normal;
+                font-display: swap;
             }
             body {
                 font-family: "Pretendard-Regular", sans-serif;
@@ -173,11 +181,51 @@
 
       <!-- CSS -->
     <link rel="stylesheet" href="{{ get_url(path="css/main.css") | safe }}">
-    <link rel="stylesheet" href="{{ get_url(path="css/font-awesome.min.css") | safe }}">
-    <link rel="stylesheet" href="{{ get_url(path="css/katex.min.css") | safe }}">
+    <link rel="stylesheet" href="{{ get_url(path="css/font-awesome.min.css") | safe }}" media="print" onload="this.media='all'">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="{{ get_url(path="fonts/Pretendard-Regular.woff") | safe }}" as="font" type="font/woff" crossorigin>
+    
+    <!-- KaTeX CSS - lazy load -->
+    <link rel="preload" href="{{ get_url(path="css/katex.min.css") | safe }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ get_url(path="css/katex.min.css") | safe }}"></noscript>
 
-    <script src="{{ get_url(path="js/mermaid.min.js") | safe }}"></script>
-    <script src="{{ get_url(path="js/katex.min.js") | safe }}"></script>
-    <script src="{{ get_url(path="js/copy_code.js") | safe }}"></script>
-    <script src="{{ get_url(path="js/copy_heading_link.js") | safe }}"></script>
+    <!-- Defer non-critical scripts -->
+    <script defer src="{{ get_url(path="js/copy_code.js") | safe }}"></script>
+    <script defer src="{{ get_url(path="js/copy_heading_link.js") | safe }}"></script>
+    
+    <!-- Lazy load Mermaid and KaTeX - only when needed -->
+    <script>
+        // Lazy load KaTeX when math elements are detected
+        window.addEventListener('DOMContentLoaded', function() {
+            if (document.querySelector('.katex-inline')) {
+                var katexScript = document.createElement('script');
+                katexScript.src = '{{ get_url(path="js/katex.min.js") | safe }}';
+                katexScript.onload = function() {
+                    // Auto-render KaTeX elements
+                    document.querySelectorAll('.katex-inline').forEach(function(elem) {
+                        try {
+                            katex.render(elem.textContent, elem, { throwOnError: false });
+                        } catch(e) {
+                            console.error('KaTeX render error:', e);
+                        }
+                    });
+                };
+                document.head.appendChild(katexScript);
+            }
+            
+            // Lazy load Mermaid when diagram elements are detected
+            if (document.querySelector('.mermaid')) {
+                var mermaidScript = document.createElement('script');
+                mermaidScript.src = '{{ get_url(path="js/mermaid.min.js") | safe }}';
+                mermaidScript.onload = function() {
+                    // Initialize Mermaid after loading
+                    if (typeof window.initMermaid === 'function') {
+                        window.initMermaid();
+                    }
+                };
+                document.head.appendChild(mermaidScript);
+            }
+        });
+    </script>
 {% endmacro head %}

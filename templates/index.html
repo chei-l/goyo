@@ -87,20 +87,31 @@
               var currentUserTheme = localStorage.getItem('theme') || window.fallbackTheme;
               var actualTheme = themeMapping[currentUserTheme] || currentUserTheme;
 
-              var mermaidTheme = "dark";
-              if(currentUserTheme == "goyo-light") {
-                mermaidTheme = "light";
-              }
-              mermaid.initialize({ startOnLoad: false, theme: mermaidTheme });
-              document.addEventListener('DOMContentLoaded', async () => {
-                const mermaidElements = document.querySelectorAll('.mermaid');
-
-                if (mermaidElements.length > 0) {
-                    await mermaid.run({
-                        nodes: mermaidElements
-                    });
+              // Initialize and run Mermaid only when loaded
+              window.initMermaid = function() {
+                var mermaidTheme = "dark";
+                if(currentUserTheme == "goyo-light") {
+                  mermaidTheme = "light";
                 }
-              });
+                
+                if (typeof mermaid !== 'undefined') {
+                  mermaid.initialize({ startOnLoad: false, theme: mermaidTheme });
+                  document.addEventListener('DOMContentLoaded', async () => {
+                    const mermaidElements = document.querySelectorAll('.mermaid');
+
+                    if (mermaidElements.length > 0) {
+                        await mermaid.run({
+                            nodes: mermaidElements
+                        });
+                    }
+                  });
+                }
+              };
+              
+              // Auto-initialize if Mermaid is already loaded
+              if (typeof mermaid !== 'undefined') {
+                window.initMermaid();
+              }
             </script>
 
         </div>
@@ -120,11 +131,49 @@
     </div>
 
     {% block js_body %}
-        {% if config.build_search_index %}
-        <script type="text/javascript" src="{{ get_url(path='fuse.min.js') | safe }}"></script>
-        <script type="text/javascript" src="{{ get_url(path='search_index.' ~ lang ~ '.js') | safe }}"></script>
-        {% endif %}
         <script type="text/javascript" src="{{ get_url(path='goyo.js') | safe }}"></script>
+        {% if config.build_search_index %}
+        <!-- Lazy load search functionality -->
+        <script>
+            var searchLoaded = false;
+            function loadSearchLibraries() {
+                if (searchLoaded) return;
+                searchLoaded = true;
+                
+                // Load Fuse.js
+                var fuseScript = document.createElement('script');
+                fuseScript.src = '{{ get_url(path="fuse.min.js") | safe }}';
+                
+                // Load search index after Fuse.js
+                fuseScript.onload = function() {
+                    var searchIndexScript = document.createElement('script');
+                    searchIndexScript.src = '{{ get_url(path="search_index." ~ lang ~ ".js") | safe }}';
+                    document.body.appendChild(searchIndexScript);
+                };
+                
+                document.body.appendChild(fuseScript);
+            }
+            
+            // Load search on first interaction with search modal
+            document.addEventListener('DOMContentLoaded', function() {
+                var searchModal = document.getElementById('search-modal');
+                if (searchModal) {
+                    searchModal.addEventListener('change', function() {
+                        if (this.checked) {
+                            loadSearchLibraries();
+                        }
+                    });
+                }
+                
+                // Also load on Ctrl+K / Cmd+K
+                document.addEventListener('keydown', function(e) {
+                    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                        loadSearchLibraries();
+                    }
+                });
+            });
+        </script>
+        {% endif %}
     {% endblock js_body %}
 </body>
 </html>
