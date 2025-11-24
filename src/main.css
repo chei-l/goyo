@@ -1946,27 +1946,33 @@ h6:hover .copy-heading-link-button {
 /* Modal backdrop improvements */
 .modal-box {
     @apply backdrop-blur-sm;
+    border: 1px solid rgba(100, 116, 139, 0.2);
 }
 
 /* Search modal background brightness adjustments */
 [data-theme="night"][data-brightness="darker"] .modal-box.bg-base-100 {
-    background-color: rgb(0, 0, 0) !important;
+    background-color: rgb(10, 10, 15) !important;
+    border: 1px solid rgba(80, 80, 90, 0.3);
 }
 
 [data-theme="night"][data-brightness="lighter"] .modal-box.bg-base-100 {
     background-color: rgb(30, 41, 59) !important;
+    border: 1px solid rgba(120, 130, 150, 0.25);
 }
 
 [data-theme="lofi"] .modal-box.bg-base-100 {
     background-color: rgb(255, 255, 255) !important;
+    border: 1px solid rgba(100, 116, 139, 0.2);
 }
 
 [data-theme="lofi"][data-brightness="darker"] .modal-box.bg-base-100 {
     background-color: rgb(226, 232, 240) !important;
+    border: 1px solid rgba(71, 85, 105, 0.25);
 }
 
 [data-theme="lofi"][data-brightness="lighter"] .modal-box.bg-base-100 {
     background-color: rgb(255, 255, 255) !important;
+    border: 1px solid rgba(148, 163, 184, 0.15);
 }
 
 /* Animation for search modal */
