@@ -17,12 +17,15 @@
 - Dark & Light Themes with Brightness Settings
 - Beautiful Landing Page
 - Responsive Design
-- SEO-Friendly
+- SEO-Friendly (Sitemap, RSS Feed)
 - Multi-Language Support
 - Auto-Generated Sidebar & Custom Nav
+- Built-in Search
 - Built-in resources (FontAwesome, Mermaid.js)
 - Comments (Giscus, Utterances)
-- Various shortcodes (Mermaid, Asciinema, Katex, Alert, Badge, etc.)
+- Various shortcodes (Mermaid, Asciinema, Katex, Alert, Badge, YouTube, Gist, Carousel, Collapse, etc.)
+- Custom Font Support
+- Edit Page & Share Buttons
 - Customization
 
 ## Installation
