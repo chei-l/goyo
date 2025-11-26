@@ -330,8 +330,8 @@
 
     /* Code block brightness variants - Dark theme */
     [data-theme="night"][data-brightness="darker"] pre {
-        background: linear-gradient(135deg, #000000 0%, #0a0a0f 100%);
-        border: 1px solid rgba(50, 50, 60, 0.3);
+        background: linear-gradient(135deg, #1a1a22 0%, #252530 100%);
+        border: 1px solid rgba(70, 70, 85, 0.4);
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
     }
 
@@ -373,7 +373,7 @@
     }
 
     [data-theme="night"][data-brightness="darker"] pre::before {
-        background: linear-gradient(90deg, #505050, #303030);
+        background: linear-gradient(90deg, #707080, #505060);
     }
 
     [data-theme="lofi"] pre::before {
@@ -387,7 +387,7 @@
     }
 
     [data-theme="night"][data-brightness="darker"] pre code {
-        color: #d0d0d0;
+        color: #e0e0e5;
     }
 
     [data-theme="night"][data-brightness="lighter"] pre code {
