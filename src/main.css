@@ -263,6 +263,13 @@
         min-height: 2rem;
     }
 
+    /* Light mode list number contrast adjustment */
+    [data-theme="lofi"] main ol li::before {
+        background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+        color: #4b5563;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
     /* Modern Link Styling */
     a {
         @apply text-primary font-medium;
