@@ -93,8 +93,13 @@ name: Update Goyo Theme
 on:
   schedule:
     # 매주 월요일 오전 9시(UTC)에 실행
-    - cron: '0 9 * * 1'
+    - cron: "0 9 * * 1"
   workflow_dispatch: # 수동 실행 허용
+
+env:
+  GIT_USER_NAME: "github-actions[bot]"
+  GIT_USER_EMAIL: "github-actions[bot]@users.noreply.github.com"
+  THEME_PATH: "themes/goyo"
 
 jobs:
   update-theme:
@@ -102,33 +107,30 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           submodules: true
           token: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Update Goyo submodule
         id: update
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          
+          git config user.name "${{ env.GIT_USER_NAME }}"
+          git config user.email "${{ env.GIT_USER_EMAIL }}"
+
           # 현재 커밋 해시 가져오기
-          cd themes/goyo
-          OLD_COMMIT=$(git rev-parse HEAD)
-          cd ../..
-          
+          OLD_COMMIT=$(git rev-parse HEAD:${{ env.THEME_PATH }})
+
           # submodule을 최신 버전으로 업데이트
-          git submodule update --remote themes/goyo
-          
+          git submodule update --remote ${{ env.THEME_PATH }}
+          git add ${{ env.THEME_PATH }}
+
           # 새 커밋 해시 가져오기
-          cd themes/goyo
-          NEW_COMMIT=$(git rev-parse HEAD)
-          cd ../..
-          
+          NEW_COMMIT=$(git --git-dir=${{ env.THEME_PATH }}/.git rev-parse HEAD)
+
           # 변경 사항 확인
           if [ "$OLD_COMMIT" != "$NEW_COMMIT" ]; then
             echo "updated=true" >> $GITHUB_OUTPUT
@@ -137,7 +139,7 @@ jobs:
           else
             echo "updated=false" >> $GITHUB_OUTPUT
           fi
-      
+
       - name: Create Pull Request
         if: steps.update.outputs.updated == 'true'
         uses: peter-evans/create-pull-request@v6
@@ -147,11 +149,11 @@ jobs:
           title: "Goyo 테마 업데이트"
           body: |
             이 PR은 Goyo 테마를 최신 버전으로 업데이트합니다.
-            
+
             **변경 사항:** ${{ steps.update.outputs.old_commit }} → ${{ steps.update.outputs.new_commit }}
-            
+
             새로운 기능에 대한 자세한 내용은 [Goyo 변경 로그](https://github.com/hahwul/goyo/releases)를 참조하세요.
-            
+
             ---
             *이 PR은 Update Goyo Theme 워크플로우에 의해 자동으로 생성되었습니다.*
           branch: update-goyo-theme
@@ -162,6 +164,8 @@ jobs:
 워크플로우를 커스터마이징할 수 있습니다:
 - **스케줄**: `cron` 표현식을 수정 (예: `'0 9 * * *'` 매일, `'0 9 1 * *'` 매월)
 - **수동 실행**: 저장소의 Actions 탭에서 수동으로 실행 가능
+- **Git 사용자**: `env` 섹션에서 `GIT_USER_NAME`과 `GIT_USER_EMAIL`을 원하는 계정으로 변경
+- **테마 경로**: 테마가 다른 위치에 설치된 경우 `THEME_PATH`를 수정
 - 저장소 설정에서 Actions가 Pull Request를 생성할 수 있도록 허용 필요 (Settings → Actions → General → Workflow permissions)
 
 ## Set theme in config.toml
