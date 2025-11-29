@@ -1,7 +1,7 @@
 <div class="gallery-container my-8">
   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-{{ cols | default(value=3) }} gap-4 justify-items-center">
     {% for asset in page.assets -%}
-    {%- if asset is matching("[.](jpg|jpeg|png|gif|webp)$") -%}
+    {%- if asset is matching("(?i)[.](jpg|jpeg|png|gif|webp)$") -%}
       {% set image = resize_image(path=asset, width=480, height=360, op="fill") %}
       {% set filename = asset | split(pat="/") | last %}
       {% set name = filename | split(pat=".") | slice(end=-1) | join(sep=".") %}
