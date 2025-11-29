@@ -5,6 +5,8 @@ weight = 7
 
 The `gallery` shortcode creates a responsive image gallery from all image assets in the current page directory. It automatically detects and displays JPG, JPEG, PNG, GIF, and WebP images.
 
+{{ gallery() }}
+
 ## Usage
 
 Place image files (`.jpg`, `.jpeg`, `.png`, `.gif`, `.webp`) in the same directory as your page's `index.md` file, then use the shortcode:
