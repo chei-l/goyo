@@ -693,6 +693,11 @@
     font-size: 0.9em;
 }
 
+/* Ensure consistent font-size for ToC summary elements (items with sub-items) */
+.toc-menu details > summary {
+    font-size: inherit;
+}
+
 .toc-link:hover {
     @apply no-underline;
 }
