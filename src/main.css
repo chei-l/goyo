@@ -699,7 +699,14 @@
 }
 
 .toc-link:hover {
-    @apply no-underline;
+    @apply no-underline font-semibold;
+    background: transparent !important;
+}
+
+/* Override menu hover styles for ToC - only text highlighting, no button effect */
+.toc-menu a:hover,
+.toc-menu details > summary:hover {
+    background: transparent !important;
 }
 
 /* ToC Active Link Highlighting */
