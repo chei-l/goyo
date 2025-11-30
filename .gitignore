@@ -10,3 +10,6 @@ public
 # Binary
 src/tailwindcss
 screenshots/
+
+# Processed Images
+static/processed_images

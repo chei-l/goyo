@@ -30,11 +30,15 @@ Place image files (`.jpg`, `.jpeg`, `.png`, `.gif`, `.webp`) in the same directo
 {{/* gallery() */}}
 ```
 
+{{ gallery() }}
+
 ### Custom Columns
 
 ```jinja
 {{/* gallery(cols=4) */}}
 ```
+
+{{ gallery(cols=4) }}
 
 ### Hide Image Names
 
@@ -42,11 +46,15 @@ Place image files (`.jpg`, `.jpeg`, `.png`, `.gif`, `.webp`) in the same directo
 {{/* gallery(show_name=false) */}}
 ```
 
+{{ gallery(show_name=false) }}
+
 ### Combine Options
 
 ```jinja
 {{/* gallery(cols=2, show_name=false) */}}
 ```
+
+{{ gallery(cols=2, show_name=false) }}
 
 ## Features
 
