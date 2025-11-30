@@ -30,11 +30,15 @@ weight = 7
 {{/* gallery() */}}
 ```
 
+{{ gallery() }}
+
 ### 커스텀 열 수
 
 ```jinja
 {{/* gallery(cols=4) */}}
 ```
+
+{{ gallery(cols=4) }}
 
 ### 이미지 이름 숨기기
 
@@ -42,11 +46,15 @@ weight = 7
 {{/* gallery(show_name=false) */}}
 ```
 
+{{ gallery(show_name=false) }}
+
 ### 옵션 조합
 
 ```jinja
 {{/* gallery(cols=2, show_name=false) */}}
 ```
+
+{{ gallery(cols=2, show_name=false) }}
 
 ## 기능
 
