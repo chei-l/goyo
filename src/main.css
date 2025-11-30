@@ -1,6 +1,33 @@
 @import "tailwindcss" source(none);
 @source "../templates/**/*.{html,md}";
 @source "../content/**/*.{html,md}";
+
+/*
+ * Safelist for Dynamic Classes
+ * 
+ * TailwindCSS tree-shakes unused classes by default. If you need to use classes that are:
+ * - Dynamically generated via JavaScript (e.g., template literals)
+ * - Created through Zola's templating with variables
+ * - Not directly visible in source files
+ * 
+ * Add them to the @source inline() directive below to ensure they're always included.
+ * 
+ * Usage:
+ *   @source inline("class1 class2 class3");
+ * 
+ * Examples:
+ *   @source inline("bg-red-500 text-blue-300 hover:bg-green-400");
+ *   @source inline("grid-cols-1 grid-cols-2 grid-cols-3 grid-cols-4");
+ * 
+ * For more information, see: https://tailwindcss.com/docs/detecting-classes-in-source-files#safelisting-specific-utilities
+ */
+
+/* Gallery shortcode: lg:grid-cols-{{ cols }} (supports 1-6 columns) */
+@source inline("lg:grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 lg:grid-cols-4 lg:grid-cols-5 lg:grid-cols-6");
+
+/* Alert shortcode styles: alert-{{ style }} (soft, outline, dash) */
+@source inline("alert-soft alert-outline alert-dash");
+
 @plugin "./daisyui.js" {
     themes:
         night --default,
