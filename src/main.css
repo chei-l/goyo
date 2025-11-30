@@ -297,6 +297,105 @@
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
+    /* Footnotes Section Styling */
+    .footnotes {
+        @apply mt-16 pt-8;
+        border-top: 1px solid rgba(100, 116, 139, 0.2);
+        position: relative;
+    }
+
+    .footnotes::before {
+        content: "Footnotes";
+        @apply text-sm font-semibold uppercase tracking-wider;
+        color: #9ca3af;
+        position: absolute;
+        top: -0.75rem;
+        left: 0;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        padding: 0 0.5rem;
+    }
+
+    [data-theme="lofi"] .footnotes::before {
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        color: #64748b;
+    }
+
+    [data-theme="night"][data-brightness="darker"] .footnotes::before {
+        background: linear-gradient(135deg, #000000 0%, #0a0a0f 100%);
+        color: #808088;
+    }
+
+    [data-theme="night"][data-brightness="lighter"] .footnotes::before {
+        background: linear-gradient(135deg, #1e293b 0%, #2d3e52 100%);
+        color: #b8c0d0;
+    }
+
+    [data-theme="lofi"][data-brightness="darker"] .footnotes::before {
+        background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+        color: #475569;
+    }
+
+    [data-theme="lofi"][data-brightness="lighter"] .footnotes::before {
+        background: linear-gradient(135deg, #ffffff 0%, #fcfcfd 100%);
+        color: #94a3b8;
+    }
+
+    /* Footnotes list - simple styling without circle backgrounds */
+    .footnotes-list {
+        @apply list-decimal mb-4;
+        padding-left: 1.5rem;
+    }
+
+    .footnotes-list li {
+        @apply relative mb-3;
+        padding-left: 0.5rem;
+        line-height: 1.7;
+    }
+
+    .footnotes-list li::before {
+        content: none;
+    }
+
+    .footnotes-list li::marker {
+        @apply font-normal text-sm;
+        color: #9ca3af;
+    }
+
+    [data-theme="lofi"] .footnotes-list li::marker {
+        color: #64748b;
+    }
+
+    .footnotes-list li p {
+        @apply my-0 inline;
+        font-size: 0.9rem;
+        color: rgba(226, 232, 240, 0.8);
+    }
+
+    [data-theme="lofi"] .footnotes-list li p {
+        color: rgba(17, 24, 39, 0.8);
+    }
+
+    /* Footnote backlink styling */
+    .footnotes-list li a {
+        @apply text-primary/70 hover:text-primary;
+        font-size: 0.85rem;
+        text-decoration: none;
+        margin-left: 0.25rem;
+    }
+
+    /* Footnote reference (superscript) styling */
+    .footnote-reference {
+        @apply text-xs font-medium;
+        vertical-align: super;
+        line-height: 0;
+    }
+
+    .footnote-reference a {
+        @apply text-primary/80 hover:text-primary;
+        text-decoration: none;
+        padding: 0 0.15rem;
+    }
+
     /* Modern Link Styling */
     a {
         @apply text-primary font-medium;
