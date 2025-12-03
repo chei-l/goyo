@@ -105,6 +105,56 @@
         </div>
     {% endif %}
 
+    {# Showcase Section - Tabbed Content #}
+    {% if section.extra.showcase_section %}
+        <div class="py-32 relative">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-500/5 to-transparent"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-black mb-6">
+                        <span class="hero-title">
+                            {{ section.extra.showcase_section.title }}
+                        </span>
+                    </h2>
+                    {% if section.extra.showcase_section.subtitle %}
+                        <p class="text-xl hero-description max-w-2xl mx-auto">
+                            {{ section.extra.showcase_section.subtitle }}
+                        </p>
+                    {% endif %}
+                </div>
+                
+                {% if section.extra.showcase_section.tabs %}
+                    <div class="max-w-5xl mx-auto">
+                        {# Tab Navigation #}
+                        <div role="tablist" class="tabs tabs-lifted tabs-lg justify-center mb-0">
+                            {% for tab in section.extra.showcase_section.tabs %}
+                                <input type="radio" name="showcase_tabs" role="tab" 
+                                       class="tab text-lg font-semibold" 
+                                       aria-label="{{ tab.name }}" 
+                                       {% if loop.index0 == 0 %}checked="checked"{% endif %} />
+                                <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-8 md:p-12">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                                        {% if tab.image %}
+                                            <div class="order-2 md:order-1">
+                                                <img src="{{ tab.image | safe }}" 
+                                                     alt="{{ tab.title }}" 
+                                                     class="rounded-xl shadow-2xl w-full h-auto object-cover border border-slate-600/30" />
+                                            </div>
+                                        {% endif %}
+                                        <div class="{% if tab.image %}order-1 md:order-2{% endif %}">
+                                            <h3 class="text-3xl font-bold mb-4 hero-title">{{ tab.title }}</h3>
+                                            <p class="text-lg hero-description leading-relaxed">{{ tab.description }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+
     {# Social Proof Section - Ashen Cards #}
     {% if section.extra.social_proof_section %}
         <div class="py-32 relative">

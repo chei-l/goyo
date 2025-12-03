@@ -53,6 +53,28 @@ logos = [
     { src = "/resources/daisyui.svg", alt = "DaisyUI"},
 ]
 
+[extra.showcase_section]
+title = "Theme Showcase"
+subtitle = "Explore different aspects of Goyo theme"
+
+[[extra.showcase_section.tabs]]
+name = "Documentation"
+title = "Clean Documentation"
+description = "Experience beautiful and readable documentation pages with Goyo's minimalist design approach."
+image = "/images/landing.jpg"
+
+[[extra.showcase_section.tabs]]
+name = "Customization"
+title = "Easy Customization"
+description = "Customize your site with simple configuration options. Change colors, fonts, and layout with ease."
+image = "/images/landing.jpg"
+
+[[extra.showcase_section.tabs]]
+name = "Multilingual"
+title = "Multilingual Support"
+description = "Built-in support for multiple languages. Create content in different languages and let users switch between them seamlessly."
+image = "/images/landing.jpg"
+
 [extra.social_proof_section]
 title = "What Our Users Say"
 testimonials = [
