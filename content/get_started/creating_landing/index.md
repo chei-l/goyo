@@ -64,6 +64,31 @@ logos = [
     { src = "/images/logo2.svg", alt = "Company Two" },
 ]
 
+# Showcase Section
+# Display tabbed content with images or text.
+# Each tab can show either an image or text content (title + description).
+[extra.showcase_section]
+title = "Theme Showcase"
+subtitle = "Explore different aspects of Goyo theme"
+
+[[extra.showcase_section.tabs]]
+name = "Documentation"
+title = "Clean Documentation"
+description = "Experience beautiful and readable documentation pages with Goyo's minimalist design approach."
+image = "/writing/shortcodes/gallery/images/image1.jpeg"
+
+[[extra.showcase_section.tabs]]
+name = "Customization"
+title = "Easy Customization"
+description = "Customize your site with simple configuration options."
+image = "/writing/shortcodes/gallery/images/image5.jpeg"
+
+[[extra.showcase_section.tabs]]
+name = "Multilingual"
+title = "Multilingual Support"
+description = "Built-in support for multiple languages."
+image = "/writing/shortcodes/gallery/images/image6.jpeg"
+
 # Social Proof Section
 # Showcase testimonials from your users.
 [extra.social_proof_section]
@@ -101,6 +126,13 @@ image = "/images/contribute.png" # (Optional) Image above the CTA section
 - **`[[extra.features]]`**: A list of features to display in a grid. Each feature has a `title`, `desc` (description), and an `icon` from [Font Awesome](https://fontawesome.com/).
 
 - **`[extra.trust_section]`**: Showcases logos of companies or projects. `logos` is a list where each item has an image `src` and `alt` text.
+
+- **`[extra.showcase_section]`**: Displays tabbed content with images or text. The section has a `title` and optional `subtitle`. Each tab in `tabs` array has:
+  - `name`: The tab label displayed in the navigation
+  - `title`: Content title (shown when no image is provided)
+  - `description`: Content description (shown when no image is provided)
+  - `image`: (Optional) Image path. When provided, only the image is displayed. When omitted, the title and description are shown instead.
+  Images are displayed with a fixed width of 1024px for consistent presentation.
 
 - **`[extra.social_proof_section]`**: Displays user testimonials. `testimonials` is a list of objects, each with an `author`, `role`, `quote`, and `avatar` image.
 

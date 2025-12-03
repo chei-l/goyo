@@ -64,6 +64,31 @@ logos = [
     { src = "/images/logo2.svg", alt = "Company Two" },
 ]
 
+# Showcase 섹션
+# 탭으로 구성된 이미지 또는 텍스트 컨텐츠를 표시합니다.
+# 각 탭은 이미지 또는 텍스트 컨텐츠(제목 + 설명)를 표시할 수 있습니다.
+[extra.showcase_section]
+title = "테마 쇼케이스"
+subtitle = "Goyo 테마의 다양한 측면을 살펴보세요"
+
+[[extra.showcase_section.tabs]]
+name = "문서화"
+title = "깔끔한 문서화"
+description = "Goyo의 미니멀한 디자인 접근 방식으로 아름답고 읽기 쉬운 문서 페이지를 경험하세요."
+image = "/writing/shortcodes/gallery/images/image1.jpeg"
+
+[[extra.showcase_section.tabs]]
+name = "커스터마이징"
+title = "쉬운 커스터마이징"
+description = "간단한 설정 옵션으로 사이트를 커스터마이징하세요."
+image = "/writing/shortcodes/gallery/images/image5.jpeg"
+
+[[extra.showcase_section.tabs]]
+name = "다국어"
+title = "다국어 지원"
+description = "다국어에 대한 내장 지원."
+image = "/writing/shortcodes/gallery/images/image6.jpeg"
+
 # Social Proof 섹션
 # 사용자들의 추천사를 보여줍니다.
 [extra.social_proof_section]
@@ -100,6 +125,13 @@ image = "/images/contribute.png"
 - **`[[extra.features]]`**: 그리드에 표시할 기능 목록입니다. 각 기능은 `title`, `desc`(설명), 그리고 [Font Awesome](https://fontawesome.com/)의 `icon`을 가집니다.
 
 - **`[extra.trust_section]`**: 회사나 프로젝트의 로고를 보여줍니다. `logos`는 각 항목이 이미지 `src`와 `alt` 텍스트를 가지는 목록입니다.
+
+- **`[extra.showcase_section]`**: 탭으로 구성된 이미지 또는 텍스트 컨텐츠를 표시합니다. 섹션은 `title`과 선택적 `subtitle`을 가집니다. `tabs` 배열의 각 탭은 다음을 포함합니다:
+  - `name`: 탭 네비게이션에 표시되는 탭 레이블
+  - `title`: 컨텐츠 제목 (이미지가 없을 때 표시됨)
+  - `description`: 컨텐츠 설명 (이미지가 없을 때 표시됨)
+  - `image`: (선택사항) 이미지 경로. 제공되면 이미지만 표시되고, 생략되면 제목과 설명이 대신 표시됩니다.
+  이미지는 일관된 표현을 위해 1024px의 고정 너비로 표시됩니다.
 
 - **`[extra.social_proof_section]`**: 사용자 추천사를 표시합니다. `testimonials`는 각 객체가 `author`, `role`, `quote`, `avatar` 이미지를 가지는 목록입니다.
 
