@@ -61,13 +61,13 @@ subtitle = "Explore different aspects of Goyo theme"
 name = "Documentation"
 title = "Clean Documentation"
 description = "Experience beautiful and readable documentation pages with Goyo's minimalist design approach."
-image = "/writing/shortcodes/gallery/images/image1.jpeg"
+image = "/writing/shortcodes/gallery/images/image5.jpeg"
 
 [[extra.showcase_section.tabs]]
 name = "Customization"
 title = "Easy Customization"
 description = "Customize your site with simple configuration options. Change colors, fonts, and layout with ease."
-image = "/writing/shortcodes/gallery/images/image5.jpeg"
+image = "/writing/shortcodes/gallery/images/image1.jpeg"
 
 [[extra.showcase_section.tabs]]
 name = "Multilingual"
