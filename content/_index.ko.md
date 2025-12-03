@@ -53,6 +53,28 @@ logos = [
     { src = "/resources/daisyui.svg", alt = "DaisyUI"},
 ]
 
+[extra.showcase_section]
+title = "테마 쇼케이스"
+subtitle = "Goyo 테마의 다양한 측면을 살펴보세요"
+
+[[extra.showcase_section.tabs]]
+name = "문서화"
+title = "깔끔한 문서화"
+description = "Goyo의 미니멀한 디자인 접근 방식으로 아름답고 읽기 쉬운 문서 페이지를 경험하세요."
+image = "/writing/shortcodes/gallery/images/image5.jpeg"
+
+[[extra.showcase_section.tabs]]
+name = "커스터마이징"
+title = "쉬운 커스터마이징"
+description = "간단한 설정 옵션으로 사이트를 커스터마이징하세요. 색상, 폰트, 레이아웃을 쉽게 변경할 수 있습니다."
+image = "/writing/shortcodes/gallery/images/image1.jpeg"
+
+[[extra.showcase_section.tabs]]
+name = "다국어"
+title = "다국어 지원"
+description = "다국어에 대한 내장 지원. 여러 언어로 콘텐츠를 작성하고 사용자가 원활하게 전환할 수 있도록 합니다."
+image = "/writing/shortcodes/gallery/images/image6.jpeg"
+
 [extra.social_proof_section]
 title = "사용자들의 평가"
 testimonials = [
