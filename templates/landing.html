@@ -134,19 +134,20 @@
                                        aria-label="{{ tab.name }}" 
                                        {% if loop.index0 == 0 %}checked="checked"{% endif %} />
                                 <div role="tabpanel" aria-labelledby="tab-{{ loop.index0 }}" class="tab-content rounded-box p-8 md:p-12">
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                                        {% if tab.image %}
-                                            <div class="order-2 md:order-1">
-                                                <img src="{{ tab.image | safe }}" 
-                                                     alt="{{ tab.title }}" 
-                                                     class="rounded-xl shadow-2xl w-full h-auto object-cover border border-slate-600/30" />
-                                            </div>
-                                        {% endif %}
-                                        <div class="{% if tab.image %}order-1 md:order-2{% endif %}">
+                                    {% if tab.image %}
+                                        {# Show only image when image is provided #}
+                                        <div class="flex justify-center">
+                                            <img src="{{ tab.image | safe }}" 
+                                                 alt="{{ tab.title }}" 
+                                                 class="rounded-xl shadow-2xl max-w-4xl w-full h-auto object-cover border border-slate-600/30" />
+                                        </div>
+                                    {% else %}
+                                        {# Show only text when no image is provided #}
+                                        <div class="text-center max-w-3xl mx-auto">
                                             <h3 class="text-3xl font-bold mb-4 hero-title">{{ tab.title }}</h3>
                                             <p class="text-lg hero-description leading-relaxed">{{ tab.description }}</p>
                                         </div>
-                                    </div>
+                                    {% endif %}
                                 </div>
                             {% endfor %}
                         </div>
