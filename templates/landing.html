@@ -124,7 +124,7 @@
                 </div>
                 
                 {% if section.extra.showcase_section.tabs %}
-                    <div class="max-w-5xl mx-auto">
+                    <div class="w-full">
                         {# Tab Navigation #}
                         <div role="tablist" class="tabs tabs-lifted tabs-lg justify-center mb-0">
                             {% for tab in section.extra.showcase_section.tabs %}
@@ -133,7 +133,7 @@
                                        class="tab text-lg font-semibold" 
                                        aria-label="{{ tab.name }}" 
                                        {% if loop.index0 == 0 %}checked="checked"{% endif %} />
-                                <div role="tabpanel" aria-labelledby="tab-{{ loop.index0 }}" class="tab-content bg-base-100 border-base-300 rounded-box p-8 md:p-12">
+                                <div role="tabpanel" aria-labelledby="tab-{{ loop.index0 }}" class="tab-content rounded-box p-8 md:p-12">
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                                         {% if tab.image %}
                                             <div class="order-2 md:order-1">
