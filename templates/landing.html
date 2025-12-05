@@ -92,12 +92,12 @@
     {% if section.extra.trust_section %}
         <div class="py-20 md:py-40 relative">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold mb-16 text-gray-300">{{ section.extra.trust_section.title }}</h2>
+                <h2 class="text-3xl font-bold mb-16 trust-section-title">{{ section.extra.trust_section.title }}</h2>
                 <div class="flex justify-center items-center gap-16 flex-wrap">
                     {% for logo in section.extra.trust_section.logos %}
                         <div class="group">
                             <img src="{{ logo.src | safe }}" alt="{{ logo.alt }}"
-                                 class="h-12 md:h-16 w-auto grayscale opacity-40 transition-all duration-500 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110" />
+                                 class="h-12 md:h-16 w-auto trust-section-logo transition-all duration-500 group-hover:scale-110" />
                         </div>
                     {% endfor %}
                 </div>
