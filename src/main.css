@@ -2320,7 +2320,7 @@ h6:hover .copy-heading-link-button {
 }
 
 [data-theme="lofi"][data-brightness="lighter"] .collapse.border-gray-500\/15 {
-    border-color: rgba(148, 163, 184, 0.12) !important;
+    border-color: rgba(148, 163, 184, 0.1) !important;
 }
 
 @media (max-width: 768px) {
