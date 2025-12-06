@@ -2277,6 +2277,52 @@ h6:hover .copy-heading-link-button {
     background-color: rgba(148, 163, 184, 0.08) !important;
 }
 
+/* Collapse component brightness adjustments */
+/* Dark theme - darker variant */
+[data-theme="night"][data-brightness="darker"] .collapse.bg-base-100 {
+    background-color: rgb(10, 10, 15) !important;
+}
+
+[data-theme="night"][data-brightness="darker"] .collapse.border-gray-500\/15 {
+    border-color: rgba(80, 80, 90, 0.2) !important;
+}
+
+/* Dark theme - lighter variant */
+[data-theme="night"][data-brightness="lighter"] .collapse.bg-base-100 {
+    background-color: rgb(45, 55, 72) !important;
+}
+
+[data-theme="night"][data-brightness="lighter"] .collapse.border-gray-500\/15 {
+    border-color: rgba(120, 130, 150, 0.2) !important;
+}
+
+/* Light theme */
+[data-theme="lofi"] .collapse.bg-base-100 {
+    background-color: rgb(255, 255, 255) !important;
+}
+
+[data-theme="lofi"] .collapse.border-gray-500\/15 {
+    border-color: rgba(100, 116, 139, 0.15) !important;
+}
+
+/* Light theme - darker variant */
+[data-theme="lofi"][data-brightness="darker"] .collapse.bg-base-100 {
+    background-color: rgb(226, 232, 240) !important;
+}
+
+[data-theme="lofi"][data-brightness="darker"] .collapse.border-gray-500\/15 {
+    border-color: rgba(71, 85, 105, 0.2) !important;
+}
+
+/* Light theme - lighter variant */
+[data-theme="lofi"][data-brightness="lighter"] .collapse.bg-base-100 {
+    background-color: rgb(255, 255, 255) !important;
+}
+
+[data-theme="lofi"][data-brightness="lighter"] .collapse.border-gray-500\/15 {
+    border-color: rgba(148, 163, 184, 0.12) !important;
+}
+
 @media (max-width: 768px) {
     .nav-button {
         @apply p-6;
