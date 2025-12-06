@@ -6,7 +6,12 @@
 
 {% block content %}
     <div class="mb-12 pb-4 border-b border-gray-500/15">
-        <h1>{{ page.title }}</h1>
+        <div class="indicator">
+            <h1>{{ page.title }}</h1>
+            {% if page.extra.badge %}
+                <span class="indicator-item badge badge-secondary">{{ page.extra.badge }}</span>
+            {% endif %}
+        </div>
         <p class="text-gray-500">{{ page.description }}</p>
     </div>
     {{ page.content | safe }}
