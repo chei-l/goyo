@@ -6,11 +6,40 @@ sort_by = "weight"
 
 [extra]
 toc_expand = true
+badge = "NEW"
 +++
 
 Page configuration allows you to customize the behavior and appearance of individual pages in your Goyo documentation site. These settings are defined in the front matter of each content file using the `[extra]` section.
 
-> **Note:** This page demonstrates the `toc_expand` feature - notice how the Table of Contents on the right is fully expanded by default!
+> **Note:** This page demonstrates both the `toc_expand` and `badge` features - notice how the Table of Contents on the right is fully expanded by default, and there's a "NEW" badge next to the page title!
+
+## Badge Indicator
+
+You can add a badge indicator to any page or section by including a `badge` field in the `[extra]` section:
+
+```toml
++++
+title = "Your Page Title"
+description = "Your page description"
+
+[extra]
+badge = "NEW"
++++
+```
+
+The badge will appear as a styled indicator positioned to the right of the page title. This is useful for highlighting:
+- New content
+- Beta features
+- Updated pages
+- Important notices
+
+Common badge values:
+- `NEW` - For newly added content
+- `BETA` - For features in beta
+- `UPDATED` - For recently updated content
+- `WIP` - For work in progress
+
+If the `badge` field is not set, no badge will be displayed.
 
 ## Table of Contents (TOC) Configuration
 
