@@ -50,12 +50,12 @@ cta_buttons = [
 title = "Essential Features"
 description = "Clean, minimal, and focused on content"
 
-[[extra.features]]
+[[extra.features_section.features]]
 title = "Documentation Friendly"
 desc = "Provides a clean writing experience for documentation."
 icon = "fa-solid fa-book"
 
-[[extra.features]]
+[[extra.features_section.features]]
 title = "Simple Design"
 desc = "A theme that pursues minimalism."
 icon = "fa-solid fa-minimize"
@@ -132,7 +132,7 @@ image = "/images/contribute.png" # (Optional) Image above the CTA section
   - `title`: The heading text displayed above the features grid
   - `description`: The subtitle text displayed below the title
 
-- **`[[extra.features]]`**: A list of features to display in a grid. Each feature has a `title`, `desc` (description), and an `icon` from [Font Awesome](https://fontawesome.com/).
+- **`[[extra.features_section.features]]`**: A list of features to display in a grid, nested under the `features_section`. Each feature has a `title`, `desc` (description), and an `icon` from [Font Awesome](https://fontawesome.com/). For backward compatibility, you can still use `[[extra.features]]` at the top level, but the nested structure is recommended.
 
 - **`[extra.trust_section]`**: Showcases logos of companies or projects. `logos` is a list where each item has an image `src` and `alt` text.
 

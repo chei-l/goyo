@@ -50,12 +50,12 @@ cta_buttons = [
 title = "주요 기능"
 description = "깔끔하고 미니멀하며 콘텐츠에 집중"
 
-[[extra.features]]
+[[extra.features_section.features]]
 title = "문서 친화적"
 desc = "깔끔한 문서 작성 경험을 제공합니다."
 icon = "fa-solid fa-book"
 
-[[extra.features]]
+[[extra.features_section.features]]
 title = "심플한 디자인"
 desc = "미니멀리즘을 추구하는 테마입니다."
 icon = "fa-solid fa-minimize"
@@ -131,7 +131,7 @@ image = "/images/contribute.png"
   - `title`: 기능 그리드 위에 표시되는 제목 텍스트
   - `description`: 제목 아래에 표시되는 부제목 텍스트
 
-- **`[[extra.features]]`**: 그리드에 표시할 기능 목록입니다. 각 기능은 `title`, `desc`(설명), 그리고 [Font Awesome](https://fontawesome.com/)의 `icon`을 가집니다.
+- **`[[extra.features_section.features]]`**: `features_section` 아래에 중첩된 그리드에 표시할 기능 목록입니다. 각 기능은 `title`, `desc`(설명), 그리고 [Font Awesome](https://fontawesome.com/)의 `icon`을 가집니다. 하위 호환성을 위해 최상위 레벨에서 `[[extra.features]]`를 여전히 사용할 수 있지만, 중첩 구조를 권장합니다.
 
 - **`[extra.trust_section]`**: 회사나 프로젝트의 로고를 보여줍니다. `logos`는 각 항목이 이미지 `src`와 `alt` 텍스트를 가지는 목록입니다.
 
