@@ -19,32 +19,32 @@ cta_buttons = [
 title = "주요 기능"
 description = "깔끔하고 미니멀하며 콘텐츠에 집중"
 
-[[extra.features]]
+[[extra.features_section.features]]
 title = "문서 친화적"
 desc = "깔끔한 문서 작성 경험을 제공합니다."
 icon = "fa-solid fa-book"
 
-[[extra.features]]
+[[extra.features_section.features]]
 title = "심플한 디자인"
 desc = "미니멀리즘을 추구하는 테마입니다."
 icon = "fa-solid fa-minimize"
 
-[[extra.features]]
+[[extra.features_section.features]]
 title = "커스터마이징과 우아한 랜딩 페이지"
 desc = "높은 커스터마이징성과 아름다운 랜딩 페이지를 제공합니다."
 icon = "fa-solid fa-palette"
 
-[[extra.features]]
+[[extra.features_section.features]]
 title = "SEO 최적화"
 desc = "검색 엔진에 최적화된 구조를 제공합니다."
 icon = "fa-solid fa-magnifying-glass-chart"
 
-[[extra.features]]
+[[extra.features_section.features]]
 title = "다양한 숏코드"
 desc = "다양하고 유용한 숏코드를 제공합니다."
 icon = "fa-solid fa-code"
 
-[[extra.features]]
+[[extra.features_section.features]]
 title = "다크 & 라이트 모드"
 desc = "다크 모드와 라이트 모드를 모두 지원합니다."
 icon = "fa-solid fa-circle-half-stroke"

@@ -19,32 +19,32 @@ cta_buttons = [
 title = "Essential Features"
 description = "Clean, minimal, and focused on content"
 
-[[extra.features]]
+[[extra.features_section.features]]
 title = "Documentation Friendly"
 desc = "Provides a clean writing experience for documentation."
 icon = "fa-solid fa-book"
 
-[[extra.features]]
+[[extra.features_section.features]]
 title = "Simple Design"
 desc = "A theme that pursues minimalism."
 icon = "fa-solid fa-minimize"
 
-[[extra.features]]
+[[extra.features_section.features]]
 title = "Customization and Elegant Landing Page"
 desc = "Highly customizable with a beautiful landing page."
 icon = "fa-solid fa-palette"
 
-[[extra.features]]
+[[extra.features_section.features]]
 title = "SEO Optimized"
 desc = "Provides a structure optimized for search engines."
 icon = "fa-solid fa-magnifying-glass-chart"
 
-[[extra.features]]
+[[extra.features_section.features]]
 title = "Various Shortcodes"
 desc = "Offers a variety of useful shortcodes."
 icon = "fa-solid fa-code"
 
-[[extra.features]]
+[[extra.features_section.features]]
 title = "Dark & Light Mode"
 desc = "Supports both dark and light modes."
 icon = "fa-solid fa-circle-half-stroke"
