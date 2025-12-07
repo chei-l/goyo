@@ -45,6 +45,11 @@ cta_buttons = [
 
 # Features Section
 # A grid to highlight key features.
+# Configure the section title and description
+[extra.features_section]
+title = "Essential Features"
+description = "Clean, minimal, and focused on content"
+
 [[extra.features]]
 title = "Documentation Friendly"
 desc = "Provides a clean writing experience for documentation."
@@ -122,6 +127,10 @@ image = "/images/contribute.png" # (Optional) Image above the CTA section
 ## Section Breakdown
 
 - **`[extra.hero]`**: The main banner. It includes a title, description, a full-screen background image, and a list of call-to-action buttons (`cta_buttons`). Each button has `text`, `url`, and `style` (`primary` for the main button, `secondary` for the other).
+
+- **`[extra.features_section]`**: Configures the features section title and description. This section is optional - if not provided, defaults to "Essential Features" and "Clean, minimal, and focused on content". Configure with:
+  - `title`: The heading text displayed above the features grid
+  - `description`: The subtitle text displayed below the title
 
 - **`[[extra.features]]`**: A list of features to display in a grid. Each feature has a `title`, `desc` (description), and an `icon` from [Font Awesome](https://fontawesome.com/).
 
