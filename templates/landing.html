@@ -59,11 +59,11 @@
                 <div class="text-center mb-20">
                     <h2 class="text-5xl font-black mb-6">
                         <span class="hero-title">
-                            Essential Features
+                            {% if section.extra.features_section.title %}{{ section.extra.features_section.title }}{% else %}Essential Features{% endif %}
                         </span>
                     </h2>
                     <p class="text-xl hero-description max-w-2xl mx-auto">
-                        Clean, minimal, and focused on content
+                        {% if section.extra.features_section.description %}{{ section.extra.features_section.description }}{% else %}Clean, minimal, and focused on content{% endif %}
                     </p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

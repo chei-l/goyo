@@ -15,6 +15,10 @@ cta_buttons = [
     { text = "View on GitHub", url = "https://github.com/hahwul/goyo", style = "secondary" },
 ]
 
+[extra.features_section]
+title = "Essential Features"
+description = "Clean, minimal, and focused on content"
+
 [[extra.features]]
 title = "Documentation Friendly"
 desc = "Provides a clean writing experience for documentation."
