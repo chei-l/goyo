@@ -15,6 +15,10 @@ cta_buttons = [
     { text = "GitHub에서 보기", url = "https://github.com/hahwul/goyo", style = "secondary" },
 ]
 
+[extra.features_section]
+title = "주요 기능"
+description = "깔끔하고 미니멀하며 콘텐츠에 집중"
+
 [[extra.features]]
 title = "문서 친화적"
 desc = "깔끔한 문서 작성 경험을 제공합니다."

@@ -45,6 +45,11 @@ cta_buttons = [
 
 # Features 섹션
 # 주요 기능을 그리드 형태로 강조합니다.
+# 섹션 제목과 설명을 설정합니다
+[extra.features_section]
+title = "주요 기능"
+description = "깔끔하고 미니멀하며 콘텐츠에 집중"
+
 [[extra.features]]
 title = "문서 친화적"
 desc = "깔끔한 문서 작성 경험을 제공합니다."
@@ -121,6 +126,10 @@ image = "/images/contribute.png"
 ## 섹션별 설명
 
 - **`[extra.hero]`**: 메인 배너입니다. `title`, `description`, 전체 화면 배경 `image`, 그리고 클릭 유도 버튼 목록(`cta_buttons`)을 포함합니다. 각 버튼은 `text`, `url`, 그리고 `style`(`primary`는 주 버튼, `secondary`는 보조 버튼)을 가집니다.
+
+- **`[extra.features_section]`**: 기능 섹션의 제목과 설명을 설정합니다. 이 섹션은 선택사항이며, 설정하지 않으면 기본값인 "Essential Features"와 "Clean, minimal, and focused on content"가 사용됩니다. 다음과 같이 설정합니다:
+  - `title`: 기능 그리드 위에 표시되는 제목 텍스트
+  - `description`: 제목 아래에 표시되는 부제목 텍스트
 
 - **`[[extra.features]]`**: 그리드에 표시할 기능 목록입니다. 각 기능은 `title`, `desc`(설명), 그리고 [Font Awesome](https://fontawesome.com/)의 `icon`을 가집니다.
 
