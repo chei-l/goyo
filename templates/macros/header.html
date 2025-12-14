@@ -30,34 +30,37 @@
     <!-- Logo -->
     <div class="flex-1">
         <a href="/" class="btn btn-ghost hover:animate-pulse hover:bg-transparent hover:border-transparent normal-case text-xl" style="background: linear-gradient(135deg, #9ca3af, #6b7280); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: bold; font-size: 1.5rem;">
-            {% if logo_image_path != "" or has_theme_specific_logos %}
+            {% if has_theme_specific_logos %}
                 {# Theme-specific logos with dynamic switching #}
-                {% if has_theme_specific_logos %}
-                    {# Dark theme logo #}
-                    <img 
-                        src="{{ get_url(path=logo_dark_image_path | default(value=logo_image_path)) | safe }}" 
-                        alt="{{ logo_text }}" 
-                        class="h-18 w-auto logo-dark"
-                        data-logo-type="dark"
-                        {% if logo_image_padding != "" %}style="padding: {{ logo_image_padding }};"{% endif %}
-                    />
-                    {# Light theme logo #}
-                    <img 
-                        src="{{ get_url(path=logo_light_image_path | default(value=logo_image_path)) | safe }}" 
-                        alt="{{ logo_text }}" 
-                        class="h-18 w-auto logo-light hidden"
-                        data-logo-type="light"
-                        {% if logo_image_padding != "" %}style="padding: {{ logo_image_padding }};"{% endif %}
-                    />
-                {% else %}
-                    {# Single logo for all themes #}
-                    <img 
-                        src="{{ get_url(path=logo_image_path) | safe }}" 
-                        alt="{{ logo_text }}" 
-                        class="h-18 w-auto"
-                        {% if logo_image_padding != "" %}style="padding: {{ logo_image_padding }};"{% endif %}
-                    />
-                {% endif %}
+                {# Resolve the actual paths - use theme-specific if set, otherwise fallback to default #}
+                {% set dark_logo_src = logo_dark_image_path %}
+                {% if dark_logo_src == "" %}{% set dark_logo_src = logo_image_path %}{% endif %}
+                {% set light_logo_src = logo_light_image_path %}
+                {% if light_logo_src == "" %}{% set light_logo_src = logo_image_path %}{% endif %}
+                {# Dark theme logo #}
+                <img 
+                    src="{{ get_url(path=dark_logo_src) | safe }}" 
+                    alt="{{ logo_text }}" 
+                    class="h-18 w-auto logo-dark"
+                    data-logo-type="dark"
+                    {% if logo_image_padding != "" %}style="padding: {{ logo_image_padding }};"{% endif %}
+                />
+                {# Light theme logo #}
+                <img 
+                    src="{{ get_url(path=light_logo_src) | safe }}" 
+                    alt="{{ logo_text }}" 
+                    class="h-18 w-auto logo-light hidden"
+                    data-logo-type="light"
+                    {% if logo_image_padding != "" %}style="padding: {{ logo_image_padding }};"{% endif %}
+                />
+            {% elif logo_image_path != "" %}
+                {# Single logo for all themes #}
+                <img 
+                    src="{{ get_url(path=logo_image_path) | safe }}" 
+                    alt="{{ logo_text }}" 
+                    class="h-18 w-auto"
+                    {% if logo_image_padding != "" %}style="padding: {{ logo_image_padding }};"{% endif %}
+                />
             {% else %}
                 {{ logo_text }}
             {% endif %}

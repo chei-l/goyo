@@ -343,15 +343,22 @@ function initTheme() {
 
 // Function to update logo visibility based on current theme
 function updateLogoForTheme(userTheme) {
-  var logoDark = document.querySelector('.logo-dark');
-  var logoLight = document.querySelector('.logo-light');
+  var isDarkTheme = userTheme === "goyo-dark";
+
+  // Only query for logo elements once and cache the reference
+  var logoDark = updateLogoForTheme._logoDark;
+  var logoLight = updateLogoForTheme._logoLight;
+  
+  // Cache elements on first call
+  if (logoDark === undefined || logoLight === undefined) {
+    logoDark = updateLogoForTheme._logoDark = document.querySelector('.logo-dark');
+    logoLight = updateLogoForTheme._logoLight = document.querySelector('.logo-light');
+  }
 
   // If no theme-specific logos exist, nothing to do
   if (!logoDark && !logoLight) {
     return;
   }
-
-  var isDarkTheme = userTheme === "goyo-dark";
 
   if (logoDark) {
     logoDark.classList.toggle('hidden', !isDarkTheme);
