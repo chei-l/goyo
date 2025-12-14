@@ -85,16 +85,21 @@
               // Determine theme: localStorage > extra.default_colorset > goyo-dark
               // Expose theme config for global use (e.g., goyo.js)
               {# Theme configuration with backward compatibility #}
-              {# Priority: theme.* (new) > default_colorset/brightness (legacy) #}
+              {# Priority: theme.dark_brightness/light_brightness (new per-theme) > theme.brightness (common) > brightness (legacy) #}
               {% if config.extra.theme is defined %}
                   {% set js_theme_colorset = config.extra.theme.colorset | default(value=config.extra.default_colorset | default(value='dark')) %}
-                  {% set js_theme_brightness = config.extra.theme.brightness | default(value=config.extra.brightness | default(value='normal')) %}
+                  {% set js_common_brightness = config.extra.theme.brightness | default(value=config.extra.brightness | default(value='normal')) %}
+                  {% set js_dark_brightness = config.extra.theme.dark_brightness | default(value=js_common_brightness) %}
+                  {% set js_light_brightness = config.extra.theme.light_brightness | default(value=js_common_brightness) %}
               {% else %}
                   {% set js_theme_colorset = config.extra.default_colorset | default(value='dark') %}
-                  {% set js_theme_brightness = config.extra.brightness | default(value='normal') %}
+                  {% set js_common_brightness = config.extra.brightness | default(value='normal') %}
+                  {% set js_dark_brightness = js_common_brightness %}
+                  {% set js_light_brightness = js_common_brightness %}
               {% endif %}
               window.defaultColorset = "{{ js_theme_colorset }}";
-              window.defaultBrightness = "{{ js_theme_brightness }}";
+              window.darkBrightness = "{{ js_dark_brightness }}";
+              window.lightBrightness = "{{ js_light_brightness }}";
               window.themeMap = { "dark": "goyo-dark", "light": "goyo-light" };
               window.fallbackTheme = window.themeMap[window.defaultColorset] || "goyo-dark";
 

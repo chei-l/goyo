@@ -124,9 +124,11 @@ creator = "@hahwul"  # Creator Twitter handle
 
 # Theme Configuration (new structured format)
 [extra.theme]
-colorset = "dark"      # Default color scheme (dark/light)
-brightness = "normal"  # Options: "darker", "normal", "lighter"
-disable_toggle = false # Hide theme toggle button
+colorset = "dark"           # Default color scheme (dark/light)
+brightness = "normal"       # Common brightness: "darker", "normal", "lighter"
+# dark_brightness = "darker"  # Override brightness for dark theme (optional)
+# light_brightness = "normal" # Override brightness for light theme (optional)
+disable_toggle = false      # Hide theme toggle button
 
 # Legacy theme configuration (still supported for backward compatibility)
 # default_colorset = "dark"

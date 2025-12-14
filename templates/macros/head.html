@@ -1,17 +1,22 @@
 {% macro get_theme_color(config) %}
 {# Theme configuration with backward compatibility #}
-{# Priority: theme.* (new) > default_colorset/brightness (legacy) #}
+{# Priority: theme.dark_brightness/light_brightness (new per-theme) > theme.brightness (common) > brightness (legacy) #}
 {% if config.extra.theme is defined %}
     {%- set colorset = config.extra.theme.colorset | default(value=config.extra.default_colorset | default(value='dark')) -%}
-    {%- set brightness = config.extra.theme.brightness | default(value=config.extra.brightness | default(value='normal')) -%}
+    {%- set common_brightness = config.extra.theme.brightness | default(value=config.extra.brightness | default(value='normal')) -%}
+    {%- set dark_brightness = config.extra.theme.dark_brightness | default(value=common_brightness) -%}
+    {%- set light_brightness = config.extra.theme.light_brightness | default(value=common_brightness) -%}
 {% else %}
     {%- set colorset = config.extra.default_colorset | default(value='dark') -%}
-    {%- set brightness = config.extra.brightness | default(value='normal') -%}
+    {%- set dark_brightness = config.extra.brightness | default(value='normal') -%}
+    {%- set light_brightness = config.extra.brightness | default(value='normal') -%}
 {% endif %}
-{%- if colorset == "dark" and brightness == "darker" -%}
+{%- if colorset == "dark" and dark_brightness == "darker" -%}
 #000000
 {%- elif colorset == "dark" -%}
 #0f172a
+{%- elif colorset == "light" and light_brightness == "darker" -%}
+#e2e8f0
 {%- elif colorset == "light" -%}
 #ffffff
 {%- else -%}
@@ -46,27 +51,39 @@
             var themeMapping = { "goyo-dark": "night", "goyo-light": "lofi" };
             
             {# Theme configuration with backward compatibility #}
-            {# Priority: theme.* (new) > default_colorset/brightness (legacy) #}
+            {# Priority: theme.dark_brightness/light_brightness (new per-theme) > theme.brightness (common) > brightness (legacy) #}
             {% if config.extra.theme is defined %}
                 {% set theme_colorset = config.extra.theme.colorset | default(value=config.extra.default_colorset | default(value='dark')) %}
-                {% set theme_brightness = config.extra.theme.brightness | default(value=config.extra.brightness | default(value='normal')) %}
+                {% set common_brightness = config.extra.theme.brightness | default(value=config.extra.brightness | default(value='normal')) %}
+                {% set dark_brightness = config.extra.theme.dark_brightness | default(value=common_brightness) %}
+                {% set light_brightness = config.extra.theme.light_brightness | default(value=common_brightness) %}
             {% else %}
                 {% set theme_colorset = config.extra.default_colorset | default(value='dark') %}
-                {% set theme_brightness = config.extra.brightness | default(value='normal') %}
+                {% set common_brightness = config.extra.brightness | default(value='normal') %}
+                {% set dark_brightness = common_brightness %}
+                {% set light_brightness = common_brightness %}
             {% endif %}
             // Get default values from config
             var defaultColorset = "{{ theme_colorset }}";
-            var defaultBrightness = "{{ theme_brightness }}";
+            var darkBrightness = "{{ dark_brightness }}";
+            var lightBrightness = "{{ light_brightness }}";
             var themeMap = { "dark": "goyo-dark", "light": "goyo-light" };
             var fallbackTheme = themeMap[defaultColorset] || "goyo-dark";
+            
+            // Expose brightness config for global use (e.g., goyo.js)
+            window.darkBrightness = darkBrightness;
+            window.lightBrightness = lightBrightness;
             
             // Get theme from localStorage or use fallback
             var currentUserTheme = localStorage.getItem('theme') || fallbackTheme;
             var actualTheme = themeMapping[currentUserTheme] || currentUserTheme;
             
+            // Determine brightness based on current theme
+            var currentBrightness = (currentUserTheme === "goyo-dark") ? darkBrightness : lightBrightness;
+            
             // Set theme and brightness attributes immediately
             document.documentElement.setAttribute("data-theme", actualTheme);
-            document.documentElement.setAttribute("data-brightness", defaultBrightness);
+            document.documentElement.setAttribute("data-brightness", currentBrightness);
         })();
     </script>
 
