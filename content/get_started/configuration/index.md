@@ -14,7 +14,7 @@ Configure Goyo theme in `config.toml`.
 
 ### Logo
 
-Configure your site's logo using the new structured format:
+Configure your site's logo using the structured format:
 
 ```toml
 [extra.logo]
