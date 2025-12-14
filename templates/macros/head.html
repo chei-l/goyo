@@ -13,10 +13,14 @@
 {% endif %}
 {%- if colorset == "dark" and dark_brightness == "darker" -%}
 #000000
+{%- elif colorset == "dark" and dark_brightness == "lighter" -%}
+#1e293b
 {%- elif colorset == "dark" -%}
 #0f172a
 {%- elif colorset == "light" and light_brightness == "darker" -%}
 #e2e8f0
+{%- elif colorset == "light" and light_brightness == "lighter" -%}
+#ffffff
 {%- elif colorset == "light" -%}
 #ffffff
 {%- else -%}

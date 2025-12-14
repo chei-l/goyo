@@ -322,8 +322,8 @@ function initTheme() {
   document.documentElement.setAttribute("data-theme", actualTheme);
   
   // Set brightness based on current theme (per-theme brightness support)
-  var darkBrightness = window && window.darkBrightness ? window.darkBrightness : "normal";
-  var lightBrightness = window && window.lightBrightness ? window.lightBrightness : "normal";
+  var darkBrightness = window.darkBrightness || "normal";
+  var lightBrightness = window.lightBrightness || "normal";
   var currentBrightness = (currentUserTheme === "goyo-dark") ? darkBrightness : lightBrightness;
   document.documentElement.setAttribute("data-brightness", currentBrightness);
 
