@@ -83,10 +83,14 @@ Configure theme settings using the structured format:
 
 ```toml
 [extra.theme]
-colorset = "dark"      # Options: "dark" or "light"
-brightness = "normal"  # Options: "darker", "normal", "lighter"
-disable_toggle = false # Hides dark/light mode toggle
+colorset = "dark"           # Options: "dark" or "light"
+brightness = "normal"       # Common brightness: "darker", "normal", "lighter"
+dark_brightness = "darker"  # Override brightness for dark theme (optional)
+light_brightness = "normal" # Override brightness for light theme (optional)
+disable_toggle = false      # Hides dark/light mode toggle
 ```
+
+**Per-theme brightness:** You can set `dark_brightness` and `light_brightness` to use different brightness levels for each theme. If not specified, the common `brightness` value will be used for both themes.
 
 {{ image_diff(src1="images/dark.png" src2="images/light.png" alt="Dark and Light") }}
 

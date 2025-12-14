@@ -83,10 +83,14 @@ gtag = "G-XXXXXXXXXX"
 
 ```toml
 [extra.theme]
-colorset = "dark"      # 옵션: "dark" 또는 "light"
-brightness = "normal"  # 옵션: "darker", "normal", "lighter"
-disable_toggle = false # 다크/라이트 모드 토글 숨김
+colorset = "dark"           # 옵션: "dark" 또는 "light"
+brightness = "normal"       # 공통 밝기: "darker", "normal", "lighter"
+dark_brightness = "darker"  # 다크 테마 전용 밝기 (선택사항)
+light_brightness = "normal" # 라이트 테마 전용 밝기 (선택사항)
+disable_toggle = false      # 다크/라이트 모드 토글 숨김
 ```
+
+**테마별 밝기:** `dark_brightness`와 `light_brightness`를 설정하여 각 테마에 서로 다른 밝기 레벨을 사용할 수 있습니다. 지정하지 않으면 공통 `brightness` 값이 두 테마 모두에 사용됩니다.
 
 {{ image_diff(src1="images/dark.png" src2="images/light.png" alt="Dark and Light") }}
 

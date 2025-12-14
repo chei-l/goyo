@@ -321,7 +321,11 @@ function initTheme() {
   var actualTheme = themeMapping[currentUserTheme] || currentUserTheme;
   document.documentElement.setAttribute("data-theme", actualTheme);
   
-  // Note: brightness attribute is already set in head.html to prevent FOUC
+  // Set brightness based on current theme (per-theme brightness support)
+  var darkBrightness = window.darkBrightness || "normal";
+  var lightBrightness = window.lightBrightness || "normal";
+  var currentBrightness = (currentUserTheme === "goyo-dark") ? darkBrightness : lightBrightness;
+  document.documentElement.setAttribute("data-brightness", currentBrightness);
 
   // Set checkbox state based on current theme
   themeController.checked = currentUserTheme === "goyo-dark";
@@ -335,6 +339,10 @@ function initTheme() {
 
     document.documentElement.setAttribute("data-theme", actualTheme);
     localStorage.setItem("theme", userTheme); // Store user-friendly name
+    
+    // Update brightness based on the new theme (per-theme brightness support)
+    var newBrightness = (userTheme === "goyo-dark") ? darkBrightness : lightBrightness;
+    document.documentElement.setAttribute("data-brightness", newBrightness);
 
     // Update logo when theme changes
     updateLogoForTheme(userTheme);
