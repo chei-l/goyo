@@ -14,6 +14,20 @@ Configure Goyo theme in `config.toml`.
 
 ### Logo
 
+Configure your site's logo using the new structured format:
+
+```toml
+[extra.logo]
+text = "Goyo"                              # Text when no logo image
+image_path = "images/goyo.png"             # Default logo image path
+image_padding = "5px"                      # Optional padding
+dark_image_path = "images/goyo-dark.png"   # Logo for dark theme (optional)
+light_image_path = "images/goyo-light.png" # Logo for light theme (optional)
+```
+
+**Theme-specific logos:** When you specify `dark_image_path` and/or `light_image_path`, the logo will automatically switch when users toggle between dark and light themes. If not specified, the `image_path` will be used for both themes.
+
+**Legacy format (still supported):**
 ```toml
 [extra]
 logo_text = "Goyo"                    # Text when no image

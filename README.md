@@ -63,11 +63,6 @@ Add extra field in config.toml
 
 ```toml
 [extra]
-# Logo Configuration
-logo_text = "Goyo"  # Text to display if no logo image
-logo_image_path = "images/goyo.png"  # Path to logo image
-logo_image_padding = "5px"  # Padding for logo image (optional)
-
 # Footer Configuration
 footer_html = "Powered by <a href='https://www.getzola.org'>Zola</a> and <a href='https://github.com/hahwul/goyo'>Goyo</a>"  # Footer HTML content
 
@@ -127,6 +122,20 @@ disable_root_sidebar_hide = false  # Prevent hiding sidebar on root page
 edit_url = ""  # Base URL for editing pages (e.g., "https://github.com/user/repo/edit/main")
 
 # Comments Configuration
+# Logo Configuration (new structured format)
+# Supports theme-specific logos that change when toggling between dark/light themes
+[extra.logo]
+text = "Goyo"  # Text to display if no logo image
+image_path = "images/goyo.png"  # Default logo image path
+# image_padding = "5px"  # Padding for logo image (optional)
+# dark_image_path = "images/goyo-dark.png"  # Logo for dark theme (optional override)
+# light_image_path = "images/goyo-light.png"  # Logo for light theme (optional override)
+
+# Legacy logo configuration (still supported for backward compatibility)
+# logo_text = "Goyo"
+# logo_image_path = "images/goyo.png"
+# logo_image_padding = "5px"
+
 [extra.comments]
 enabled = false  # Enable comments
 system = ""  # Comment system (e.g., "giscus")
