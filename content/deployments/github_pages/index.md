@@ -5,13 +5,11 @@ weight = 1
 template = "page.html"
 +++
 
-GitHub Pages is a feature that hosts static websites directly from a GitHub repository. You can use it to easily deploy your Zola site to the web for free.
+Deploy your Zola site to GitHub Pages for free.
 
 ## GitHub Actions
 
-First, create a GitHub Workflow file in your repository (e.g., `./.github/workflows/deploy.yml`).
-
-Add the following content to the file. If you need a **Personal Access Token (PAT)** for deployment, you can generate one from **Settings > Developer settings > Personal access tokens**. Once you have the token, add it as a secret in your repository's settings. In the example below, the secret is named `TOKEN`.
+Create `.github/workflows/deploy.yml`:
 
 ```yaml
 on: push
@@ -34,12 +32,10 @@ jobs:
           #TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-This workflow triggers on every `push` to the `main` branch, automatically building and deploying your Zola website.
+Generate a PAT at **Settings > Developer settings > Personal access tokens** if needed, then add it as a repository secret named `TOKEN`.
 
-## Manual Deployment to the `gh-pages` Branch
+## Manual Deployment
 
-Instead of using GitHub Actions, you can also build the site locally and deploy by pushing directly to the `gh-pages` branch.
-
-1. Run `zola build` from your project's root directory.
-2. Push the contents of the `public` directory to the `gh-pages` branch of your repository.
-3. In your repository's **Settings**, navigate to the **Pages** tab. Under "Build and deployment," select **Deploy from a branch**. Choose the `gh-pages` branch and the `/(root)` folder. The contents of this branch will then be published to the web.
+1. Build: `zola build`
+2. Push `public/` contents to `gh-pages` branch
+3. Enable in **Settings > Pages**: Deploy from `gh-pages` branch

@@ -7,85 +7,53 @@ sort_by = "weight"
 [extra]
 +++
 
-Goyo is a theme for Zola. To use this documentation, you need to install Zola first. You can install it on various operating systems with a simple command like the one below.
+## Install Zola
 
 ```bash
-# macOS Example
+# macOS
 brew install zola
 ```
 
-For more details, please refer to the [official installation guide](https://www.getzola.org/documentation/getting-started/installation/) on the Zola website.
+See [Zola installation guide](https://www.getzola.org/documentation/getting-started/installation/) for other systems.
 
-Once you have Zola installed, create a new Zola site as follows:
+## Create Site
 
 ```bash
 zola init your-docs
-cd docs
+cd your-docs
+zola serve  # View at http://localhost:1111
 ```
 
-You can then run the local development server with the `zola serve` command and view your site at `http://localhost:1111`.
+## Install Goyo Theme
 
-## Install the Goyo Theme
-
-The easiest way to install a theme in Zola is to clone it or add it as a submodule into the `themes` subdirectory of your Zola project.
-
-Clone example
-
+**Clone:**
 ```bash
 git clone https://github.com/hahwul/goyo themes/goyo
 ```
 
-Submodule example
-
+**Submodule:**
 ```bash
 git submodule add https://github.com/hahwul/goyo themes/goyo
 ```
 
-## Update the Goyo Theme
+## Update Theme
 
-If you want to update the Goyo theme to the latest version, you can do so easily:
-
-### If you cloned the theme
-
-If you installed Goyo by cloning the repository directly, you can update it with:
-
+**Clone method:**
 ```bash
 cd themes/goyo
 git pull origin main
 ```
 
-This will fetch and merge the latest changes from the main branch.
-
-### If you added the theme as a submodule
-
-If you installed Goyo as a git submodule, update it with:
-
+**Submodule method:**
 ```bash
 git submodule update --remote themes/goyo
-```
-
-Or for a more comprehensive update of all submodules:
-
-```bash
-git submodule sync
-git submodule update --remote
-```
-
-After updating the submodule, commit the changes to your repository:
-
-```bash
 git add themes/goyo
-git commit -m "Update Goyo theme to latest version"
-git push
+git commit -m "Update Goyo theme"
 ```
 
-This will ensure you always have the latest features and fixes from the Goyo theme.
+### Automated Updates (Optional)
 
-### Automated Updates with GitHub Actions
-
-For projects hosted on GitHub, you can automate theme updates using GitHub Actions. This will create periodic pull requests whenever a new version of Goyo is available.
-
-Create a file at `.github/workflows/update-goyo-theme.yml` in your documentation repository:
+Create `.github/workflows/update-goyo-theme.yml`:
 
 ```yaml
 name: Update Goyo Theme
@@ -161,26 +129,14 @@ jobs:
           labels: dependencies, documentation
 ```
 
-The workflow can be customized:
-- **Schedule**: Modify the `cron` expression (e.g., `'0 9 * * *'` for daily, `'0 9 1 * *'` for monthly)
-- **Manual trigger**: Use the Actions tab in your repository to run it manually
-- **Git User**: Change `GIT_USER_NAME` and `GIT_USER_EMAIL` in the `env` section to use your own account
-- **Theme Path**: Modify `THEME_PATH` if your theme is installed in a different location
-- Ensure your repository settings allow Actions to create pull requests (Settings → Actions → General → Workflow permissions)
+Customize as needed: schedule, git user, theme path.
 
-## Set the theme in config.toml
+## Configure Theme
 
-This is the final step. Set the theme in your `config.toml` file to use Goyo.
+Set theme in `config.toml`:
 
 ```toml
-title = "Your App"
 theme = "goyo"
 ```
 
-Now, when you run Zola, it will use the Goyo theme.
-
-```bash
-zola serve
-```
-
-However, since you don't have any content yet, you will only see a blank page with a brilliant color. In the next document, we'll create our first page.
+Run `zola serve` to view your site.

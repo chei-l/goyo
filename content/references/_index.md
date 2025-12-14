@@ -7,9 +7,9 @@ sort_by = "weight"
 [extra]
 +++
 
-This page lists external resources and technologies utilized or recommended by the Goyo theme.
+External resources and technologies:
 
-*   **[Zola Documentation](https://www.getzola.org/documentation/getting-started/overview/)**: Official documentation for Zola, the static site generator Goyo is built upon.
-*   **[Tailwind CSS](https://tailwindcss.com)**: A utility-first CSS framework used for Goyo's styling.
-*   **[DaisyUI](https://daisyui.com)**: A Tailwind CSS plugin providing pre-styled components leveraged by Goyo.
-*   **[Mermaid Live Editor](https://mermaid.live/)**: Useful for creating and testing Mermaid diagrams before embedding them into your content using the `mermaid` shortcode.
+- **[Zola](https://www.getzola.org/documentation/getting-started/overview/)**: Static site generator
+- **[Tailwind CSS](https://tailwindcss.com)**: CSS framework
+- **[DaisyUI](https://daisyui.com)**: Tailwind CSS components
+- **[Mermaid Live Editor](https://mermaid.live/)**: Create and test diagrams

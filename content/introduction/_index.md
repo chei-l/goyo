@@ -7,10 +7,14 @@ sort_by = "weight"
 [extra]
 +++
 
-Goyo is a minimal and modern theme for Zola. It offers a clean and intuitive design that focuses on your content, whether it's a blog or documentation.
+Goyo is a minimal and modern theme for Zola. It focuses on clean, intuitive design for blogs and documentation.
 
-The name "Goyo" (고요) means "serenity" or "tranquility" in Korean. We aimed to evoke a sense of calm while reading documents.
+The name "Goyo" (고요) means "serenity" in Korean, reflecting calm reading experience.
 
-It comes with essential features like dark/light mode, responsive design, built-in search, and multilingual support, all optimized for SEO. Additionally, it enhances content creation with automatic table of contents (ToC) generation and various shortcodes, including Mermaid charts, alerts, and badges.
+## Key Features
 
-Share your knowledge and ideas beautifully and effectively with Goyo.
+- Dark/light mode & responsive design
+- Built-in search & multilingual support
+- SEO optimized
+- Auto table of contents
+- Rich shortcodes (Mermaid, alerts, badges, etc.)
