@@ -73,6 +73,6 @@ enable_share_x = false
 [extra.logo]
 text = "Goyo"                           # Text when no logo image
 image_path = "images/goyo.png"          # Default logo image path
-# image_padding = "5px"                 # Optional padding
-# dark_image_path = "images/goyo-dark.png"   # Logo for dark theme (optional)
-# light_image_path = "images/goyo-light.png" # Logo for light theme (optional)
+image_padding = "10px"                 # Optional padding
+dark_image_path = "images/goyo-dark.png"   # Logo for dark theme (optional)
+light_image_path = "images/goyo-light.png" # Logo for light theme (optional)
