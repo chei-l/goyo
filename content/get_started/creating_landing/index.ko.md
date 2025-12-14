@@ -7,21 +7,11 @@ sort_by = "weight"
 [extra]
 +++
 
-랜딩 페이지는 방문자가 가장 먼저 보게 되는 페이지입니다. Goyo에서는 `landing.html`을 사용하여 제작되며, `content/_index.md`에서 설정합니다. 이를 통해 프로젝트를 위한 풍부하고 매력적인 진입점을 만들 수 있습니다.
+`content/_index.md`에서 `landing.html` 템플릿으로 랜딩 페이지를 생성합니다.
 
-다른 언어의 랜딩 페이지를 만들려면, `content/_index.ko.md`와 같이 해당 언어의 파일을 생성하면 됩니다.
+## 설정 예시
 
-## 템플릿 설정
-
-먼저 `_index.md` 파일이 `landing.html` 템플릿을 사용하도록 설정되었는지 확인하세요.
-
-```toml
-template = "landing.html"
-```
-
-## 전체 설정 예시
-
-Goyo 랜딩 페이지는 `_index.md` 파일의 `[extra]` 섹션을 통해 매우 유연하게 사용자 정의할 수 있습니다. 아래는 사용 가능한 모든 섹션을 보여주는 전체 예시입니다. 필요하지 않은 섹션은 생략할 수 있으며, 그 경우 해당 섹션은 렌더링되지 않습니다.
+모든 섹션은 선택사항입니다. 필요하지 않은 섹션은 생략하세요.
 
 ```toml
 +++
@@ -123,26 +113,14 @@ image = "/images/contribute.png"
 +++
 ```
 
-## 섹션별 설명
+## 섹션
 
-- **`[extra.hero]`**: 메인 배너입니다. `title`, `description`, 전체 화면 배경 `image`, 그리고 클릭 유도 버튼 목록(`cta_buttons`)을 포함합니다. 각 버튼은 `text`, `url`, 그리고 `style`(`primary`는 주 버튼, `secondary`는 보조 버튼)을 가집니다.
-
-- **`[extra.features_section]`**: 기능 섹션의 제목과 설명을 설정합니다. 이 섹션은 선택사항이며, 설정하지 않으면 기본값인 "Essential Features"와 "Clean, minimal, and focused on content"가 사용됩니다. 다음과 같이 설정합니다:
-  - `title`: 기능 그리드 위에 표시되는 제목 텍스트
-  - `description`: 제목 아래에 표시되는 부제목 텍스트
-
-- **`[[extra.features_section.features]]`**: `features_section` 아래에 중첩된 그리드에 표시할 기능 목록입니다. 각 기능은 `title`, `desc`(설명), 그리고 [Font Awesome](https://fontawesome.com/)의 `icon`을 가집니다. 하위 호환성을 위해 최상위 레벨에서 `[[extra.features]]`를 여전히 사용할 수 있지만, 중첩 구조를 권장합니다.
-
-- **`[extra.trust_section]`**: 회사나 프로젝트의 로고를 보여줍니다. `logos`는 각 항목이 이미지 `src`와 `alt` 텍스트를 가지는 목록입니다.
-
-- **`[extra.showcase_section]`**: 탭으로 구성된 이미지 또는 텍스트 컨텐츠를 표시합니다. 섹션은 `title`과 선택적 `subtitle`을 가집니다. `tabs` 배열의 각 탭은 다음을 포함합니다:
-  - `name`: 탭 네비게이션에 표시되는 탭 레이블
-  - `title`: 컨텐츠 제목 (이미지가 없을 때 표시됨)
-  - `description`: 컨텐츠 설명 (이미지가 없을 때 표시됨)
-  - `image`: (선택사항) 이미지 경로. 제공되면 이미지만 표시되고, 생략되면 제목과 설명이 대신 표시됩니다.
-  이미지는 일관된 표현을 위해 1024px의 고정 너비로 표시됩니다.
-
-- **`[extra.social_proof_section]`**: 사용자 추천사를 표시합니다. `testimonials`는 각 객체가 `author`, `role`, `quote`, `avatar` 이미지를 가지는 목록입니다.
+- **`hero`**: 메인 배너 (제목, 설명, 배경 이미지, CTA 버튼)
+- **`features_section`**: 기능 그리드 (제목, 설명, 아이콘 - Font Awesome)
+- **`trust_section`**: 회사/프로젝트 로고
+- **`showcase_section`**: 탭 형태의 이미지 또는 텍스트 콘텐츠
+- **`social_proof_section`**: 사용자 추천사
+- **`final_cta_section`**: 최종 행동 유도 (선택사항: 이미지 포함 가능)
 
 - **`[extra.final_cta_section]`**: `title`, `description`, 그리고 `text`와 `url`을 가진 단일 `button`으로 구성된 마지막 클릭 유도 블록입니다.
     - `image` 필드를 추가하면 CTA 섹션에 이미지를 함께 보여줄 수 있습니다. 예시: `image = "/images/contribute.png"`

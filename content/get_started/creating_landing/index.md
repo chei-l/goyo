@@ -7,21 +7,11 @@ sort_by = "weight"
 [extra]
 +++
 
-The landing page is the first page visitors see. In Goyo, it's built using `landing.html` and configured in `content/_index.md`. This allows you to create a rich, engaging entry point for your project.
+Create a landing page in `content/_index.md` with `landing.html` template.
 
-To create a landing page for another language, simply create a corresponding file, such as `content/_index.ko.md`.
+## Configuration Example
 
-## Template Configuration
-
-First, ensure your `_index.md` file is set to use the `landing.html` template.
-
-```toml
-template = "landing.html"
-```
-
-## Full Configuration Example
-
-The Goyo landing page is highly customizable through the `[extra]` section of your `_index.md`. Below is a full example showcasing all available sections. You can omit any section you don't need, and it won't be rendered.
+All sections are optional. Omit sections you don't need.
 
 ```toml
 +++
@@ -124,26 +114,11 @@ image = "/images/contribute.png" # (Optional) Image above the CTA section
 +++
 ```
 
-## Section Breakdown
+## Sections
 
-- **`[extra.hero]`**: The main banner. It includes a title, description, a full-screen background image, and a list of call-to-action buttons (`cta_buttons`). Each button has `text`, `url`, and `style` (`primary` for the main button, `secondary` for the other).
-
-- **`[extra.features_section]`**: Configures the features section title and description. This section is optional - if not provided, defaults to "Essential Features" and "Clean, minimal, and focused on content". Configure with:
-  - `title`: The heading text displayed above the features grid
-  - `description`: The subtitle text displayed below the title
-
-- **`[[extra.features_section.features]]`**: A list of features to display in a grid, nested under the `features_section`. Each feature has a `title`, `desc` (description), and an `icon` from [Font Awesome](https://fontawesome.com/). For backward compatibility, you can still use `[[extra.features]]` at the top level, but the nested structure is recommended.
-
-- **`[extra.trust_section]`**: Showcases logos of companies or projects. `logos` is a list where each item has an image `src` and `alt` text.
-
-- **`[extra.showcase_section]`**: Displays tabbed content with images or text. The section has a `title` and optional `subtitle`. Each tab in `tabs` array has:
-  - `name`: The tab label displayed in the navigation
-  - `title`: Content title (shown when no image is provided)
-  - `description`: Content description (shown when no image is provided)
-  - `image`: (Optional) Image path. When provided, only the image is displayed. When omitted, the title and description are shown instead.
-  Images are displayed with a fixed width of 1024px for consistent presentation.
-
-- **`[extra.social_proof_section]`**: Displays user testimonials. `testimonials` is a list of objects, each with an `author`, `role`, `quote`, and `avatar` image.
-
-- **`[extra.final_cta_section]`**: A final call-to-action block with a `title`, `description`, and a single `button` with `text` and `url`.
-  You can also add an optional `image` field (e.g. `image = "/images/contribute.png"`) to display an image above the CTA text.
+- **`hero`**: Main banner with title, description, background image, and CTA buttons
+- **`features_section`**: Features grid with title, description, icon (Font Awesome)
+- **`trust_section`**: Company/project logos
+- **`showcase_section`**: Tabbed content with images or text
+- **`social_proof_section`**: User testimonials
+- **`final_cta_section`**: Final call-to-action with optional image
