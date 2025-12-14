@@ -1,6 +1,13 @@
 {% macro get_theme_color(config) %}
-{%- set colorset = config.extra.default_colorset | default(value='dark') -%}
-{%- set brightness = config.extra.brightness | default(value='normal') -%}
+{# Theme configuration with backward compatibility #}
+{# Priority: theme.* (new) > default_colorset/brightness (legacy) #}
+{% if config.extra.theme is defined %}
+    {%- set colorset = config.extra.theme.colorset | default(value=config.extra.default_colorset | default(value='dark')) -%}
+    {%- set brightness = config.extra.theme.brightness | default(value=config.extra.brightness | default(value='normal')) -%}
+{% else %}
+    {%- set colorset = config.extra.default_colorset | default(value='dark') -%}
+    {%- set brightness = config.extra.brightness | default(value='normal') -%}
+{% endif %}
 {%- if colorset == "dark" and brightness == "darker" -%}
 #000000
 {%- elif colorset == "dark" -%}
@@ -38,9 +45,18 @@
             // Theme mapping - maps user-friendly names to actual DaisyUI theme names
             var themeMapping = { "goyo-dark": "night", "goyo-light": "lofi" };
             
+            {# Theme configuration with backward compatibility #}
+            {# Priority: theme.* (new) > default_colorset/brightness (legacy) #}
+            {% if config.extra.theme is defined %}
+                {% set theme_colorset = config.extra.theme.colorset | default(value=config.extra.default_colorset | default(value='dark')) %}
+                {% set theme_brightness = config.extra.theme.brightness | default(value=config.extra.brightness | default(value='normal')) %}
+            {% else %}
+                {% set theme_colorset = config.extra.default_colorset | default(value='dark') %}
+                {% set theme_brightness = config.extra.brightness | default(value='normal') %}
+            {% endif %}
             // Get default values from config
-            var defaultColorset = "{{ config.extra.default_colorset | default(value='dark') }}";
-            var defaultBrightness = "{{ config.extra.brightness | default(value='normal') }}";
+            var defaultColorset = "{{ theme_colorset }}";
+            var defaultBrightness = "{{ theme_brightness }}";
             var themeMap = { "dark": "goyo-dark", "light": "goyo-light" };
             var fallbackTheme = themeMap[defaultColorset] || "goyo-dark";
             
@@ -55,16 +71,26 @@
     </script>
 
     <style>
-        {% if config.extra.custom_font_enabled and config.extra.custom_font_path %}
+        {# Font configuration with backward compatibility #}
+        {# Priority: font.* (new) > custom_font_* (legacy) #}
+        {% if config.extra.font is defined %}
+            {% set font_enabled = config.extra.font.enabled | default(value=config.extra.custom_font_enabled | default(value=false)) %}
+            {% set font_name = config.extra.font.name | default(value=config.extra.custom_font_name | default(value='CustomFont')) %}
+            {% set font_path = config.extra.font.path | default(value=config.extra.custom_font_path | default(value='')) %}
+        {% else %}
+            {% set font_enabled = config.extra.custom_font_enabled | default(value=false) %}
+            {% set font_name = config.extra.custom_font_name | default(value='CustomFont') %}
+            {% set font_path = config.extra.custom_font_path | default(value='') %}
+        {% endif %}
+        {% if font_enabled and font_path != '' %}
             {# Custom font configuration #}
-            {% set font_path = config.extra.custom_font_path %}
             {% if font_path is starting_with("http://") or font_path is starting_with("https://") %}
                 {# Remote font URL - use @import #}
                 @import url('{{ font_path | safe }}');
             {% else %}
                 {# Local font file - use @font-face #}
                 @font-face {
-                    font-family: "{{ config.extra.custom_font_name | default(value='CustomFont') }}";
+                    font-family: "{{ font_name }}";
                     src: url('{{ get_url(path=font_path) | safe }}') format("woff");
                     font-weight: 400;
                     font-style: normal;
@@ -72,7 +98,7 @@
                 }
             {% endif %}
             body {
-                font-family: "{{ config.extra.custom_font_name | default(value='CustomFont') }}", sans-serif;
+                font-family: "{{ font_name }}", sans-serif;
             }
         {% else %}
             {# Default Pretendard font with font-display swap for better performance #}
@@ -164,11 +190,20 @@
           {{ config.description }}
         {%- endif -%}
       " />
-      {% if config.extra.twitter_site %}
-      <meta name="twitter:site" content="{{ config.extra.twitter_site }}" />
+      {# Twitter configuration with backward compatibility #}
+      {# Priority: twitter.* (new) > twitter_* (legacy) #}
+      {% if config.extra.twitter is defined %}
+          {% set twitter_site = config.extra.twitter.site | default(value=config.extra.twitter_site | default(value="")) %}
+          {% set twitter_creator = config.extra.twitter.creator | default(value=config.extra.twitter_creator | default(value="")) %}
+      {% else %}
+          {% set twitter_site = config.extra.twitter_site | default(value="") %}
+          {% set twitter_creator = config.extra.twitter_creator | default(value="") %}
       {% endif %}
-      {% if config.extra.twitter_creator %}
-      <meta name="twitter:creator" content="{{ config.extra.twitter_creator }}" />
+      {% if twitter_site != "" %}
+      <meta name="twitter:site" content="{{ twitter_site }}" />
+      {% endif %}
+      {% if twitter_creator != "" %}
+      <meta name="twitter:creator" content="{{ twitter_creator }}" />
       {% endif %}
       {% if page.extra.thumbnail %}
       <meta name="twitter:image" content="{{ get_url(path=page.extra.thumbnail) | safe }}" />

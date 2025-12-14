@@ -53,6 +53,15 @@ default_thumbnail = "images/default_thumbnail.jpg"
 
 ### 트위터
 
+구조화된 형식을 사용하여 트위터 메타 태그를 설정하세요:
+
+```toml
+[extra.twitter]
+site = "@hahwul"
+creator = "@hahwul"
+```
+
+**레거시 형식 (하위 호환성 지원):**
 ```toml
 [extra]
 twitter_site = "@hahwul"
@@ -68,18 +77,51 @@ gtag = "G-XXXXXXXXXX"
 
 ## 네비게이션 & UI
 
-### 컬러셋
+### 테마
+
+구조화된 형식을 사용하여 테마 설정을 지정하세요:
 
 ```toml
+[extra.theme]
+colorset = "dark"      # 옵션: "dark" 또는 "light"
+brightness = "normal"  # 옵션: "darker", "normal", "lighter"
+disable_toggle = false # 다크/라이트 모드 토글 숨김
+```
+
+{{ image_diff(src1="images/dark.png" src2="images/light.png" alt="Dark and Light") }}
+
+{{ carousel(images=["images/darker.png", "images/normal.png", "images/lighter.png"]) }}
+
+**레거시 형식 (하위 호환성 지원):**
+```toml
 [extra]
-default_colorset = "dark"  # 옵션: "dark" 또는 "light"
+default_colorset = "dark"
+brightness = "normal"
+disable_theme_toggle = false
 ```
 
 ### 폰트
 
+구조화된 형식을 사용하여 폰트 설정을 지정하세요:
+
+```toml
+[extra.font]
+enabled = true
+name = "MyCustomFont"
+path = "fonts/mycustomfont.woff"
+```
+
 기본값: **Pretendard** (한국어와 영어에 최적화)
 
-**로컬 폰트:**
+**구글 폰트:**
+```toml
+[extra.font]
+enabled = true
+name = "Roboto"
+path = "https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+```
+
+**레거시 형식 (하위 호환성 지원):**
 ```toml
 [extra]
 custom_font_enabled = true
@@ -87,26 +129,23 @@ custom_font_name = "MyCustomFont"
 custom_font_path = "fonts/mycustomfont.woff"
 ```
 
-**구글 폰트:**
+### 사이드바
+
+구조화된 형식을 사용하여 사이드바 설정을 지정하세요:
+
 ```toml
-[extra]
-custom_font_enabled = true
-custom_font_name = "Roboto"
-custom_font_path = "https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+[extra.sidebar]
+expand_depth = 2         # 1-5, 기본 확장 깊이
+disable_root_hide = false # 랜딩 페이지에서 사이드바 표시
 ```
 
-### 밝기
+{{ image_diff(src1="/images/side-home.jpg", src2="/images/wide-home.jpg", alt="goyo") }}
 
+**레거시 형식 (하위 호환성 지원):**
 ```toml
 [extra]
-brightness = "normal"  # 옵션: "darker", "normal", "lighter"
-```
-
-### 사이드바 확장 깊이
-
-```toml
-[extra]
-sidebar_expand_depth = 2  # 1-5, 기본 확장 깊이
+sidebar_expand_depth = 2
+disable_root_sidebar_hide = false
 ```
 
 ### 네비게이션
@@ -134,22 +173,6 @@ nav_ko = [
 lang_aliases = { en = "English", ko = "한국어", ja = "日本語" }
 ```
 
-### 테마 토글 비활성화
-
-```toml
-[extra]
-disable_theme_toggle = true  # 다크/라이트 모드 토글 숨김
-```
-
-### 루트 사이드바 숨기기 비활성화
-
-```toml
-[extra]
-disable_root_sidebar_hide = false  # 랜딩 페이지에서 사이드바 표시
-```
-
-{{ image_diff(src1="/images/side-home.jpg", src2="/images/wide-home.jpg", alt="goyo") }}
-
 ## 콘텐츠 & 공유
 
 ### 편집 URL
@@ -163,10 +186,19 @@ edit_url = "https://github.com/hahwul/goyo/edit/main"
 
 ### 공유 버튼
 
+구조화된 형식을 사용하여 공유 버튼 설정을 지정하세요:
+
+```toml
+[extra.share]
+copy_url = true  # URL 복사 버튼
+x = true         # X 공유 버튼
+```
+
+**레거시 형식 (하위 호환성 지원):**
 ```toml
 [extra]
-enable_copy_url = true   # URL 복사 버튼
-enable_share_x = true    # X 공유 버튼
+enable_copy_url = true
+enable_share_x = true
 ```
 
 ### 댓글
