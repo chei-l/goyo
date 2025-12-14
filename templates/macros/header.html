@@ -1,4 +1,25 @@
 {% macro header(config, lang) %}
+{# Resolve logo configuration with backward compatibility #}
+{# Priority: logo.* (new) > logo_* (legacy) #}
+
+{# Check if new logo config exists #}
+{% if config.extra.logo is defined %}
+    {% set logo_text = config.extra.logo.text | default(value=config.extra.logo_text | default(value=config.title)) %}
+    {% set logo_image_path = config.extra.logo.image_path | default(value=config.extra.logo_image_path | default(value="")) %}
+    {% set logo_image_padding = config.extra.logo.image_padding | default(value=config.extra.logo_image_padding | default(value="")) %}
+    {% set logo_dark_image_path = config.extra.logo.dark_image_path | default(value="") %}
+    {% set logo_light_image_path = config.extra.logo.light_image_path | default(value="") %}
+{% else %}
+    {# Legacy configuration #}
+    {% set logo_text = config.extra.logo_text | default(value=config.title) %}
+    {% set logo_image_path = config.extra.logo_image_path | default(value="") %}
+    {% set logo_image_padding = config.extra.logo_image_padding | default(value="") %}
+    {% set logo_dark_image_path = "" %}
+    {% set logo_light_image_path = "" %}
+{% endif %}
+
+{% set has_theme_specific_logos = logo_dark_image_path != "" or logo_light_image_path != "" %}
+
 <div class="navbar opacity-95 fixed top-0 left-0 right-0 z-50 h-16 border-b border-gray-500/15 backdrop-blur-3xl">
     <!-- Mobile hamburger -->
     <div class="flex-none lg:hidden">
@@ -9,10 +30,39 @@
     <!-- Logo -->
     <div class="flex-1">
         <a href="/" class="btn btn-ghost hover:animate-pulse hover:bg-transparent hover:border-transparent normal-case text-xl" style="background: linear-gradient(135deg, #9ca3af, #6b7280); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: bold; font-size: 1.5rem;">
-            {% if config.extra.logo_image_path %}
-                <img src="{{ get_url(path=config.extra.logo_image_path) | safe }}" alt="{{ config.extra.logo_text | default(value=config.title) }}" class="h-18 w-auto" {% if config.extra.logo_image_padding is defined and config.extra.logo_image_padding %}style="padding: {{ config.extra.logo_image_padding }};"{% endif %}/>
+            {% if has_theme_specific_logos %}
+                {# Theme-specific logos with dynamic switching #}
+                {# Resolve the actual paths - use theme-specific if set, otherwise fallback to default #}
+                {% set dark_logo_src = logo_dark_image_path %}
+                {% if dark_logo_src == "" %}{% set dark_logo_src = logo_image_path %}{% endif %}
+                {% set light_logo_src = logo_light_image_path %}
+                {% if light_logo_src == "" %}{% set light_logo_src = logo_image_path %}{% endif %}
+                {# Dark theme logo #}
+                <img 
+                    src="{{ get_url(path=dark_logo_src) | safe }}" 
+                    alt="{{ logo_text }}" 
+                    class="h-18 w-auto logo-dark"
+                    data-logo-type="dark"
+                    {% if logo_image_padding != "" %}style="padding: {{ logo_image_padding }};"{% endif %}
+                />
+                {# Light theme logo #}
+                <img 
+                    src="{{ get_url(path=light_logo_src) | safe }}" 
+                    alt="{{ logo_text }}" 
+                    class="h-18 w-auto logo-light hidden"
+                    data-logo-type="light"
+                    {% if logo_image_padding != "" %}style="padding: {{ logo_image_padding }};"{% endif %}
+                />
+            {% elif logo_image_path != "" %}
+                {# Single logo for all themes #}
+                <img 
+                    src="{{ get_url(path=logo_image_path) | safe }}" 
+                    alt="{{ logo_text }}" 
+                    class="h-18 w-auto"
+                    {% if logo_image_padding != "" %}style="padding: {{ logo_image_padding }};"{% endif %}
+                />
             {% else %}
-                {{ config.extra.logo_text | default(value=config.title) }}
+                {{ logo_text }}
             {% endif %}
         </a>
     </div>

@@ -326,13 +326,46 @@ function initTheme() {
   // Set checkbox state based on current theme
   themeController.checked = currentUserTheme === "goyo-dark";
 
+  // Update logo visibility based on current theme
+  updateLogoForTheme(currentUserTheme);
+
   themeController.addEventListener("change", function (e) {
     var userTheme = e.target.checked ? "goyo-dark" : "goyo-light";
     var actualTheme = themeMapping[userTheme];
 
     document.documentElement.setAttribute("data-theme", actualTheme);
     localStorage.setItem("theme", userTheme); // Store user-friendly name
+
+    // Update logo when theme changes
+    updateLogoForTheme(userTheme);
   });
+}
+
+// Function to update logo visibility based on current theme
+function updateLogoForTheme(userTheme) {
+  var isDarkTheme = userTheme === "goyo-dark";
+
+  // Only query for logo elements once and cache the reference
+  var logoDark = updateLogoForTheme._logoDark;
+  var logoLight = updateLogoForTheme._logoLight;
+  
+  // Cache elements on first call
+  if (logoDark === undefined || logoLight === undefined) {
+    logoDark = updateLogoForTheme._logoDark = document.querySelector('.logo-dark');
+    logoLight = updateLogoForTheme._logoLight = document.querySelector('.logo-light');
+  }
+
+  // If no theme-specific logos exist, nothing to do
+  if (!logoDark && !logoLight) {
+    return;
+  }
+
+  if (logoDark) {
+    logoDark.classList.toggle('hidden', !isDarkTheme);
+  }
+  if (logoLight) {
+    logoLight.classList.toggle('hidden', isDarkTheme);
+  }
 }
 
 function initToc() {

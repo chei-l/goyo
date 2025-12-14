@@ -14,6 +14,20 @@ toc_expand = true
 
 ### 로고
 
+구조화된 형식을 사용하여 사이트 로고를 설정하세요:
+
+```toml
+[extra.logo]
+text = "Goyo"                              # 이미지 없을 때 텍스트
+image_path = "images/goyo.png"             # 기본 로고 이미지 경로
+image_padding = "5px"                      # 선택사항: padding
+dark_image_path = "images/goyo-dark.png"   # 다크 테마용 로고 (선택사항)
+light_image_path = "images/goyo-light.png" # 라이트 테마용 로고 (선택사항)
+```
+
+**테마별 로고:** `dark_image_path`와 `light_image_path`를 지정하면, 사용자가 다크/라이트 테마를 토글할 때 로고가 자동으로 전환됩니다. 지정하지 않으면 `image_path`가 두 테마 모두에 사용됩니다.
+
+**레거시 형식 (하위 호환성 지원):**
 ```toml
 [extra]
 logo_text = "Goyo"                    # 이미지 없을 때 텍스트
