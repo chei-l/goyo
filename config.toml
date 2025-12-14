@@ -18,22 +18,9 @@ generate_feeds = true
 build_search_index = true
 
 [extra]
-# Logo Configuration (new structured format)
-# You can use either the new [extra.logo] format or the legacy flat format
-# The new format takes priority when both are present
-
 footer_html = "<div style='display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;'><a href='https://www.hahwul.com' target='_blank' rel='noopener noreferrer' style='display: inline-flex; align-items: center;'><img src='https://www.hahwul.com/images/logo-gray.png' alt='HAHWUL' style='height: 30px' /></a><span style='opacity: 0.6;'>•</span><span>Powered by <a href='https://www.getzola.org' class='font-medium text-base-content/70 hover:text-base-content transition-colors duration-200'>Zola</a> and <a href='https://github.com/hahwul/goyo' class='font-medium text-base-content/70 hover:text-base-content transition-colors duration-200'>Goyo</a></span></div>"
 default_thumbnail = "images/default_thumbnail.jpg"
-default_colorset = "dark" # Options: "dark", "light"
-brightness = "normal"  # Options: "darker", "normal", "lighter"
 gtag = ""
-sidebar_expand_depth = 1
-disable_root_sidebar_hide = false
-
-# Font Configuration
-custom_font_enabled = false  # Set to true to use custom font
-custom_font_name = ""  # Name of the custom font (e.g., "Roboto", "Noto Sans KR")
-custom_font_path = ""  # Local path (e.g., "fonts/custom.woff") or remote URL (e.g., "https://fonts.googleapis.com/css2?family=Roboto")
 
 # Language display names for the language selector
 # If not defined, the language code will be displayed
@@ -60,11 +47,6 @@ nav_ko = [
 # Edit this page Configuration
 edit_url = "https://github.com/hahwul/goyo/edit/main"
 
-# Share buttons Configuration
-# Set to true to enable individual share buttons
-enable_copy_url = false
-enable_share_x = false
-
 # Logo Configuration (new structured format)
 # You can use either the new [extra.logo] format or the legacy flat format (logo_text, logo_image_path, logo_image_padding)
 # The new format takes priority when both are present
@@ -81,3 +63,33 @@ light_image_path = "images/goyo-light.png" # Logo for light theme (optional)
 [extra.twitter]
 site = "@hahwul"     # Site Twitter handle
 creator = "@hahwul"  # Creator Twitter handle
+
+# Theme Configuration (new structured format)
+# You can use either the new [extra.theme] format or the legacy flat format (default_colorset, brightness, disable_theme_toggle)
+# The new format takes priority when both are present
+[extra.theme]
+colorset = "dark"      # Options: "dark", "light"
+brightness = "normal"  # Options: "darker", "normal", "lighter"
+disable_toggle = false # Hide theme toggle button
+
+# Font Configuration (new structured format)
+# You can use either the new [extra.font] format or the legacy flat format (custom_font_enabled, custom_font_name, custom_font_path)
+# The new format takes priority when both are present
+[extra.font]
+enabled = false  # Set to true to use custom font
+name = ""        # Name of the custom font (e.g., "Roboto", "Noto Sans KR")
+path = ""        # Local path (e.g., "fonts/custom.woff") or remote URL (e.g., "https://fonts.googleapis.com/css2?family=Roboto")
+
+# Sidebar Configuration (new structured format)
+# You can use either the new [extra.sidebar] format or the legacy flat format (sidebar_expand_depth, disable_root_sidebar_hide)
+# The new format takes priority when both are present
+[extra.sidebar]
+expand_depth = 1         # Sidebar expansion depth (max 5)
+disable_root_hide = false # Prevent hiding sidebar on root page
+
+# Share Buttons Configuration (new structured format)
+# You can use either the new [extra.share] format or the legacy flat format (enable_copy_url, enable_share_x)
+# The new format takes priority when both are present
+[extra.share]
+copy_url = false  # Copy URL button
+x = false         # Share on X button

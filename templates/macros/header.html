@@ -146,7 +146,14 @@
             </li>
             {% endif %}
 
-            {% if config.extra.disable_theme_toggle is not defined or config.extra.disable_theme_toggle != true %}
+            {# Theme toggle configuration with backward compatibility #}
+            {# Priority: theme.disable_toggle (new) > disable_theme_toggle (legacy) #}
+            {% if config.extra.theme is defined %}
+                {% set disable_theme_toggle = config.extra.theme.disable_toggle | default(value=config.extra.disable_theme_toggle | default(value=false)) %}
+            {% else %}
+                {% set disable_theme_toggle = config.extra.disable_theme_toggle | default(value=false) %}
+            {% endif %}
+            {% if not disable_theme_toggle %}
             <li>
                 <label class="swap swap-rotate btn btn-ghost">
                   <input type="checkbox" class="theme-controller" value="night" aria-labelledby="swap color"/>

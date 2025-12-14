@@ -1,6 +1,12 @@
 {% import "macros/footer.html" as macros_footer %}
 {% macro sidebar(config, lang, current_path, section) %}
-{% if config.extra.sidebar_expand_depth is defined %}{% set sidebar_expand_depth = config.extra.sidebar_expand_depth | int %}{% else %}{% set sidebar_expand_depth = 0 %}{% endif %}
+{# Sidebar configuration with backward compatibility #}
+{# Priority: sidebar.* (new) > sidebar_expand_depth (legacy) #}
+{% if config.extra.sidebar is defined %}
+    {% set sidebar_expand_depth = config.extra.sidebar.expand_depth | default(value=config.extra.sidebar_expand_depth | default(value=0)) | int %}
+{% else %}
+    {% if config.extra.sidebar_expand_depth is defined %}{% set sidebar_expand_depth = config.extra.sidebar_expand_depth | int %}{% else %}{% set sidebar_expand_depth = 0 %}{% endif %}
+{% endif %}
 {# Normalize current_path for comparison by removing language prefix #}
 {% if lang != config.default_language and current_path is starting_with("/" ~ lang ~ "/") %}
     {% set normalized_current_path = current_path | replace(from="/" ~ lang, to="", count=1) %}

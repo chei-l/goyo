@@ -25,7 +25,14 @@
             {{ macros_header::header(config=config, lang=lang) }}
 
             {% set lang_root_path = "/" ~ lang ~ "/" %}
-            {% if section is defined and (section.path == "/" or section.path == lang_root_path) and not config.extra.disable_root_sidebar_hide %}
+            {# Sidebar configuration with backward compatibility #}
+            {# Priority: sidebar.disable_root_hide (new) > disable_root_sidebar_hide (legacy) #}
+            {% if config.extra.sidebar is defined %}
+                {% set disable_root_sidebar_hide = config.extra.sidebar.disable_root_hide | default(value=config.extra.disable_root_sidebar_hide | default(value=false)) %}
+            {% else %}
+                {% set disable_root_sidebar_hide = config.extra.disable_root_sidebar_hide | default(value=false) %}
+            {% endif %}
+            {% if section is defined and (section.path == "/" or section.path == lang_root_path) and not disable_root_sidebar_hide %}
             <div class="w-full">
                 <main class="prose w-full mx-auto">
                     {% block content %}{% endblock content %}
@@ -77,8 +84,17 @@
             <script>
               // Determine theme: localStorage > extra.default_colorset > goyo-dark
               // Expose theme config for global use (e.g., goyo.js)
-              window.defaultColorset = "{{ config.extra.default_colorset | default(value='dark') }}";
-              window.defaultBrightness = "{{ config.extra.brightness | default(value='normal') }}";
+              {# Theme configuration with backward compatibility #}
+              {# Priority: theme.* (new) > default_colorset/brightness (legacy) #}
+              {% if config.extra.theme is defined %}
+                  {% set js_theme_colorset = config.extra.theme.colorset | default(value=config.extra.default_colorset | default(value='dark')) %}
+                  {% set js_theme_brightness = config.extra.theme.brightness | default(value=config.extra.brightness | default(value='normal')) %}
+              {% else %}
+                  {% set js_theme_colorset = config.extra.default_colorset | default(value='dark') %}
+                  {% set js_theme_brightness = config.extra.brightness | default(value='normal') %}
+              {% endif %}
+              window.defaultColorset = "{{ js_theme_colorset }}";
+              window.defaultBrightness = "{{ js_theme_brightness }}";
               window.themeMap = { "dark": "goyo-dark", "light": "goyo-light" };
               window.fallbackTheme = window.themeMap[window.defaultColorset] || "goyo-dark";
 
@@ -126,7 +142,8 @@
         </div>
 
         {% set lang_root_path = "/" ~ lang ~ "/" %}
-        {% if section is defined and (section.path == "/" or section.path == lang_root_path) and not config.extra.disable_root_sidebar_hide %}
+        {# Sidebar configuration with backward compatibility (reuse the value from above) #}
+        {% if section is defined and (section.path == "/" or section.path == lang_root_path) and not disable_root_sidebar_hide %}
         <div id="sidebar" class="hidden">
         {% else %}
         <div id="sidebar" class="drawer-side pt-16 border-r border-gray-500/15 overflow-hidden">

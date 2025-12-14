@@ -69,15 +69,8 @@ footer_html = "Powered by <a href='https://www.getzola.org'>Zola</a> and <a href
 # Thumbnail Configuration
 default_thumbnail = "images/default_thumbnail.jpg"  # Default thumbnail image path
 
-# Color Configuration
-default_colorset = "dark"  # Default color scheme (dark/light)
-brightness = "normal"  # Options: "darker", "normal", "lighter"
-
 # Google Tag Configuration
 gtag = ""  # Google Analytics tracking ID
-
-# Sidebar Configuration
-sidebar_expand_depth = 1  # Sidebar expansion depth (max 5)
 
 # Language display names for the language selector
 # If not defined, the language code will be displayed
@@ -103,21 +96,9 @@ nav_ko = [
     ] },
 ]
 
-# Language Aliases Configuration
-# Custom display names for languages in the language selector
-# If not defined, language codes will be displayed
-lang_aliases = { en = "English", ko = "한국어" }
-
-# Theme Toggle Configuration
-disable_theme_toggle = false  # Hide theme toggle button (true to disable)
-
-# Sidebar Visibility Configuration
-disable_root_sidebar_hide = false  # Prevent hiding sidebar on root page
-
 # Edit URL Configuration
 edit_url = ""  # Base URL for editing pages (e.g., "https://github.com/user/repo/edit/main")
 
-# Comments Configuration
 # Logo Configuration (new structured format)
 # Supports theme-specific logos that change when toggling between dark/light themes
 [extra.logo]
@@ -140,6 +121,46 @@ creator = "@hahwul"  # Creator Twitter handle
 # Legacy Twitter configuration (still supported for backward compatibility)
 # twitter_site = "@hahwul"
 # twitter_creator = "@hahwul"
+
+# Theme Configuration (new structured format)
+[extra.theme]
+colorset = "dark"      # Default color scheme (dark/light)
+brightness = "normal"  # Options: "darker", "normal", "lighter"
+disable_toggle = false # Hide theme toggle button
+
+# Legacy theme configuration (still supported for backward compatibility)
+# default_colorset = "dark"
+# brightness = "normal"
+# disable_theme_toggle = false
+
+# Font Configuration (new structured format)
+[extra.font]
+enabled = false  # Set to true to use custom font
+name = ""        # Name of the custom font (e.g., "Roboto", "Noto Sans KR")
+path = ""        # Local path (e.g., "fonts/custom.woff") or remote URL
+
+# Legacy font configuration (still supported for backward compatibility)
+# custom_font_enabled = false
+# custom_font_name = ""
+# custom_font_path = ""
+
+# Sidebar Configuration (new structured format)
+[extra.sidebar]
+expand_depth = 1         # Sidebar expansion depth (max 5)
+disable_root_hide = false # Prevent hiding sidebar on root page
+
+# Legacy sidebar configuration (still supported for backward compatibility)
+# sidebar_expand_depth = 1
+# disable_root_sidebar_hide = false
+
+# Share Buttons Configuration (new structured format)
+[extra.share]
+copy_url = false  # Copy URL button
+x = false         # Share on X button
+
+# Legacy share configuration (still supported for backward compatibility)
+# enable_copy_url = false
+# enable_share_x = false
 
 [extra.comments]
 enabled = false  # Enable comments

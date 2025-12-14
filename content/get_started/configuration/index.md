@@ -77,20 +77,51 @@ gtag = "G-XXXXXXXXXX"
 
 ## Navigation & UI
 
-### Color
+### Theme
+
+Configure theme settings using the structured format:
 
 ```toml
-[extra]
-default_colorset = "dark"  # Options: "dark" or "light"
+[extra.theme]
+colorset = "dark"      # Options: "dark" or "light"
+brightness = "normal"  # Options: "darker", "normal", "lighter"
+disable_toggle = false # Hides dark/light mode toggle
 ```
 
 {{ image_diff(src1="images/dark.png" src2="images/light.png" alt="Dark and Light") }}
 
+{{ carousel(images=["images/darker.png", "images/normal.png", "images/lighter.png"]) }}
+
+**Legacy format (still supported):**
+```toml
+[extra]
+default_colorset = "dark"
+brightness = "normal"
+disable_theme_toggle = false
+```
+
 ### Font
+
+Configure font settings using the structured format:
+
+```toml
+[extra.font]
+enabled = true
+name = "MyCustomFont"
+path = "fonts/mycustomfont.woff"
+```
 
 Default: **Pretendard** (optimized for Korean and English)
 
-**Local font:**
+**Google Fonts:**
+```toml
+[extra.font]
+enabled = true
+name = "Roboto"
+path = "https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+```
+
+**Legacy format (still supported):**
 ```toml
 [extra]
 custom_font_enabled = true
@@ -98,28 +129,23 @@ custom_font_name = "MyCustomFont"
 custom_font_path = "fonts/mycustomfont.woff"
 ```
 
-**Google Fonts:**
+### Sidebar
+
+Configure sidebar settings using the structured format:
+
 ```toml
-[extra]
-custom_font_enabled = true
-custom_font_name = "Roboto"
-custom_font_path = "https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+[extra.sidebar]
+expand_depth = 2         # 1-5, default expansion depth
+disable_root_hide = false # Show sidebar on landing page
 ```
 
-### Brightness
+{{ image_diff(src1="/images/side-home.jpg", src2="/images/wide-home.jpg", alt="goyo") }}
 
+**Legacy format (still supported):**
 ```toml
 [extra]
-brightness = "normal"  # Options: "darker", "normal", "lighter"
-```
-
-{{ carousel(images=["images/darker.png", "images/normal.png", "images/lighter.png"]) }}
-
-### Sidebar Expand Depth
-
-```toml
-[extra]
-sidebar_expand_depth = 2  # 1-5, default expansion depth
+sidebar_expand_depth = 2
+disable_root_sidebar_hide = false
 ```
 
 ### Navigation
@@ -147,22 +173,6 @@ nav_ko = [
 lang_aliases = { en = "English", ko = "한국어", ja = "日本語" }
 ```
 
-### Disable Theme Toggle
-
-```toml
-[extra]
-disable_theme_toggle = true  # Hides dark/light mode toggle
-```
-
-### Disable Root Sidebar Hide
-
-```toml
-[extra]
-disable_root_sidebar_hide = false  # Show sidebar on landing page
-```
-
-{{ image_diff(src1="/images/side-home.jpg", src2="/images/wide-home.jpg", alt="goyo") }}
-
 ## Content & Sharing
 
 ### Edit URL
@@ -176,10 +186,19 @@ Adds "Edit this page" link to each page.
 
 ### Share Buttons
 
+Configure share button settings using the structured format:
+
+```toml
+[extra.share]
+copy_url = true  # Copy URL button
+x = true         # Share on X button
+```
+
+**Legacy format (still supported):**
 ```toml
 [extra]
-enable_copy_url = true   # Copy URL button
-enable_share_x = true    # Share on X button
+enable_copy_url = true
+enable_share_x = true
 ```
 
 ### Comments
