@@ -53,6 +53,15 @@ default_thumbnail = "images/default_thumbnail.jpg"
 
 ### 트위터
 
+구조화된 형식을 사용하여 트위터 메타 태그를 설정하세요:
+
+```toml
+[extra.twitter]
+site = "@hahwul"
+creator = "@hahwul"
+```
+
+**레거시 형식 (하위 호환성 지원):**
 ```toml
 [extra]
 twitter_site = "@hahwul"

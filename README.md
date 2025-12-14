@@ -69,10 +69,6 @@ footer_html = "Powered by <a href='https://www.getzola.org'>Zola</a> and <a href
 # Thumbnail Configuration
 default_thumbnail = "images/default_thumbnail.jpg"  # Default thumbnail image path
 
-# Twitter Configuration
-twitter_site = "@hahwul"  # Site Twitter handle
-twitter_creator = "@hahwul"  # Creator Twitter handle
-
 # Color Configuration
 default_colorset = "dark"  # Default color scheme (dark/light)
 brightness = "normal"  # Options: "darker", "normal", "lighter"
@@ -135,6 +131,15 @@ image_path = "images/goyo.png"  # Default logo image path
 # logo_text = "Goyo"
 # logo_image_path = "images/goyo.png"
 # logo_image_padding = "5px"
+
+# Twitter Configuration (new structured format)
+[extra.twitter]
+site = "@hahwul"  # Site Twitter handle
+creator = "@hahwul"  # Creator Twitter handle
+
+# Legacy Twitter configuration (still supported for backward compatibility)
+# twitter_site = "@hahwul"
+# twitter_creator = "@hahwul"
 
 [extra.comments]
 enabled = false  # Enable comments

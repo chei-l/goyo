@@ -164,11 +164,20 @@
           {{ config.description }}
         {%- endif -%}
       " />
-      {% if config.extra.twitter_site %}
-      <meta name="twitter:site" content="{{ config.extra.twitter_site }}" />
+      {# Twitter configuration with backward compatibility #}
+      {# Priority: twitter.* (new) > twitter_* (legacy) #}
+      {% if config.extra.twitter is defined %}
+          {% set twitter_site = config.extra.twitter.site | default(value=config.extra.twitter_site | default(value="")) %}
+          {% set twitter_creator = config.extra.twitter.creator | default(value=config.extra.twitter_creator | default(value="")) %}
+      {% else %}
+          {% set twitter_site = config.extra.twitter_site | default(value="") %}
+          {% set twitter_creator = config.extra.twitter_creator | default(value="") %}
       {% endif %}
-      {% if config.extra.twitter_creator %}
-      <meta name="twitter:creator" content="{{ config.extra.twitter_creator }}" />
+      {% if twitter_site != "" %}
+      <meta name="twitter:site" content="{{ twitter_site }}" />
+      {% endif %}
+      {% if twitter_creator != "" %}
+      <meta name="twitter:creator" content="{{ twitter_creator }}" />
       {% endif %}
       {% if page.extra.thumbnail %}
       <meta name="twitter:image" content="{{ get_url(path=page.extra.thumbnail) | safe }}" />

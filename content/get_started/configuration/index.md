@@ -53,6 +53,15 @@ default_thumbnail = "images/default_thumbnail.jpg"
 
 ### Twitter
 
+Configure Twitter meta tags using the structured format:
+
+```toml
+[extra.twitter]
+site = "@hahwul"
+creator = "@hahwul"
+```
+
+**Legacy format (still supported):**
 ```toml
 [extra]
 twitter_site = "@hahwul"
