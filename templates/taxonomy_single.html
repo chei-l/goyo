@@ -1,0 +1,75 @@
+{% extends "index.html" %}
+
+{#
+  Template: taxonomy_single.html
+  Purpose: Render all pages that belong to a specific taxonomy term
+  Context: Zola provides `taxonomy` and `term` objects here.
+#}
+
+{% block content %}
+    <div class="mb-12 pb-4 border-b border-gray-500/15">
+        <h1 class="flex items-center gap-3">
+            {{ term.name }}
+            <span class="text-xs font-medium px-2 py-0.5 border border-gray-500/30 rounded uppercase tracking-wide text-gray-500">
+                {{ taxonomy.name | capitalize }}
+            </span>
+        </h1>
+
+        {% if term.pages | length > 0 %}
+            <p class="text-gray-500 mt-1">
+                {{ term.pages | length }}
+                {% if term.pages | length == 1 %}
+                    document
+                {% else %}
+                    documents
+                {% endif %}
+                tagged with “{{ term.name }}”
+            </p>
+        {% else %}
+            <p class="text-gray-500 mt-1">
+                No documents found for this term.
+            </p>
+        {% endif %}
+    </div>
+
+    {% if term.pages | length > 0 %}
+        <div class="space-y-4">
+            {% for page in term.pages %}
+                <article class="border border-gray-500/15 rounded-lg px-4 py-3 hover:border-gray-500/40 transition-colors">
+                    <h2 class="text-lg font-semibold mb-1">
+                        <a href="{{ page.permalink | safe }}" class="hover:underline">
+                            {{ page.title }}
+                        </a>
+                    </h2>
+
+                    {% if page.description %}
+                        <p class="text-sm text-gray-500 mb-2">
+                            {{ page.description }}
+                        </p>
+                    {% endif %}
+
+                    <div class="flex flex-wrap items-center gap-3 text-xs text-gray-500">
+                        {% if page.date %}
+                            <span>
+                                {{ page.date | date(format="%Y-%m-%d") }}
+                            </span>
+                        {% endif %}
+
+                        {% if page.taxonomies and page.taxonomies.tags %}
+                            <span class="h-3 w-px bg-gray-400/40"></span>
+                            <div class="flex flex-wrap items-center gap-1">
+                                <span class="font-medium text-gray-500/90">Tags:</span>
+                                {% for tag in page.taxonomies.tags %}
+                                    <a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}"
+                                       class="inline-flex items-center px-2 py-0.5 rounded-full border border-gray-500/30 text-[11px] hover:border-gray-500/70 hover:text-base-content transition-colors">
+                                        {{ tag }}
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock content %}

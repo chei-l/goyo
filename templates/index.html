@@ -13,6 +13,8 @@
         {{ macros_head::head(config=config, page=page, section=false, current_url=config.base_url) }}
     {% elif section is defined %}
         {{ macros_head::head(config=config, page=false, section=section, current_url=config.base_url) }}
+    {% else %}
+        {{ macros_head::head(config=config, page=false, section=false, current_url=config.base_url) }}
     {% endif %}
     {% block extra_head %}{% endblock extra_head %}
 </head>
@@ -114,10 +116,10 @@
                 if(currentUserTheme == "goyo-light") {
                   mermaidTheme = "light";
                 }
-                
+
                 if (typeof mermaid !== 'undefined') {
                   mermaid.initialize({ startOnLoad: false, theme: mermaidTheme });
-                  
+
                   // Function to render mermaid diagrams
                   var renderMermaid = async function() {
                     const mermaidElements = document.querySelectorAll('.mermaid');
@@ -127,7 +129,7 @@
                         });
                     }
                   };
-                  
+
                   // Check if DOMContentLoaded has already fired
                   if (document.readyState === 'loading') {
                     document.addEventListener('DOMContentLoaded', renderMermaid);
@@ -137,7 +139,7 @@
                   }
                 }
               };
-              
+
               // Auto-initialize if Mermaid is already loaded
               if (typeof mermaid !== 'undefined') {
                 window.initMermaid();
@@ -168,32 +170,32 @@
         <script>
             var searchLoaded = false;
             var searchLoadCallbacks = [];
-            
+
             function loadSearchLibraries(callback) {
                 // If already loaded, execute callback immediately
                 if (searchLoaded && typeof Fuse !== 'undefined' && window.searchIndex) {
                     if (callback) callback();
                     return;
                 }
-                
+
                 // Add callback to queue
                 if (callback) searchLoadCallbacks.push(callback);
-                
+
                 // If already loading, don't start again
                 if (searchLoaded) return;
                 searchLoaded = true;
-                
+
                 // Show loading indicator in search input
                 var searchInput = document.getElementById('search');
                 if (searchInput) {
                     searchInput.placeholder = 'Loading search...';
                     searchInput.disabled = true;
                 }
-                
+
                 // Load Fuse.js
                 var fuseScript = document.createElement('script');
                 fuseScript.src = '{{ get_url(path="fuse.min.js") | safe }}';
-                
+
                 // Load search index after Fuse.js
                 fuseScript.onload = function() {
                     var searchIndexScript = document.createElement('script');
@@ -205,22 +207,22 @@
                             searchInput.disabled = false;
                             searchInput.focus();
                         }
-                        
+
                         // Initialize search functionality
                         if (typeof initSearch === 'function') {
                             initSearch();
                         }
-                        
+
                         // Execute all queued callbacks
                         searchLoadCallbacks.forEach(function(cb) { cb(); });
                         searchLoadCallbacks = [];
                     };
                     document.body.appendChild(searchIndexScript);
                 };
-                
+
                 document.body.appendChild(fuseScript);
             }
-            
+
             // Load search on first interaction with search modal
             document.addEventListener('DOMContentLoaded', function() {
                 var searchModal = document.getElementById('search-modal');
@@ -231,7 +233,7 @@
                         }
                     });
                 }
-                
+
                 // Also load on Ctrl+K / Cmd+K
                 document.addEventListener('keydown', function(e) {
                     if ((e.ctrlKey || e.metaKey) && e.key === 'k') {

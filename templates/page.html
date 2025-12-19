@@ -16,6 +16,39 @@
     </div>
     {{ page.content | safe }}
 
+    {# Taxonomies (tags / categories) #}
+    {% if page.taxonomies and (page.taxonomies.tags or page.taxonomies.categories) %}
+    <div class="mt-8 pt-6 border-t border-gray-500/15 space-y-2 text-sm">
+        {% if page.taxonomies.categories %}
+        <div class="flex flex-wrap items-center gap-2">
+            <span class="font-semibold text-base-content/80">
+                Categories:
+            </span>
+            {% for cat in page.taxonomies.categories %}
+            <a href="{{ get_taxonomy_url(kind="categories", name=cat) }}"
+               class="inline-flex items-center px-2 py-0.5 rounded-full border border-gray-500/30 text-xs hover:border-gray-500/70 transition-colors">
+                {{ cat }}
+            </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if page.taxonomies.tags %}
+        <div class="flex flex-wrap items-center gap-2">
+            <span class="font-semibold text-base-content/80">
+                Tags:
+            </span>
+            {% for tag in page.taxonomies.tags %}
+            <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}"
+               class="inline-flex items-center px-2 py-0.5 rounded-full border border-gray-500/30 text-xs hover:border-gray-500/70 transition-colors">
+                {{ tag }}
+            </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+
     {% if config.extra.edit_url %}
     <div class="mt-8 pt-6 border-t border-gray-500/15">
         <div class="flex flex-wrap items-center gap-4">

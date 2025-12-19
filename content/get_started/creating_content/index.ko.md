@@ -2,6 +2,9 @@
 title = "콘텐츠 생성하기"
 description = "Goyo로 페이지를 만드는 방법을 알아보세요."
 weight = 2
+
+[extra]
+taxonomies = { tags = ["goyo", "zola"] }
 +++
 
 `content` 디렉토리에 콘텐츠를 생성합니다. Goyo는 콘텐츠 구조에 따라 사이드바를 자동으로 생성합니다.

@@ -1,0 +1,63 @@
+{% extends "index.html" %}
+
+{#
+  taxonomy_list.html
+  - Renders the list of terms for a single taxonomy (e.g., /tags/)
+  - Context provided by Zola:
+    - taxonomy: information about the taxonomy (name, slug, config, etc.)
+    - terms: list of all terms for this taxonomy
+#}
+
+{% block title %}
+    {{ taxonomy.name | capitalize }} - {{ config.title }}
+{% endblock title %}
+
+{% block content %}
+    <div class="mb-12 pb-4 border-b border-gray-500/15">
+        <h1 class="flex items-center gap-3">
+            {{ taxonomy.config.title | default(value=taxonomy.name | capitalize) }}
+            <span class="text-xs font-medium px-2 py-0.5 border border-gray-500/30 rounded uppercase tracking-wide text-gray-500">
+                Taxonomy
+            </span>
+        </h1>
+
+        {% if taxonomy.config.description %}
+            <p class="mt-2 text-gray-500">
+                {{ taxonomy.config.description }}
+            </p>
+        {% else %}
+            <p class="mt-2 text-gray-500">
+                All {{ taxonomy.name }} used in this documentation.
+            </p>
+        {% endif %}
+    </div>
+
+    {% if terms | length == 0 %}
+        <p class="text-gray-500">
+            No terms defined for this taxonomy yet.
+        </p>
+    {% else %}
+        <div class="grid gap-4 md:grid-cols-2">
+            {% for term in terms %}
+                <a href="{{ term.permalink }}" class="pretty-link-card">
+                    <div class="pretty-link-image-wrapper">
+                        <div class="pretty-link-image grayscale"></div>
+                    </div>
+                    <div class="px-4 py-3">
+                        <h2 class="pretty-link-title">
+                            {{ term.name }}
+                        </h2>
+                        <p class="pretty-link-description">
+                            {{ term.pages | length }}
+                            {% if term.pages | length == 1 %}
+                                document
+                            {% else %}
+                                documents
+                            {% endif %}
+                        </p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock content %}

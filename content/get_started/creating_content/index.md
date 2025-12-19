@@ -2,6 +2,7 @@
 title = "Creating a Content"
 description = "Learn how to create a page with Goyo."
 weight = 2
+taxonomies = { tags = ["goyo", "zola"], categories = ["guide"] }
 +++
 
 Create content in the `content` directory. Goyo automatically generates sidebar navigation from your content structure.

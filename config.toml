@@ -8,6 +8,11 @@ default_language = "en"
 generate_feeds = true
 generate_sitemap = true
 
+taxonomies = [
+    { name = "tags", paginate_by = 10, rss = true },
+    { name = "categories", paginate_by = 10 },
+]
+
 [markdown]
 highlight_code = true
 bottom_footnotes = true
