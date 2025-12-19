@@ -37,9 +37,9 @@
     {% if term.pages | length > 0 %}
         <div class="space-y-5">
             {% for page in term.pages %}
-                <article class="group border border-gray-500/15 rounded-lg p-5 hover:border-gray-500/40 hover:shadow-md transition-all duration-200">
+                <article class="border border-gray-500/15 rounded-lg p-5">
                     <h2 class="text-xl font-semibold mb-2">
-                        <a href="{{ page.permalink | safe }}" class="group-hover:text-primary transition-colors flex items-center gap-2">
+                        <a href="{{ page.permalink | safe }}" class="hover:text-primary transition-colors flex items-center gap-2">
                             {{ page.title }}
                         </a>
                     </h2>
