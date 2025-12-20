@@ -1,7 +1,6 @@
 +++
 template = "landing.html"
 title = "Goyo"
-taxonomies = { tags = ["goyo", "zola", "theme"], categories = ["landing"] }
 
 [extra]
 version = "v0.1.0"

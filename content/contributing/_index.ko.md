@@ -3,7 +3,6 @@ title = "기여하기"
 description = "Goyo에 기여하는 방법"
 weight = 7
 sort_by = "weight"
-taxonomies = { tags = ["goyo", "contributing", "development"], categories = ["documentation"] }
 
 [extra]
 +++

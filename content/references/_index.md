@@ -3,7 +3,6 @@ title = "References"
 description = "References of Goyo"
 weight = 8
 sort_by = "weight"
-taxonomies = { tags = ["goyo", "references", "resources"], categories = ["documentation"] }
 
 [extra]
 +++
