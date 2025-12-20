@@ -26,7 +26,7 @@
             </span>
             {% for cat in page.taxonomies.categories %}
             <a href="{{ get_taxonomy_url(kind="categories", name=cat) }}"
-               class="inline-flex items-center px-2 py-0.5 rounded-full border border-gray-500/30 text-xs hover:border-gray-500/70 transition-colors">
+               class="inline-flex items-center badge badge-dash border-gray-500/30 text-xs hover:border-gray-500/70 transition-colors">
                 {{ cat }}
             </a>
             {% endfor %}
@@ -40,7 +40,7 @@
             </span>
             {% for tag in page.taxonomies.tags %}
             <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}"
-               class="inline-flex items-center px-2 py-0.5 rounded-full border border-gray-500/30 text-xs hover:border-gray-500/70 transition-colors">
+               class="inline-flex items-center badge badge-dash text-xs border-gray-500/30 hover:border-gray-500/70 transition-colors">
                 {{ tag }}
             </a>
             {% endfor %}
