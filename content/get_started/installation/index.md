@@ -3,6 +3,7 @@ title = "Installation"
 description = "How to install Goyo and get started."
 weight = 1
 sort_by = "weight"
+taxonomies = { tags = ["goyo", "installation", "zola", "setup"], categories = ["guide"] }
 
 [extra]
 +++

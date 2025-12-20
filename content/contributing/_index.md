@@ -3,6 +3,7 @@ title = "Contributing"
 description = "Guide to contributing to Goyo"
 weight = 7
 sort_by = "weight"
+taxonomies = { tags = ["goyo", "contributing", "development"], categories = ["documentation"] }
 
 [extra]
 +++

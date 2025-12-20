@@ -1,6 +1,7 @@
 +++
 title = "Gallery"
 weight = 7
+taxonomies = { tags = ["shortcodes", "gallery", "images"], categories = ["shortcodes"] }
 +++
 
 The `gallery` shortcode creates a responsive image gallery from all image assets in the current page directory. It automatically detects and displays JPG, JPEG, PNG, GIF, and WebP images.

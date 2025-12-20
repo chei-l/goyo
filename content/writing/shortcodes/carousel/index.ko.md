@@ -1,6 +1,7 @@
 +++
 title = "Carousel"
 weight = 5
+taxonomies = { tags = ["shortcodes", "carousel", "gallery"], categories = ["shortcodes"] }
 +++
 
 `carousel` 숏코드는 여러 이미지를 탐색할 수 있는 대화형 이미지 캐러셀을 생성합니다.

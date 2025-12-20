@@ -1,6 +1,7 @@
 +++
 title = "Gist"
 weight = 1
+taxonomies = { tags = ["shortcodes", "gist", "github"], categories = ["shortcodes"] }
 +++
 
 `gist`

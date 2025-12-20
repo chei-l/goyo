@@ -1,6 +1,7 @@
 +++
 title = "Math"
 weight = 4
+taxonomies = { tags = ["shortcodes", "math", "katex"], categories = ["shortcodes"] }
 +++
 
 Use the `math` shortcode to render mathematical formulas and equations using [KaTeX](https://katex.org/).

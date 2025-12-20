@@ -3,6 +3,7 @@ title = "마크다운 문법"
 description = "마크다운 문법 가이드입니다."
 weight = 2
 template = "page.html"
+taxonomies = { tags = ["markdown", "syntax", "writing"], categories = ["reference"] }
 +++
 
 이 가이드는 Goyo 테마에서 렌더링되는 일반적인 마크다운 요소의 예시와 효과적인 글쓰기 팁을 제공합니다.

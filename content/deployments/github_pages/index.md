@@ -3,6 +3,7 @@ title = "Github"
 description = "Deploying to GitHub Pages"
 weight = 1
 template = "page.html"
+taxonomies = { tags = ["deployment", "github-pages", "github-actions"], categories = ["deployment"] }
 +++
 
 Deploy your Zola site to GitHub Pages for free.

@@ -1,6 +1,7 @@
 +++
 title = "Badge"
 weight = 2
+taxonomies = { tags = ["shortcodes", "badge", "ui"], categories = ["shortcodes"] }
 +++
 
 Add badges to your content to indicate status, category, or highlight keywords. Use badge shortcodes to visually mark important information, statuses, or categories, making your content more readable and organized.

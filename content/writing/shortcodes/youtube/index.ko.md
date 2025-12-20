@@ -1,6 +1,7 @@
 +++
 title = "YouTube"
 weight = 1
+taxonomies = { tags = ["shortcodes", "youtube", "video"], categories = ["shortcodes"] }
 +++
 
 `youtube`

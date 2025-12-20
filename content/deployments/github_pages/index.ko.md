@@ -3,6 +3,7 @@ title = "Github"
 description = "GitHub Pages에 배포하기"
 weight = 1
 template = "page.html"
+taxonomies = { tags = ["deployment", "github-pages", "github-actions"], categories = ["deployment"] }
 +++
 
 GitHub Pages에 Zola 사이트를 무료로 배포하세요.

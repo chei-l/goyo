@@ -3,6 +3,7 @@ title = "Introduction"
 description = "Goyo를 소개합니다."
 weight = 1
 sort_by = "weight"
+taxonomies = { tags = ["goyo", "introduction", "zola"], categories = ["documentation"] }
 
 [extra]
 +++

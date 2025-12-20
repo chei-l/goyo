@@ -1,6 +1,7 @@
 +++
 title = "Gallery"
 weight = 7
+taxonomies = { tags = ["shortcodes", "gallery", "images"], categories = ["shortcodes"] }
 +++
 
 `gallery` 숏코드는 현재 페이지 디렉토리의 모든 이미지 자산으로부터 반응형 이미지 갤러리를 생성합니다. JPG, JPEG, PNG, GIF, WebP 이미지를 자동으로 감지하고 표시합니다.
