@@ -1,6 +1,7 @@
 +++
 title = "Badge"
 weight = 2
+taxonomies = { tags = ["shortcodes", "badge", "ui"], categories = ["shortcodes"] }
 +++
 
 뱃지를 사용하여 상태, 카테고리, 키워드 등을 강조할 수 있습니다.

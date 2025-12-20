@@ -1,6 +1,7 @@
 +++
 title = "CodePen"
 weight = 1
+taxonomies = { tags = ["shortcodes", "codepen", "embed"], categories = ["shortcodes"] }
 +++
 
 `codepen`

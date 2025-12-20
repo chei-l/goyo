@@ -8,6 +8,11 @@ default_language = "en"
 generate_feeds = true
 generate_sitemap = true
 
+taxonomies = [
+    { name = "tags", paginate_by = 10, rss = true },
+    { name = "categories", paginate_by = 10 },
+]
+
 [markdown]
 highlight_code = true
 bottom_footnotes = true
@@ -16,6 +21,10 @@ highlight_theme = "ayu-mirage"
 [languages.ko]
 generate_feeds = true
 build_search_index = true
+taxonomies = [
+    { name = "tags", paginate_by = 10, rss = true },
+    { name = "categories", paginate_by = 10 },
+]
 
 [extra]
 footer_html = "<div style='display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;'><a href='https://www.hahwul.com' target='_blank' rel='noopener noreferrer' style='display: inline-flex; align-items: center;'><img src='https://www.hahwul.com/images/logo-gray.png' alt='HAHWUL' style='height: 30px' /></a><span style='opacity: 0.6;'>•</span><span>Powered by <a href='https://www.getzola.org' class='font-medium text-base-content/70 hover:text-base-content transition-colors duration-200'>Zola</a> and <a href='https://github.com/hahwul/goyo' class='font-medium text-base-content/70 hover:text-base-content transition-colors duration-200'>Goyo</a></span></div>"

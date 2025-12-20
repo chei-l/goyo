@@ -1,6 +1,7 @@
 +++
 title = "Image Diff"
 weight = 3
+taxonomies = { tags = ["shortcodes", "image-diff", "comparison"], categories = ["shortcodes"] }
 +++
 
 두 이미지를 시각적으로 비교할 수 있는 이미지 Diff 숏코드입니다.

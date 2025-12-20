@@ -3,6 +3,7 @@ title = "Markdown Syntax"
 description = "A guide to Markdown syntax."
 weight = 2 # Assuming "Creating Content" is weight 1
 template = "page.html"
+taxonomies = { tags = ["markdown", "syntax", "writing"], categories = ["reference"] }
 +++
 
 Writing clear and well-structured content is key to a great website. This guide provides examples of common Markdown elements as rendered by the Goyo theme and offers some tips for effective writing.

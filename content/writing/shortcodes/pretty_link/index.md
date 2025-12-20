@@ -1,6 +1,7 @@
 +++
 title = "Pretty Link"
 weight = 4
+taxonomies = { tags = ["shortcodes", "link", "card"], categories = ["shortcodes"] }
 +++
 
 Create beautiful link cards that display URLs with titles, descriptions, and optional images. Perfect for showcasing external resources, references, or related links in an attractive card format.

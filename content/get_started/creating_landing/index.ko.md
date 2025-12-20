@@ -3,6 +3,7 @@ title = "랜딩 페이지 만들기"
 description = "Goyo로 현대적이고 기능이 풍부한 랜딩 페이지를 만드는 방법을 알아보세요."
 weight = 3
 sort_by = "weight"
+taxonomies = { tags = ["goyo", "landing-page", "template"], categories = ["guide"] }
 
 [extra]
 +++

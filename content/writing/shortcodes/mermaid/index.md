@@ -1,6 +1,7 @@
 +++
 title = "Mermaid Chart"
 weight = 3
+taxonomies = { tags = ["shortcodes", "mermaid", "diagram"], categories = ["shortcodes"] }
 +++
 
 Use the [Mermaid](https://mermaid-js.github.io/) shortcode to easily add flowcharts, sequence diagrams, and other visualizations to your documentation.

@@ -1,6 +1,7 @@
 +++
 title = "Collapse"
 weight = 1
+taxonomies = { tags = ["shortcodes", "collapse", "ui"], categories = ["shortcodes"] }
 +++
 
 `collapse`

@@ -1,6 +1,7 @@
 +++
 title = "Image Diff"
 weight = 3
+taxonomies = { tags = ["shortcodes", "image-diff", "comparison"], categories = ["shortcodes"] }
 +++
 
 The `image_diff` shortcode allows you to visually compare two images side by side with a draggable slider.

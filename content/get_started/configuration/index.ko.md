@@ -3,6 +3,7 @@ title = "Configuration"
 description = "Goyo의 설정 방법을 알아보세요."
 weight = 4
 sort_by = "weight"
+taxonomies = { tags = ["goyo", "configuration", "customization"], categories = ["guide"] }
 
 [extra]
 toc_expand = true
