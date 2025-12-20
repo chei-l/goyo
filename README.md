@@ -25,7 +25,7 @@
 - Comments (Giscus, Utterances)
 - Various shortcodes (Mermaid, Asciinema, Katex, Alert, Badge, YouTube, Gist, Carousel, Collapse, etc.)
 - Custom Font Support
-- Edit Page & Share Buttons
+- Edit Page, Share Buttons and Taxonomies
 - Customization
 
 ## Installation
