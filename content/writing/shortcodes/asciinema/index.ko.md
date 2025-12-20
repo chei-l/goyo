@@ -1,6 +1,7 @@
 +++
 title = "Asciinema"
 weight = 1
+taxonomies = { tags = ["shortcodes", "asciinema", "terminal"], categories = ["shortcodes"] }
 +++
 
 `asciinema`

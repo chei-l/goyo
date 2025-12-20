@@ -1,6 +1,7 @@
 +++
 title = "Alert"
 weight = 1
+taxonomies = { tags = ["shortcodes", "alert", "ui"], categories = ["shortcodes"] }
 +++
 
 Display different types of alert messages to highlight important information, statuses, or warnings.

@@ -1,6 +1,7 @@
 +++
 title = "Browser"
 weight = 1
+taxonomies = { tags = ["shortcodes", "browser", "ui"], categories = ["shortcodes"] }
 +++
 
 `browser`

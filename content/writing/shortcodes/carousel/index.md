@@ -1,6 +1,7 @@
 +++
 title = "Carousel"
 weight = 5
+taxonomies = { tags = ["shortcodes", "carousel", "gallery"], categories = ["shortcodes"] }
 +++
 
 The `carousel` shortcode creates an interactive image carousel with navigation controls, allowing users to browse through multiple images.

@@ -3,6 +3,7 @@ title = "Creating a Landing Page"
 description = "Learn how to create a modern, feature-rich landing page with Goyo."
 weight = 3
 sort_by = "weight"
+taxonomies = { tags = ["goyo", "landing-page", "template"], categories = ["guide"] }
 
 [extra]
 +++

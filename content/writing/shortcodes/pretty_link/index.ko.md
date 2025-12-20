@@ -1,6 +1,7 @@
 +++
 title = "Pretty Link"
 weight = 4
+taxonomies = { tags = ["shortcodes", "link", "card"], categories = ["shortcodes"] }
 +++
 
 아름다운 링크 카드를 생성하여 URL을 제목, 설명, 선택적 이미지와 함께 표시합니다. 외부 리소스, 참조 또는 관련 링크를 매력적인 카드 형식으로 보여주는 데 완벽합니다.

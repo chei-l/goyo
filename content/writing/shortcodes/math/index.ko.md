@@ -1,6 +1,7 @@
 +++
 title = "수식"
 weight = 4
+taxonomies = { tags = ["shortcodes", "math", "katex"], categories = ["shortcodes"] }
 +++
 
 [KaTeX](https://katex.org/)를 사용하여 수학 공식과 방정식을 렌더링하려면 `math` 숏코드를 사용하세요.

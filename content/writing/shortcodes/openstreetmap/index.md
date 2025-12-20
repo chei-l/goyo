@@ -1,6 +1,7 @@
 +++
 title = "OpenStreetMap"
 weight = 1
+taxonomies = { tags = ["shortcodes", "map", "openstreetmap"], categories = ["shortcodes"] }
 +++
 
 `openstreetmap`
