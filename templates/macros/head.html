@@ -30,7 +30,13 @@
 
 {% macro html_tag(config, lang) %}
 {%- set theme_color = self::get_theme_color(config=config) | trim -%}
-<html lang="{{ lang | default(value='en') }}" style="background-color: {{ theme_color }};">
+{%- set is_rtl = false -%}
+{%- if config.extra.lang is defined and config.extra.lang.rtl is defined -%}
+    {%- if lang in config.extra.lang.rtl -%}
+        {%- set is_rtl = true -%}
+    {%- endif -%}
+{%- endif -%}
+<html lang="{{ lang | default(value='en') }}"{% if is_rtl %} dir="rtl"{% endif %} style="background-color: {{ theme_color }};">
 {% endmacro html_tag %}
 
 {% macro head(config, page, section, current_url) %}
@@ -53,7 +59,7 @@
         (function() {
             // Theme mapping - maps user-friendly names to actual DaisyUI theme names
             var themeMapping = { "goyo-dark": "night", "goyo-light": "lofi" };
-            
+
             {# Theme configuration with backward compatibility #}
             {# Priority: theme.dark_brightness/light_brightness (new per-theme) > theme.brightness (common) > brightness (legacy) #}
             {% if config.extra.theme is defined %}
@@ -73,18 +79,18 @@
             var lightBrightness = "{{ light_brightness }}";
             var themeMap = { "dark": "goyo-dark", "light": "goyo-light" };
             var fallbackTheme = themeMap[defaultColorset] || "goyo-dark";
-            
+
             // Expose brightness config for global use (e.g., goyo.js)
             window.darkBrightness = darkBrightness;
             window.lightBrightness = lightBrightness;
-            
+
             // Get theme from localStorage or use fallback
             var currentUserTheme = localStorage.getItem('theme') || fallbackTheme;
             var actualTheme = themeMapping[currentUserTheme] || currentUserTheme;
-            
+
             // Determine brightness based on current theme
             var currentBrightness = (currentUserTheme === "goyo-dark") ? darkBrightness : lightBrightness;
-            
+
             // Set theme and brightness attributes immediately
             document.documentElement.setAttribute("data-theme", actualTheme);
             document.documentElement.setAttribute("data-brightness", currentBrightness);
@@ -238,14 +244,14 @@
       <!-- CSS -->
     <link rel="stylesheet" href="{{ get_url(path="css/main.css") | safe }}">
     <link rel="stylesheet" href="{{ get_url(path="css/font-awesome.min.css") | safe }}">
-    
+
     <!-- Preload critical fonts -->
     <link rel="preload" href="{{ get_url(path="fonts/Pretendard-Regular.woff") | safe }}" as="font" type="font/woff" crossorigin>
 
     <!-- Defer non-critical scripts -->
     <script defer src="{{ get_url(path="js/copy_code.js") | safe }}"></script>
     <script defer src="{{ get_url(path="js/copy_heading_link.js") | safe }}"></script>
-    
+
     <!-- Lazy load Mermaid and KaTeX - only when needed -->
     <script>
         // Lazy load KaTeX and Mermaid when needed
@@ -255,7 +261,7 @@
             var katexBlockElements = document.querySelectorAll('.katex-block');
             var hasKatex = katexInlineElements.length > 0 || katexBlockElements.length > 0;
             var hasMermaid = document.querySelector('.mermaid');
-            
+
             // Load KaTeX if math elements are present
             if (hasKatex) {
                 // Load KaTeX CSS first
@@ -263,7 +269,7 @@
                 katexCSS.rel = 'stylesheet';
                 katexCSS.href = '{{ get_url(path="css/katex.min.css") | safe }}';
                 document.head.appendChild(katexCSS);
-                
+
                 // Load KaTeX JS
                 var katexScript = document.createElement('script');
                 katexScript.src = '{{ get_url(path="js/katex.min.js") | safe }}';
@@ -272,7 +278,7 @@
                     katexInlineElements.forEach(function(elem) {
                         var texContent = elem.textContent || elem.innerText;
                         try {
-                            katex.render(texContent, elem, { 
+                            katex.render(texContent, elem, {
                                 throwOnError: false,
                                 displayMode: false
                             });
@@ -280,12 +286,12 @@
                             console.error('KaTeX render error:', e);
                         }
                     });
-                    
+
                     // Render block elements
                     katexBlockElements.forEach(function(elem) {
                         var texContent = elem.textContent || elem.innerText;
                         try {
-                            katex.render(texContent, elem, { 
+                            katex.render(texContent, elem, {
                                 throwOnError: false,
                                 displayMode: true
                             });
@@ -296,7 +302,7 @@
                 };
                 document.head.appendChild(katexScript);
             }
-            
+
             // Load Mermaid if diagram elements are present
             if (hasMermaid) {
                 var mermaidScript = document.createElement('script');

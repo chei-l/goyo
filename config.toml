@@ -56,6 +56,10 @@ nav_ko = [
 # Edit this page Configuration
 edit_url = "https://github.com/hahwul/goyo/edit/main"
 
+# Language Configuration
+[extra.lang]
+rtl = ["ko"] # List of RTL languages e.g. ["ar", "he"]
+
 # Logo Configuration (new structured format)
 # You can use either the new [extra.logo] format or the legacy flat format (logo_text, logo_image_path, logo_image_padding)
 # The new format takes priority when both are present
