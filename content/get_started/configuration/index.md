@@ -178,6 +178,15 @@ nav_ko = [
 lang_aliases = { en = "English", ko = "한국어", ja = "日本語" }
 ```
 
+### Language Configuration
+
+Configure RTL (Right-to-Left) language support:
+
+```toml
+[extra.lang]
+rtl = ["ar", "he"]  # List of RTL languages
+```
+
 ## Content & Sharing
 
 ### Edit URL
