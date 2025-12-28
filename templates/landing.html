@@ -12,7 +12,7 @@
                     <div class="absolute top-3/4 right-1/4 w-80 h-80 bg-gradient-to-r from-slate-500/10 to-gray-400/10 rounded-full filter blur-3xl animate-pulse delay-2000"></div>
                 </div>
                 {% if section.extra.hero.image %}
-                <img src="{{ section.extra.hero.image | safe }}" alt="Hero Background" class="w-full h-full rounded-none object-cover object-center opacity-10">
+                <img src="{{ section.extra.hero.image | safe }}" alt="Hero Background" class="w-full h-full rounded-none object-cover object-center opacity-20">
                 {% endif %}
             </div>
             <div class="relative z-10 p-8 max-w-6xl mx-auto">
@@ -124,23 +124,23 @@
                         </p>
                     {% endif %}
                 </div>
-                
+
                 {% if section.extra.showcase_section.tabs %}
                     <div class="w-full">
                         {# Tab Navigation #}
                         <div role="tablist" class="tabs tabs-lifted tabs-lg justify-center mb-0">
                             {% for tab in section.extra.showcase_section.tabs %}
-                                <input type="radio" name="showcase_tabs" role="tab" 
+                                <input type="radio" name="showcase_tabs" role="tab"
                                        id="tab-{{ loop.index0 }}"
-                                       class="tab text-lg font-semibold" 
-                                       aria-label="{{ tab.name }}" 
+                                       class="tab text-lg font-semibold"
+                                       aria-label="{{ tab.name }}"
                                        {% if loop.index0 == 0 %}checked="checked"{% endif %} />
                                 <div role="tabpanel" aria-labelledby="tab-{{ loop.index0 }}" class="tab-content rounded-box p-8 md:p-12">
                                     {% if tab.image %}
                                         {# Show only image when image is provided #}
                                         <div class="flex justify-center">
-                                            <img src="{{ tab.image | safe }}" 
-                                                 alt="{{ tab.title }}" 
+                                            <img src="{{ tab.image | safe }}"
+                                                 alt="{{ tab.title }}"
                                                  class="rounded-xl shadow-2xl w-[1024px] h-auto object-cover border border-slate-600/30" />
                                         </div>
                                     {% else %}
