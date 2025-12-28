@@ -105,3 +105,14 @@ disable_root_hide = false # Prevent hiding sidebar on root page
 [extra.share]
 copy_url = false  # Copy URL button
 x = false         # Share on X button
+
+# Favicon Configuration (new structured format)
+# Default path is /icons/ for all favicon files
+# You can override the base path or individual file paths
+[extra.favicon]
+base_path = "/icons/"                              # Base path for all favicon files (default: /icons/)
+favicon_96x96 = "/icons/favicon-96x96.png"         # Override path for 96x96 PNG favicon
+favicon_svg = "/icons/favicon.svg"                 # Override path for SVG favicon
+favicon_ico = "/icons/favicon.ico"                 # Override path for ICO favicon
+apple_touch_icon = "/icons/apple-touch-icon.png"   # Override path for Apple touch icon
+site_webmanifest = "/icons/site.webmanifest"       # Override path for site manifest
