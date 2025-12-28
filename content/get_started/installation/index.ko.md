@@ -37,6 +37,23 @@ git clone https://github.com/hahwul/goyo themes/goyo
 git submodule add https://github.com/hahwul/goyo themes/goyo
 ```
 
+### Submodule 초기화 (Clone 시)
+
+Goyo가 서브모듈로 설치된 저장소를 클론할 때는 서브모듈을 초기화하고 업데이트해야 합니다:
+
+**방법 1: 서브모듈과 함께 Clone**
+```bash
+git clone --recursive https://github.com/your-repo/your-docs
+```
+
+**방법 2: Clone 후 초기화**
+```bash
+git clone https://github.com/your-repo/your-docs
+cd your-docs
+git submodule init
+git submodule update
+```
+
 ## 테마 업데이트
 
 **Clone 방식:**

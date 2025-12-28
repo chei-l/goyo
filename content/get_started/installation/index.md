@@ -37,6 +37,23 @@ git clone https://github.com/hahwul/goyo themes/goyo
 git submodule add https://github.com/hahwul/goyo themes/goyo
 ```
 
+### Initialize Submodule (When Cloning)
+
+If you clone a repository that already has Goyo installed as a submodule, you need to initialize and update the submodule:
+
+**Option 1: Clone with submodules**
+```bash
+git clone --recursive https://github.com/your-repo/your-docs
+```
+
+**Option 2: Initialize after cloning**
+```bash
+git clone https://github.com/your-repo/your-docs
+cd your-docs
+git submodule init
+git submodule update
+```
+
 ## Update Theme
 
 **Clone method:**
