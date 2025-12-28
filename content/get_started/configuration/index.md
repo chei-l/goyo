@@ -43,6 +43,36 @@ logo_image_padding = "5px"            # Optional padding
 footer_html = "Powered by <a href='https://www.getzola.org'>Zola</a>"
 ```
 
+### Favicon
+
+Configure favicon settings using the structured format. Default path is `/icons/` for all favicon files:
+
+```toml
+[extra.favicon]
+base_path = "/icons/"                              # Base path for all favicon files (default: /icons/)
+favicon_96x96 = "/icons/favicon-96x96.png"         # Override path for 96x96 PNG favicon
+favicon_svg = "/icons/favicon.svg"                 # Override path for SVG favicon
+favicon_ico = "/icons/favicon.ico"                 # Override path for ICO favicon
+apple_touch_icon = "/icons/apple-touch-icon.png"   # Override path for Apple touch icon
+site_webmanifest = "/icons/site.webmanifest"       # Override path for site manifest
+```
+
+Place your favicon files in `static/icons/` directory:
+- `favicon-96x96.png` - 96x96 PNG favicon
+- `favicon.svg` - SVG favicon
+- `favicon.ico` - ICO favicon
+- `apple-touch-icon.png` - 180x180 Apple touch icon
+- `site.webmanifest` - Web app manifest file
+
+**Generated HTML:**
+```html
+<link rel="icon" type="image/png" href="/icons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+<link rel="shortcut icon" href="/icons/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+<link rel="manifest" href="/icons/site.webmanifest" />
+```
+
 ## SEO & Social
 
 ### Thumbnail

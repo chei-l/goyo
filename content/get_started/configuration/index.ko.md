@@ -43,6 +43,36 @@ logo_image_padding = "5px"            # 선택사항: padding
 footer_html = "Powered by <a href='https://www.getzola.org'>Zola</a>"
 ```
 
+### 파비콘
+
+구조화된 형식을 사용하여 파비콘 설정을 지정하세요. 기본 경로는 모든 파비콘 파일에 대해 `/icons/`입니다:
+
+```toml
+[extra.favicon]
+base_path = "/icons/"                              # 모든 파비콘 파일의 기본 경로 (기본값: /icons/)
+favicon_96x96 = "/icons/favicon-96x96.png"         # 96x96 PNG 파비콘 경로 재정의
+favicon_svg = "/icons/favicon.svg"                 # SVG 파비콘 경로 재정의
+favicon_ico = "/icons/favicon.ico"                 # ICO 파비콘 경로 재정의
+apple_touch_icon = "/icons/apple-touch-icon.png"   # Apple 터치 아이콘 경로 재정의
+site_webmanifest = "/icons/site.webmanifest"       # 사이트 매니페스트 경로 재정의
+```
+
+`static/icons/` 디렉토리에 파비콘 파일을 배치하세요:
+- `favicon-96x96.png` - 96x96 PNG 파비콘
+- `favicon.svg` - SVG 파비콘
+- `favicon.ico` - ICO 파비콘
+- `apple-touch-icon.png` - 180x180 Apple 터치 아이콘
+- `site.webmanifest` - 웹 앱 매니페스트 파일
+
+**생성되는 HTML:**
+```html
+<link rel="icon" type="image/png" href="/icons/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+<link rel="shortcut icon" href="/icons/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+<link rel="manifest" href="/icons/site.webmanifest" />
+```
+
 ## SEO & 소셜
 
 ### 썸네일
