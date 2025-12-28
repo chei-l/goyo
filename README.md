@@ -63,20 +63,6 @@ Add extra field in config.toml
 
 ```toml
 [extra]
-# Footer Configuration
-footer_html = "Powered by <a href='https://www.getzola.org'>Zola</a> and <a href='https://github.com/hahwul/goyo'>Goyo</a>"  # Footer HTML content
-
-# Thumbnail Configuration
-default_thumbnail = "images/default_thumbnail.jpg"  # Default thumbnail image path
-
-# Google Tag Configuration
-gtag = ""  # Google Analytics tracking ID
-
-# Language Configuration
-[extra.lang]
-rtl = []  # List of RTL languages e.g. ["ar", "he"]
-aliases = { en = "English", ko = "한국어" }  # Language display names for the language selector
-
 # Navigation Configuration
 nav = [
   { name = "Documents", url = "/introduction", type = "url", icon = "fa-solid fa-book" },
@@ -96,6 +82,20 @@ nav_ko = [
         { name = "제작자 블로그", url = "https://www.hahwul.com", type = "url", icon = "fa-solid fa-fire-flame-curved" },
     ] },
 ]
+
+# Footer Configuration
+footer_html = "Powered by <a href='https://www.getzola.org'>Zola</a> and <a href='https://github.com/hahwul/goyo'>Goyo</a>"  # Footer HTML content
+
+# Thumbnail Configuration
+default_thumbnail = "images/default_thumbnail.jpg"  # Default thumbnail image path
+
+# Google Tag Configuration
+gtag = ""  # Google Analytics tracking ID
+
+# Language Configuration
+[extra.lang]
+rtl = []  # List of RTL languages e.g. ["ar", "he"]
+aliases = { en = "English", ko = "한국어" }  # Language display names for the language selector
 
 # Edit URL Configuration
 edit_url = ""  # Base URL for editing pages (e.g., "https://github.com/user/repo/edit/main")
