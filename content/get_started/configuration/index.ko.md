@@ -173,6 +173,14 @@ nav_ko = [
 
 ### 언어 별칭
 
+구조화된 형식을 사용하여 언어 표시 이름을 설정하세요:
+
+```toml
+[extra.lang]
+aliases = { en = "English", ko = "한국어", ja = "日本語" }
+```
+
+**레거시 형식 (하위 호환성 지원):**
 ```toml
 [extra]
 lang_aliases = { en = "English", ko = "한국어", ja = "日本語" }
