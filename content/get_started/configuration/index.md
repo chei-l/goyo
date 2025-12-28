@@ -173,6 +173,14 @@ nav_ko = [
 
 ### Language Aliases
 
+Configure language display names using the structured format:
+
+```toml
+[extra.lang]
+aliases = { en = "English", ko = "한국어", ja = "日本語" }
+```
+
+**Legacy format (still supported):**
 ```toml
 [extra]
 lang_aliases = { en = "English", ko = "한국어", ja = "日本語" }

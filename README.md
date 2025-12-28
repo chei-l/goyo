@@ -72,12 +72,10 @@ default_thumbnail = "images/default_thumbnail.jpg"  # Default thumbnail image pa
 # Google Tag Configuration
 gtag = ""  # Google Analytics tracking ID
 
-# Language display names for the language selector
-# If not defined, the language code will be displayed
-lang_aliases = { en = "English", ko = "한국어" }
-
-# Language Configuration (RTL Support)
-lang = { rtl = [] } # List of RTL languages e.g. ["ar", "he"]
+# Language Configuration
+[extra.lang]
+rtl = []  # List of RTL languages e.g. ["ar", "he"]
+aliases = { en = "English", ko = "한국어" }  # Language display names for the language selector
 
 # Navigation Configuration
 nav = [

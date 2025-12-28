@@ -31,10 +31,6 @@ footer_html = "<div style='display: flex; align-items: center; justify-content: 
 default_thumbnail = "images/default_thumbnail.jpg"
 gtag = ""
 
-# Language display names for the language selector
-# If not defined, the language code will be displayed
-lang_aliases = { en = "English", ko = "한국어" }
-
 nav = [
     { name = "Documents", url = "/introduction", type = "url", icon = "fa-solid fa-book" },
     { name = "GitHub", url = "https://github.com/hahwul/goyo", type = "url", icon = "fa-brands fa-github" },
@@ -59,6 +55,7 @@ edit_url = "https://github.com/hahwul/goyo/edit/main"
 # Language Configuration
 [extra.lang]
 rtl = [] # List of RTL languages e.g. ["ar", "he"]
+aliases = { en = "English", ko = "한국어" } # Language display names for the language selector
 
 # Logo Configuration (new structured format)
 # You can use either the new [extra.logo] format or the legacy flat format (logo_text, logo_image_path, logo_image_padding)
