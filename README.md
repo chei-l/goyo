@@ -18,7 +18,7 @@
 - Beautiful Landing Page
 - Responsive Design
 - SEO-Friendly (Sitemap, RSS Feed)
-- Multi-Language Support
+- Multi-Language Support (including RTL)
 - Auto-Generated Sidebar & Custom Nav
 - Built-in Search
 - Built-in resources (FontAwesome, Mermaid.js)
@@ -75,6 +75,9 @@ gtag = ""  # Google Analytics tracking ID
 # Language display names for the language selector
 # If not defined, the language code will be displayed
 lang_aliases = { en = "English", ko = "한국어" }
+
+# Language Configuration (RTL Support)
+lang = { rtl = [] } # List of RTL languages e.g. ["ar", "he"]
 
 # Navigation Configuration
 nav = [
