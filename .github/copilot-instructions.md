@@ -2,7 +2,7 @@
 
 **ALWAYS follow these instructions first and fallback to additional search and context gathering only when the information here is incomplete or found to be in error.**
 
-Goyo is a Zola theme for static site generation that creates clean, minimalist documentation sites. This repository serves both as the theme itself and as a documentation/demo site showcasing the theme's capabilities.
+Goyo is a Zola theme for static site generation that creates clean, minimalist documentation sites. This repository serves both as the theme itself and as a documentation/demo site showcasing the theme's capabilities. Inspired by the Korean word "Goyo" (고요), meaning calm or serene, the theme pursues minimalism and simplicity.
 
 ## Working Effectively
 
@@ -104,15 +104,51 @@ After making any changes to the theme or content:
 ### Repository Structure
 ```
 /home/runner/work/goyo/goyo/
-├── .github/workflows/       # GitHub Actions deployment
-├── content/                 # Markdown content files
-├── static/                  # Static assets (images, fonts, etc.)
-├── templates/               # Zola HTML templates
-├── src/                     # Source files and downloaded tools
-├── public/                  # Generated site (created by build)
-├── justfile                 # Build automation tasks
-├── config.toml             # Zola site configuration
-└── theme.toml              # Theme metadata
+├── .github/
+│   ├── workflows/           # GitHub Actions deployment (zola.yml, labeler.yml)
+│   ├── copilot-instructions.md  # Development instructions for AI assistants
+│   ├── labeler.yml          # GitHub labeler configuration
+│   └── FUNDING.yml          # Sponsorship configuration
+├── content/                 # Markdown content files (multilingual: .md for EN, .ko.md for KR)
+│   ├── _index.md            # Landing page configuration
+│   ├── introduction/        # Introduction section
+│   ├── get_started/         # Getting started guides (installation, configuration, creating_content, creating_landing)
+│   ├── writing/             # Writing guides (markdown-syntax, shortcodes)
+│   ├── references/          # Reference documentation
+│   ├── deployments/         # Deployment guides (github_pages, Other)
+│   └── contributing/        # Contribution guidelines
+├── static/                  # Static assets served directly
+│   ├── css/                 # Compiled CSS (main.css, font-awesome.min.css, katex.min.css)
+│   ├── js/                  # JavaScript files (copy_code.js, copy_heading_link.js, katex.min.js, mermaid.min.js)
+│   ├── fonts/               # Font files
+│   ├── icons/               # Favicon and app icons
+│   ├── images/              # Image assets (logo, landing images, thumbnails)
+│   ├── resources/           # External resources (zola.svg, tailwindcss.svg, daisyui.svg)
+│   ├── goyo.js              # Main theme JavaScript
+│   └── fuse.min.js          # Search library
+├── templates/               # Zola HTML templates (Tera templating engine)
+│   ├── index.html           # Default index template
+│   ├── page.html            # Page template
+│   ├── section.html         # Section template
+│   ├── landing.html         # Landing page template
+│   ├── 404.html             # Error page template
+│   ├── taxonomy_list.html   # Taxonomy list template
+│   ├── taxonomy_single.html # Single taxonomy template
+│   ├── macros/              # Reusable template macros (head, header, footer, sidebar, toc, search, comments)
+│   └── shortcodes/          # Custom shortcodes (24 shortcodes: alert, badge, carousel, gallery, mermaid, youtube, etc.)
+├── src/                     # Source files and build tools
+│   ├── main.css             # TailwindCSS source (includes DaisyUI plugins)
+│   ├── syntax-highlight.css # Code syntax highlighting styles
+│   ├── tailwindcss          # TailwindCSS binary (downloaded, gitignored)
+│   ├── daisyui.js           # DaisyUI plugin (downloaded)
+│   └── daisyui-theme.js     # DaisyUI theme customization (downloaded)
+├── public/                  # Generated site (created by build, gitignored)
+├── justfile                 # Build automation tasks (build, dev, setup-macos, setup-linux, update-dependencies)
+├── config.toml             # Zola site configuration (base_url, languages, navigation, theme settings)
+├── theme.toml              # Theme metadata
+├── CONTRIBUTING.md         # Contribution guidelines
+├── LICENSE                 # License file
+└── README.md               # Project readme
 ```
 
 ### Key Commands Reference
@@ -120,8 +156,12 @@ After making any changes to the theme or content:
 # List all available tasks
 just
 
-# Setup dependencies (use manual method above instead)
-just setup-linux  # ⚠️ Downloads wrong architecture - don't use
+# Setup dependencies (use manual method above instead for x86_64)
+just setup-macos   # For macOS ARM64 systems
+just setup-linux   # ⚠️ Downloads ARM64 version - don't use on x86_64
+
+# Update DaisyUI dependencies only
+just update-dependencies
 
 # Build only
 just build
@@ -142,27 +182,54 @@ zola --help
 ### Content Development
 - Edit content in `content/` directory using Markdown
 - Multilingual support: English files use `.md`, Korean files use `.ko.md`
-- Landing page configuration is in `content/_index.md`
+- Landing page configuration is in `content/_index.md` (uses `template = "landing.html"`)
 - Theme templates are in `templates/` directory
+- Content sections: introduction, get_started, writing, references, deployments, contributing
 
 ### Theme Development
-- CSS source files are in `src/main.css`
-- TailwindCSS configuration uses DaisyUI components
+- CSS source files are in `src/main.css` (TailwindCSS with DaisyUI components)
+- Syntax highlighting styles in `src/syntax-highlight.css`
 - Templates use Zola's Tera templating engine
 - Static assets go in `static/` directory
+- Theme supports dark/light mode with brightness variants (darker, normal, lighter)
+
+### Shortcodes (templates/shortcodes/)
+Available shortcodes for rich content:
+- **Alerts**: `alert_info`, `alert_success`, `alert_warning`, `alert_error`
+- **Badges**: `badge_primary`, `badge_secondary`, `badge_accent`, `badge_info`, `badge_success`, `badge_warning`, `badge_error`
+- **Media**: `gallery`, `carousel`, `image_diff`, `youtube`, `asciinema`, `codepen`, `gist`
+- **Interactive**: `collapse`, `mermaid`, `math`, `browser`, `openstreetmap`
+- **Links**: `pretty_link`
+
+### Configuration (config.toml)
+Key configuration sections:
+- **Site settings**: `base_url`, `title`, `description`, `build_search_index`
+- **Languages**: `default_language`, `[languages.ko]` for Korean support
+- **Navigation**: `[extra.nav]` and `[extra.nav_ko]` for menu items
+- **Theme**: `[extra.theme]` - colorset (dark/light), brightness (darker/normal/lighter), disable_toggle
+- **Logo**: `[extra.logo]` - text, image_path, dark_image_path, light_image_path
+- **Sidebar**: `[extra.sidebar]` - expand_depth, disable_root_hide
+- **Font**: `[extra.font]` - enabled, name, path for custom fonts
+- **Favicon**: `[extra.favicon]` - base_path and individual icon paths
+- **Twitter/Social**: `[extra.twitter]` - site and creator handles
+- **Share buttons**: `[extra.share]` - copy_url, x (Twitter/X sharing)
 
 ### GitHub Actions
 - Automatic deployment configured in `.github/workflows/zola.yml`
+- Uses `shalzz/zola-deploy-action@v0.21.0` for deployment
+- Adds CNAME file for custom domain: goyo.hahwul.com
 - Builds and deploys to GitHub Pages on push to main branch
 - Target site: https://goyo.hahwul.com
 
 ## Known Issues and Workarounds
 
-1. **Architecture Mismatch**: The `just setup-linux` command downloads ARM64 TailwindCSS binary which fails on x86_64. Always use the manual setup commands provided above.
+1. **Architecture Mismatch**: The `just setup-linux` command downloads ARM64 TailwindCSS binary which fails on x86_64. Always use the manual setup commands provided above for x86_64 systems.
 
 2. **External Link Checking**: Running `zola check` without `--skip-external-links` will fail due to network restrictions in most CI/build environments. Always use `zola check --skip-external-links`.
 
 3. **Binary Dependencies**: The `src/tailwindcss` binary is excluded from git (in .gitignore) and must be downloaded after each fresh clone.
+
+4. **macOS Setup**: Use `just setup-macos` for Apple Silicon Macs. For Intel Macs, use the manual x86_64 setup.
 
 ## Time Expectations
 
@@ -181,3 +248,23 @@ The project requires these exact versions:
 - **DaisyUI**: Latest (JavaScript libraries)
 
 All dependencies are downloaded and managed locally in the `src/` directory.
+
+## Template Macros (templates/macros/)
+
+Reusable template components:
+- `head.html` - HTML head section with meta tags, favicon, fonts
+- `header.html` - Site header with navigation and theme toggle
+- `footer.html` - Site footer
+- `sidebar.html` - Documentation sidebar navigation
+- `toc.html` - Table of contents for pages
+- `search.html` - Search modal and functionality
+- `comments.html` - Comment system integration
+
+## CSS Architecture
+
+The theme uses TailwindCSS with DaisyUI components:
+- **Base styles**: Custom typography, colors, and spacing in `src/main.css`
+- **Theme variants**: Support for dark (night) and light (lofi) themes
+- **Brightness levels**: darker, normal, lighter variants for each theme
+- **Responsive design**: Mobile-first approach with breakpoints
+- **Component classes**: Feature cards, navigation buttons, search modal, etc.
