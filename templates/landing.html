@@ -147,7 +147,9 @@
                             {% for tab in section.extra.easy_installation_section.tabs %}
                                 <input type="radio" name="easy_installation_tabs" id="easy-install-tab-{{ loop.index0 }}" class="tab" aria-label="{{ tab.name }}" {% if loop.index0 == 0 %}checked="checked"{% endif %} />
                                 <div class="tab-content bg-base-100 border-base-300 p-6 rounded-b-lg" role="tabpanel" aria-labelledby="easy-install-tab-{{ loop.index0 }}">
-                                    <pre class="text-left overflow-x-auto"><code>{{ tab.command }}</code></pre>
+                                    <div class="install-code-block">
+                                        <code class="install-code">{{ tab.command }}</code>
+                                    </div>
                                 </div>
                             {% endfor %}
                         </div>

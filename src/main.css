@@ -2430,3 +2430,33 @@ footer.footer .social-icon:hover {
         padding-bottom: 1.5rem;
     }
 }
+
+/* Easy Installation Code Block - Minimalist Style */
+.install-code-block {
+    @apply text-left overflow-x-auto;
+}
+
+.install-code {
+    @apply font-mono text-sm;
+    color: #9ca3af;
+}
+
+[data-theme="night"][data-brightness="darker"] .install-code {
+    color: #808088;
+}
+
+[data-theme="night"][data-brightness="lighter"] .install-code {
+    color: #b8c0d0;
+}
+
+[data-theme="lofi"] .install-code {
+    color: #475569;
+}
+
+[data-theme="lofi"][data-brightness="darker"] .install-code {
+    color: #334155;
+}
+
+[data-theme="lofi"][data-brightness="lighter"] .install-code {
+    color: #64748b;
+}
