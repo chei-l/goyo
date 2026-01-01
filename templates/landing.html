@@ -53,7 +53,13 @@
 
     {# Feature Grid - Ashen Minimal Design #}
     {# Support both extra.features_section.features (new) and extra.features (legacy) for backward compatibility #}
-    {% set features = section.extra.features_section.features | default(value=section.extra.features) %}
+    {% set features = false %}
+    {% if section.extra.features_section is defined and section.extra.features_section.features is defined %}
+        {% set features = section.extra.features_section.features %}
+    {% elif section.extra.features is defined %}
+        {% set features = section.extra.features %}
+    {% endif %}
+
     {% if features %}
         <div class="py-20 md:py-40 relative">
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-500/5 to-transparent"></div>
@@ -61,11 +67,19 @@
                 <div class="text-center mb-20">
                     <h2 class="text-5xl font-black mb-6">
                         <span class="hero-title">
-                            {% if section.extra.features_section.title %}{{ section.extra.features_section.title }}{% else %}Essential Features{% endif %}
+                            {% if section.extra.features_section is defined and section.extra.features_section.title is defined %}
+                                {{ section.extra.features_section.title }}
+                            {% else %}
+                                Essential Features
+                            {% endif %}
                         </span>
                     </h2>
                     <p class="text-xl hero-description max-w-2xl mx-auto">
-                        {% if section.extra.features_section.description %}{{ section.extra.features_section.description }}{% else %}Clean, minimal, and focused on content{% endif %}
+                        {% if section.extra.features_section is defined and section.extra.features_section.description is defined %}
+                            {{ section.extra.features_section.description }}
+                        {% else %}
+                            Clean, minimal, and focused on content
+                        {% endif %}
                     </p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -96,12 +110,14 @@
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl font-bold mb-16 trust-section-title">{{ section.extra.trust_section.title }}</h2>
                 <div class="flex justify-center items-center gap-16 flex-wrap">
-                    {% for logo in section.extra.trust_section.logos %}
-                        <div class="group">
-                            <img src="{{ logo.src | safe }}" alt="{{ logo.alt }}"
-                                 class="h-12 md:h-16 w-auto trust-section-logo transition-all duration-500 group-hover:scale-110" />
-                        </div>
-                    {% endfor %}
+                    {% if section.extra.trust_section.logos %}
+                        {% for logo in section.extra.trust_section.logos %}
+                            <div class="group">
+                                <img src="{{ logo.src | safe }}" alt="{{ logo.alt }}"
+                                     class="h-12 md:h-16 w-auto trust-section-logo transition-all duration-500 group-hover:scale-110" />
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -172,36 +188,38 @@
                     </h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-                    {% for testimonial in section.extra.social_proof_section.testimonials %}
-                        <div class="group relative flex">
-                            <div class="absolute inset-0 bg-gradient-to-r from-slate-500/5 to-gray-500/5 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
-                            <div class="relative testimonial-card rounded-xl p-8 flex flex-col w-full transition-all duration-300 group-hover:scale-105">
-                                <div class="flex items-start mb-6">
-                                    <div class="flex testimonial-stars mb-4">
-                                        {% for i in range(end=5) %}
-                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                            </svg>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                                <p class="testimonial-quote mb-8 text-lg italic leading-relaxed flex-grow">"{{ testimonial.quote }}"</p>
-                                <div class="flex items-center mt-auto">
-                                    {% if testimonial.avatar %}
-                                        <div class="mr-4">
-                                            <div class="w-14 h-14 rounded-full testimonial-avatar-border p-0.5">
-                                                <img src="{{ testimonial.avatar | safe }}" class="w-full h-full rounded-full object-cover" />
-                                            </div>
+                    {% if section.extra.social_proof_section.testimonials %}
+                        {% for testimonial in section.extra.social_proof_section.testimonials %}
+                            <div class="group relative flex">
+                                <div class="absolute inset-0 bg-gradient-to-r from-slate-500/5 to-gray-500/5 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
+                                <div class="relative testimonial-card rounded-xl p-8 flex flex-col w-full transition-all duration-300 group-hover:scale-105">
+                                    <div class="flex items-start mb-6">
+                                        <div class="flex testimonial-stars mb-4">
+                                            {% for i in range(end=5) %}
+                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                                </svg>
+                                            {% endfor %}
                                         </div>
-                                    {% endif %}
-                                    <div>
-                                        <p class="font-bold testimonial-author text-lg">{{ testimonial.author }}</p>
-                                        <p class="testimonial-role">{{ testimonial.role }}</p>
+                                    </div>
+                                    <p class="testimonial-quote mb-8 text-lg italic leading-relaxed flex-grow">"{{ testimonial.quote }}"</p>
+                                    <div class="flex items-center mt-auto">
+                                        {% if testimonial.avatar %}
+                                            <div class="mr-4">
+                                                <div class="w-14 h-14 rounded-full testimonial-avatar-border p-0.5">
+                                                    <img src="{{ testimonial.avatar | safe }}" class="w-full h-full rounded-full object-cover" />
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        <div>
+                                            <p class="font-bold testimonial-author text-lg">{{ testimonial.author }}</p>
+                                            <p class="testimonial-role">{{ testimonial.role }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>
