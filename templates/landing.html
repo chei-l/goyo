@@ -123,6 +123,40 @@
         </div>
     {% endif %}
 
+    {# Easy Installation Section - Tabbed Code Blocks #}
+    {% if section.extra.easy_installation_section %}
+        <div class="py-20 md:py-40 relative">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-500/5 to-transparent"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-black mb-6">
+                        <span class="hero-title">
+                            {{ section.extra.easy_installation_section.title }}
+                        </span>
+                    </h2>
+                    {% if section.extra.easy_installation_section.description %}
+                        <p class="text-xl hero-description max-w-2xl mx-auto">
+                            {{ section.extra.easy_installation_section.description }}
+                        </p>
+                    {% endif %}
+                </div>
+
+                {% if section.extra.easy_installation_section.tabs %}
+                    <div class="flex justify-center">
+                        <div class="tabs tabs-lift">
+                            {% for tab in section.extra.easy_installation_section.tabs %}
+                                <input type="radio" name="easy_installation_tabs" id="easy-install-tab-{{ loop.index0 }}" class="tab" aria-label="{{ tab.name }}" {% if loop.index0 == 0 %}checked="checked"{% endif %} />
+                                <div class="tab-content bg-base-100 border-base-300 p-6 rounded-b-lg" role="tabpanel" aria-labelledby="easy-install-tab-{{ loop.index0 }}">
+                                    <pre class="text-left overflow-x-auto"><code>{{ tab.command }}</code></pre>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+
     {# Showcase Section - Tabbed Content #}
     {% if section.extra.showcase_section %}
         <div class="py-20 md:py-40 relative">
