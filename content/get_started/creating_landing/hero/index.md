@@ -12,7 +12,7 @@ The hero section is the main banner displayed at the top of your landing page. I
 ```toml
 [extra.hero]
 title = "Welcome to Goyo!"
-badge = "✨ Minimalist Documentation Theme"
+badge = "Clean Theme, Tranquil Feel"
 description = "A simple and clean Zola theme for documentation."
 image = "/images/landing.jpg" # Background image
 cta_buttons = [

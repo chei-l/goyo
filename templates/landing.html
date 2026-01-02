@@ -19,7 +19,7 @@
             <div class="relative z-10 p-8 max-w-6xl mx-auto">
                 <div class="mb-8">
                     <span class="inline-block px-6 py-2 rounded-full text-sm font-medium hero-badge mb-6">
-                        {% if section.extra.hero.badge %}{{ section.extra.hero.badge }}{% else %}✨ Minimalist Documentation Theme{% endif %}
+                        {% if section.extra.hero.badge %}{{ section.extra.hero.badge }}{% else %}Clean Theme, Tranquil Feel{% endif %}
                     </span>
                 </div>
                 <h1 class="text-6xl md:text-8xl font-black tracking-tight mb-8">
@@ -320,10 +320,10 @@
 {% block content %}
     {# Define default section order for backward compatibility #}
     {% set default_order = ["hero", "features", "trust", "easy_command", "showcase", "social_proof", "final_cta"] %}
-    
+
     {# Use custom section_order if defined, otherwise use default order #}
     {% set section_order = section.extra.section_order | default(value=default_order) %}
-    
+
     {# Render sections in the specified order. Unknown section names are silently ignored. #}
     {% for section_name in section_order %}
         {% if section_name == "hero" %}

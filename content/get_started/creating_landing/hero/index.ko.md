@@ -12,7 +12,7 @@ Hero 섹션은 랜딩 페이지 상단에 표시되는 메인 배너입니다. �
 ```toml
 [extra.hero]
 title = "Goyo에 오신 것을 환영합니다!"
-badge = "✨ Minimalist Documentation Theme"
+badge = "Clean Theme, Tranquil Feel"
 description = "문서화를 위한 간단하고 깔끔한 Zola 테마입니다."
 image = "/images/landing.jpg" # 배경 이미지
 cta_buttons = [

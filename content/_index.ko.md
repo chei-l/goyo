@@ -12,7 +12,7 @@ section_order = ["hero", "features", "trust", "showcase", "social_proof", "final
 
 [extra.hero]
 title = "Goyo에 오신 것을 환영합니다!"
-badge = "✨ Minimalist Documentation Theme"
+badge = "Clean Theme, Tranquil Feel"
 description = "한국어 '고요'에서 영감을 받은 Goyo는 단순함과 깔끔한 문서를 지향하는 Zola 테마입니다. Goyo를 사용하면 아름답고 실용적인 문서 페이지를 쉽게 만들 수 있습니다."
 image = "/images/landing.jpg"
 cta_buttons = [
