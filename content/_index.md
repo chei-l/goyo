@@ -73,6 +73,10 @@ command = "git submodule add https://github.com/hahwul/goyo.git themes/goyo"
 name = "Download"
 command = "curl -sL https://github.com/hahwul/goyo/archive/refs/heads/main.zip -o goyo.zip"
 
+[[extra.easy_installation_section.tabs]]
+name = "More"
+link = "/get_started/installation"
+
 [extra.showcase_section]
 title = "Theme Showcase"
 subtitle = "Explore different aspects of Goyo theme"

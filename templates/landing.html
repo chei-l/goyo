@@ -148,7 +148,11 @@
                                 <input type="radio" name="easy_installation_tabs" id="easy-install-tab-{{ loop.index0 }}" class="tab" aria-label="{{ tab.name }}" {% if loop.index0 == 0 %}checked="checked"{% endif %} />
                                 <div class="tab-content bg-base-100 border-base-300 p-6 rounded-b-lg" role="tabpanel" aria-labelledby="easy-install-tab-{{ loop.index0 }}">
                                     <div class="install-code-block">
-                                        <code class="install-code">{{ tab.command }}</code>
+                                        {% if tab.command %}
+                                            <code class="install-code">{{ tab.command }}</code>
+                                        {% elif tab.link %}
+                                            <a href="{{ tab.link | safe }}" class="install-link">{{ tab.name }} →</a>
+                                        {% endif %}
                                     </div>
                                 </div>
                             {% endfor %}
