@@ -60,6 +60,25 @@ logos = [
     { src = "/images/logo2.svg", alt = "Company Two" },
 ]
 
+# Easy Command 섹션
+# 탭 형태로 명령어를 표시합니다.
+# 각 탭은 명령어(코드 표시) 또는 링크(클릭 시 바로 이동)를 표시할 수 있습니다.
+[extra.easy_command_section]
+title = "쉬운 설치"
+description = "선호하는 방법으로 몇 초만에 Goyo를 시작하세요"
+
+[[extra.easy_command_section.tabs]]
+name = "Git Clone"
+command = "git clone https://github.com/hahwul/goyo.git themes/goyo"
+
+[[extra.easy_command_section.tabs]]
+name = "Git Submodule"
+command = "git submodule add https://github.com/hahwul/goyo.git themes/goyo"
+
+[[extra.easy_command_section.tabs]]
+name = "더보기"
+link = "/get_started/installation"
+
 # Showcase 섹션
 # 탭으로 구성된 이미지 또는 텍스트 컨텐츠를 표시합니다.
 # 각 탭은 이미지 또는 텍스트 컨텐츠(제목 + 설명)를 표시할 수 있습니다.
@@ -119,6 +138,7 @@ image = "/images/contribute.png"
 - **`hero`**: 메인 배너 (제목, 설명, 배경 이미지, CTA 버튼)
 - **`features_section`**: 기능 그리드 (제목, 설명, 아이콘 - Font Awesome)
 - **`trust_section`**: 회사/프로젝트 로고
+- **`easy_command_section`**: 탭 형태의 명령어 (링크 탭 지원)
 - **`showcase_section`**: 탭 형태의 이미지 또는 텍스트 콘텐츠
 - **`social_proof_section`**: 사용자 추천사
 - **`final_cta_section`**: 최종 행동 유도 (선택사항: 이미지 포함 가능)
