@@ -143,7 +143,7 @@
 
                 {% if section.extra.easy_installation_section.tabs %}
                     <div class="flex justify-center">
-                        <div class="tabs tabs-lift">
+                        <div class="tabs tabs-lift max-w-4xl">
                             {% for tab in section.extra.easy_installation_section.tabs %}
                                 {% if tab.link %}
                                     <a href="{{ tab.link | safe }}" class="tab install-tab-link"><i class="fa-solid fa-arrow-up-right-from-square text-xs mr-1"></i>{{ tab.name }}</a>
