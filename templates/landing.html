@@ -322,13 +322,9 @@
     {% set default_order = ["hero", "features", "trust", "easy_command", "showcase", "social_proof", "final_cta"] %}
     
     {# Use custom section_order if defined, otherwise use default order #}
-    {% if section.extra.section_order is defined %}
-        {% set section_order = section.extra.section_order %}
-    {% else %}
-        {% set section_order = default_order %}
-    {% endif %}
+    {% set section_order = section.extra.section_order | default(value=default_order) %}
     
-    {# Render sections in the specified order #}
+    {# Render sections in the specified order. Unknown section names are silently ignored. #}
     {% for section_name in section_order %}
         {% if section_name == "hero" %}
             {{ self::render_hero(section=section) }}
