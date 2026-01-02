@@ -2433,12 +2433,11 @@ footer.footer .social-icon:hover {
 
 /* Easy Installation Code Block - Minimalist Style */
 .install-code-block {
-    @apply text-left;
-    max-width: 480px;
+    @apply text-left w-full;
 }
 
 .install-code {
-    @apply font-mono text-sm;
+    @apply font-mono text-sm block w-full;
     color: #9ca3af;
     white-space: pre-wrap;
     word-break: break-all;
