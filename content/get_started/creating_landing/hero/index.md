@@ -1,0 +1,33 @@
++++
+title = "Hero Section"
+description = "Configure the main banner at the top of your landing page."
+weight = 2
+taxonomies = { tags = ["goyo", "landing-page", "hero"], categories = ["guide"] }
++++
+
+The hero section is the main banner displayed at the top of your landing page. It includes a title, optional badge, description, background image, and call-to-action buttons.
+
+## Configuration
+
+```toml
+[extra.hero]
+title = "Welcome to Goyo!"
+badge = "✨ Minimalist Documentation Theme"
+description = "A simple and clean Zola theme for documentation."
+image = "/images/landing.jpg" # Background image
+cta_buttons = [
+    { text = "Get Started", url = "/get-started/installation/", style = "primary" },
+    { text = "View on GitHub", url = "https://github.com/your/repo", style = "secondary" },
+]
+```
+
+## Properties
+
+- **`title`** (required): Main heading text
+- **`badge`** (optional): Small badge text displayed above the title
+- **`description`** (required): Descriptive text below the title
+- **`image`** (optional): Path to background image
+- **`cta_buttons`** (optional): Array of call-to-action buttons
+  - `text`: Button label
+  - `url`: Link destination
+  - `style`: Button style (`primary` or `secondary`)
