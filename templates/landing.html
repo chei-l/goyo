@@ -145,16 +145,16 @@
                     <div class="flex justify-center">
                         <div class="tabs tabs-lift">
                             {% for tab in section.extra.easy_installation_section.tabs %}
-                                <input type="radio" name="easy_installation_tabs" id="easy-install-tab-{{ loop.index0 }}" class="tab" aria-label="{{ tab.name }}" {% if loop.index0 == 0 %}checked="checked"{% endif %} />
-                                <div class="tab-content bg-base-100 border-base-300 p-6 rounded-b-lg" role="tabpanel" aria-labelledby="easy-install-tab-{{ loop.index0 }}">
-                                    <div class="install-code-block">
-                                        {% if tab.command %}
+                                {% if tab.link %}
+                                    <a href="{{ tab.link | safe }}" class="tab install-tab-link"><i class="fa-solid fa-arrow-up-right-from-square text-xs mr-1"></i>{{ tab.name }}</a>
+                                {% else %}
+                                    <input type="radio" name="easy_installation_tabs" id="easy-install-tab-{{ loop.index0 }}" class="tab" aria-label="{{ tab.name }}" {% if loop.index0 == 0 %}checked="checked"{% endif %} />
+                                    <div class="tab-content bg-base-100 border-base-300 p-6 rounded-b-lg" role="tabpanel" aria-labelledby="easy-install-tab-{{ loop.index0 }}">
+                                        <div class="install-code-block">
                                             <code class="install-code">{{ tab.command }}</code>
-                                        {% elif tab.link %}
-                                            <a href="{{ tab.link | safe }}" class="install-link">{{ tab.name }} →</a>
-                                        {% endif %}
+                                        </div>
                                     </div>
-                                </div>
+                                {% endif %}
                             {% endfor %}
                         </div>
                     </div>

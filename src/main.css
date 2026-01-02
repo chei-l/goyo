@@ -2514,3 +2514,12 @@ footer.footer .social-icon:hover {
 [data-theme="lofi"][data-brightness="lighter"] .install-link:hover {
     color: #334155;
 }
+
+/* Easy Installation Tab Link Style */
+.install-tab-link {
+    text-decoration: none !important;
+}
+
+.install-tab-link:hover {
+    text-decoration: none !important;
+}
