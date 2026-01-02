@@ -10,6 +10,23 @@ taxonomies = { tags = ["goyo", "landing-page", "template"], categories = ["guide
 
 Create a landing page in `content/_index.md` with `landing.html` template.
 
+## Section Order
+
+By default, sections are rendered in this order: `hero`, `features`, `trust`, `easy_command`, `showcase`, `social_proof`, `final_cta`.
+
+You can customize the order using `section_order`:
+
+```toml
+[extra]
+# Custom order - sections will render in this sequence
+section_order = ["hero", "features", "showcase", "trust", "social_proof", "final_cta"]
+
+# You can also omit sections entirely
+section_order = ["hero", "features", "final_cta"]
+```
+
+Available section names: `hero`, `features`, `trust`, `easy_command`, `showcase`, `social_proof`, `final_cta`
+
 ## Configuration Example
 
 All sections are optional. Omit sections you don't need.

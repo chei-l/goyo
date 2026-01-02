@@ -10,6 +10,23 @@ taxonomies = { tags = ["goyo", "landing-page", "template"], categories = ["guide
 
 `content/_index.md`에서 `landing.html` 템플릿으로 랜딩 페이지를 생성합니다.
 
+## 섹션 순서
+
+기본적으로 섹션은 다음 순서로 렌더링됩니다: `hero`, `features`, `trust`, `easy_command`, `showcase`, `social_proof`, `final_cta`.
+
+`section_order`를 사용하여 순서를 커스터마이징할 수 있습니다:
+
+```toml
+[extra]
+# 커스텀 순서 - 섹션이 이 순서대로 렌더링됩니다
+section_order = ["hero", "features", "showcase", "trust", "social_proof", "final_cta"]
+
+# 특정 섹션을 완전히 생략할 수도 있습니다
+section_order = ["hero", "features", "final_cta"]
+```
+
+사용 가능한 섹션 이름: `hero`, `features`, `trust`, `easy_command`, `showcase`, `social_proof`, `final_cta`
+
 ## 설정 예시
 
 모든 섹션은 선택사항입니다. 필요하지 않은 섹션은 생략하세요.

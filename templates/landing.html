@@ -1,6 +1,7 @@
 {% extends "index.html" %}
 
-{% block content %}
+{# Define macros for each section #}
+{% macro render_hero(section) %}
     {# Hero Section - Ashen Minimalist Style #}
     {% if section.extra.hero %}
         <div class="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
@@ -50,7 +51,9 @@
             </div>
         </div>
     {% endif %}
+{% endmacro %}
 
+{% macro render_features(section) %}
     {# Feature Grid - Ashen Minimal Design #}
     {# Support both extra.features_section.features (new) and extra.features (legacy) for backward compatibility #}
     {% set features = false %}
@@ -103,7 +106,9 @@
             </div>
         </div>
     {% endif %}
+{% endmacro %}
 
+{% macro render_trust(section) %}
     {# Trust Section - Modern Glass Effect #}
     {% if section.extra.trust_section %}
         <div class="py-20 md:py-40 relative">
@@ -122,7 +127,9 @@
             </div>
         </div>
     {% endif %}
+{% endmacro %}
 
+{% macro render_easy_command(section) %}
     {# Easy Command Section - Tabbed Code Blocks #}
     {% if section.extra.easy_command_section %}
         <div class="py-20 md:py-40 relative">
@@ -162,7 +169,9 @@
             </div>
         </div>
     {% endif %}
+{% endmacro %}
 
+{% macro render_showcase(section) %}
     {# Showcase Section - Tabbed Content #}
     {% if section.extra.showcase_section %}
         <div class="py-20 md:py-40 relative">
@@ -214,7 +223,9 @@
             </div>
         </div>
     {% endif %}
+{% endmacro %}
 
+{% macro render_social_proof(section) %}
     {# Social Proof Section - Ashen Cards #}
     {% if section.extra.social_proof_section %}
         <div class="py-20 md:py-40 relative">
@@ -264,7 +275,9 @@
             </div>
         </div>
     {% endif %}
+{% endmacro %}
 
+{% macro render_final_cta(section) %}
     {# Final CTA Section - Ashen Gradient Design #}
     {% if section.extra.final_cta_section %}
         <div class="py-20 md:py-40 relative overflow-hidden">
@@ -302,4 +315,31 @@
             </div>
         </div>
     {% endif %}
+{% endmacro %}
+
+{% block content %}
+    {# Define default section order for backward compatibility #}
+    {% set default_order = ["hero", "features", "trust", "easy_command", "showcase", "social_proof", "final_cta"] %}
+    
+    {# Use custom section_order if defined, otherwise use default order #}
+    {% set section_order = section.extra.section_order | default(value=default_order) %}
+    
+    {# Render sections in the specified order. Unknown section names are silently ignored. #}
+    {% for section_name in section_order %}
+        {% if section_name == "hero" %}
+            {{ self::render_hero(section=section) }}
+        {% elif section_name == "features" %}
+            {{ self::render_features(section=section) }}
+        {% elif section_name == "trust" %}
+            {{ self::render_trust(section=section) }}
+        {% elif section_name == "easy_command" %}
+            {{ self::render_easy_command(section=section) }}
+        {% elif section_name == "showcase" %}
+            {{ self::render_showcase(section=section) }}
+        {% elif section_name == "social_proof" %}
+            {{ self::render_social_proof(section=section) }}
+        {% elif section_name == "final_cta" %}
+            {{ self::render_final_cta(section=section) }}
+        {% endif %}
+    {% endfor %}
 {% endblock content %}
