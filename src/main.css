@@ -2436,6 +2436,10 @@ footer.footer .social-icon:hover {
     @apply text-left w-full;
 }
 
+.install-tab-content {
+    min-height: 60px;
+}
+
 .install-code {
     @apply font-mono text-sm block w-full;
     color: #9ca3af;
