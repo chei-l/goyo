@@ -5,6 +5,11 @@ title = "Goyo"
 [extra]
 version = "v0.1.0"
 
+# Section order configuration - customize the order of landing page sections
+# Available sections: "hero", "features", "trust", "easy_command", "showcase", "social_proof", "final_cta"
+# If not specified, default order is used: hero -> features -> trust -> easy_command -> showcase -> social_proof -> final_cta
+section_order = ["hero", "features", "trust", "easy_command", "showcase", "social_proof", "final_cta"]
+
 [extra.hero]
 title = "Welcome to Goyo!"
 badge = "✨ Minimalist Documentation Theme"
