@@ -4,21 +4,21 @@
 
 /*
  * Safelist for Dynamic Classes
- * 
+ *
  * TailwindCSS tree-shakes unused classes by default. If you need to use classes that are:
  * - Dynamically generated via JavaScript (e.g., template literals)
  * - Created through Zola's templating with variables
  * - Not directly visible in source files
- * 
+ *
  * Add them to the @source inline() directive below to ensure they're always included.
- * 
+ *
  * Usage:
  *   @source inline("class1 class2 class3");
- * 
+ *
  * Examples:
  *   @source inline("bg-red-500 text-blue-300 hover:bg-green-400");
  *   @source inline("grid-cols-1 grid-cols-2 grid-cols-3 grid-cols-4");
- * 
+ *
  * For more information, see: https://tailwindcss.com/docs/detecting-classes-in-source-files#safelisting-specific-utilities
  */
 
@@ -2429,4 +2429,102 @@ footer.footer .social-icon:hover {
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;
     }
+}
+
+/* Easy Installation Code Block - Minimalist Style */
+.install-code-block {
+    @apply text-left w-full;
+}
+
+.install-tab-content {
+    min-height: 60px;
+}
+
+.install-code {
+    @apply font-mono text-lg block w-full;
+    @apply bg-transparent;
+    @apply border-none;
+    color: #9ca3af;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.install-link {
+    @apply font-medium text-sm;
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.install-link:hover {
+    color: #d1d5db;
+}
+
+[data-theme="night"][data-brightness="darker"] .install-code {
+    color: #808088;
+}
+
+[data-theme="night"][data-brightness="lighter"] .install-code {
+    color: #b8c0d0;
+}
+
+[data-theme="lofi"] .install-code {
+    color: #475569;
+}
+
+[data-theme="lofi"][data-brightness="darker"] .install-code {
+    color: #334155;
+}
+
+[data-theme="lofi"][data-brightness="lighter"] .install-code {
+    color: #64748b;
+}
+
+[data-theme="night"][data-brightness="darker"] .install-link {
+    color: #808088;
+}
+
+[data-theme="night"][data-brightness="darker"] .install-link:hover {
+    color: #a0a0a8;
+}
+
+[data-theme="night"][data-brightness="lighter"] .install-link {
+    color: #b8c0d0;
+}
+
+[data-theme="night"][data-brightness="lighter"] .install-link:hover {
+    color: #e5e7eb;
+}
+
+[data-theme="lofi"] .install-link {
+    color: #475569;
+}
+
+[data-theme="lofi"] .install-link:hover {
+    color: #1e293b;
+}
+
+[data-theme="lofi"][data-brightness="darker"] .install-link {
+    color: #334155;
+}
+
+[data-theme="lofi"][data-brightness="darker"] .install-link:hover {
+    color: #0f172a;
+}
+
+[data-theme="lofi"][data-brightness="lighter"] .install-link {
+    color: #64748b;
+}
+
+[data-theme="lofi"][data-brightness="lighter"] .install-link:hover {
+    color: #334155;
+}
+
+/* Easy Installation Tab Link Style */
+.install-tab-link {
+    text-decoration: none !important;
+}
+
+.install-tab-link:hover {
+    text-decoration: none !important;
 }

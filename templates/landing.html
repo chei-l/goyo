@@ -123,6 +123,46 @@
         </div>
     {% endif %}
 
+    {# Easy Command Section - Tabbed Code Blocks #}
+    {% if section.extra.easy_command_section %}
+        <div class="py-20 md:py-40 relative">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-500/5 to-transparent"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-black mb-6">
+                        <span class="hero-title">
+                            {{ section.extra.easy_command_section.title }}
+                        </span>
+                    </h2>
+                    {% if section.extra.easy_command_section.description %}
+                        <p class="text-xl hero-description max-w-2xl mx-auto">
+                            {{ section.extra.easy_command_section.description }}
+                        </p>
+                    {% endif %}
+                </div>
+
+                {% if section.extra.easy_command_section.tabs %}
+                    <div class="flex justify-center">
+                        <div class="tabs tabs-lift max-w-4xl">
+                            {% for tab in section.extra.easy_command_section.tabs %}
+                                {% if tab.link %}
+                                    <a href="{{ tab.link | safe }}" class="tab install-tab-link"><i class="fa-solid fa-arrow-up-right-from-square text-xs mr-1"></i>{{ tab.name }}</a>
+                                {% else %}
+                                    <input type="radio" name="easy_command_tabs" id="easy-command-tab-{{ loop.index0 }}" class="tab" aria-label="{{ tab.name }}" {% if loop.index0 == 0 %}checked="checked"{% endif %} />
+                                    <div class="tab-content install-tab-content bg-base-100 border-base-300 p-6 rounded-b-lg" role="tabpanel" aria-labelledby="easy-command-tab-{{ loop.index0 }}">
+                                        <div class="install-code-block">
+                                            <code class="install-code">{{ tab.command }}</code>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+
     {# Showcase Section - Tabbed Content #}
     {% if section.extra.showcase_section %}
         <div class="py-20 md:py-40 relative">

@@ -60,6 +60,25 @@ logos = [
     { src = "/images/logo2.svg", alt = "Company Two" },
 ]
 
+# Easy Command Section
+# Display commands in a tabbed interface.
+# Each tab can show either a command (displays code) or a link (navigates directly on click).
+[extra.easy_command_section]
+title = "Easy Installation"
+description = "Get started with Goyo in seconds using your preferred method"
+
+[[extra.easy_command_section.tabs]]
+name = "Git Clone"
+command = "git clone https://github.com/hahwul/goyo.git themes/goyo"
+
+[[extra.easy_command_section.tabs]]
+name = "Git Submodule"
+command = "git submodule add https://github.com/hahwul/goyo.git themes/goyo"
+
+[[extra.easy_command_section.tabs]]
+name = "More"
+link = "/get_started/installation"
+
 # Showcase Section
 # Display tabbed content with images or text.
 # Each tab can show either an image or text content (title + description).
@@ -120,6 +139,7 @@ image = "/images/contribute.png" # (Optional) Image above the CTA section
 - **`hero`**: Main banner with title, description, background image, and CTA buttons
 - **`features_section`**: Features grid with title, description, icon (Font Awesome)
 - **`trust_section`**: Company/project logos
+- **`easy_command_section`**: Tabbed commands with optional link tabs
 - **`showcase_section`**: Tabbed content with images or text
 - **`social_proof_section`**: User testimonials
 - **`final_cta_section`**: Final call-to-action with optional image

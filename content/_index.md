@@ -57,6 +57,26 @@ logos = [
     { src = "/resources/daisyui.svg", alt = "DaisyUI"},
 ]
 
+[extra.easy_command_section]
+title = "Easy Installation"
+description = "Get started with Goyo in seconds using your preferred method"
+
+[[extra.easy_command_section.tabs]]
+name = "Git Clone"
+command = "git clone https://github.com/hahwul/goyo.git themes/goyo"
+
+[[extra.easy_command_section.tabs]]
+name = "Git Submodule"
+command = "git submodule add https://github.com/hahwul/goyo.git themes/goyo"
+
+[[extra.easy_command_section.tabs]]
+name = "Download"
+command = "curl -sL https://github.com/hahwul/goyo/archive/refs/heads/main.zip -o goyo.zip"
+
+[[extra.easy_command_section.tabs]]
+name = "More"
+link = "/get_started/installation"
+
 [extra.showcase_section]
 title = "Theme Showcase"
 subtitle = "Explore different aspects of Goyo theme"
