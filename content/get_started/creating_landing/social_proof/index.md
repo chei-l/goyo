@@ -5,7 +5,7 @@ weight = 7
 taxonomies = { tags = ["goyo", "landing-page", "testimonials"], categories = ["guide"] }
 +++
 
-The social proof section displays testimonials from your users, helping build trust and credibility. Each testimonial includes the author's name, role, quote, and optional avatar.
+The social proof section displays testimonials from your users in a clean, minimalist card layout, helping build trust and credibility. Each testimonial features a centered profile picture, name, role, and quote in a simple, elegant design.
 
 ## Configuration
 
@@ -44,10 +44,18 @@ testimonials = [
 - **`quote`** (required): Testimonial text
 - **`avatar`** (optional): Path to avatar image
 
+## Design Features
+
+- **Clean card layout**: Simple, minimalist design without distractions
+- **Centered content**: Profile pictures, names, and roles are centered for a clean look
+- **Responsive grid**: Cards automatically arrange in a flexible grid that centers properly on all screen sizes
+- **Avatar-first design**: Profile pictures are prominently displayed at the top of each card
+
 ## Best Practices
 
-- Keep quotes concise and impactful
+- Keep quotes concise and impactful (2-3 sentences work best)
 - Use real testimonials when possible
 - Include diverse perspectives (developers, managers, writers)
-- Add avatars for a more personal touch
+- Always add avatars for a more personal and trustworthy touch
 - Showcase specific benefits or features mentioned
+- Aim for 3-6 testimonials for optimal visual balance
