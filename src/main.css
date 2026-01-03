@@ -2532,3 +2532,7 @@ footer.footer .social-icon:hover {
 [data-theme="night"][data-brightness="darker"] .install-tab-content.bg-base-100 {
     background-color: transparent !important;
 }
+
+[data-theme="night"][data-brightness="darker"] .install-tab-content.border-base-300 {
+    border-color: transparent !important;
+}
