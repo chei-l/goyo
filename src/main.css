@@ -2526,3 +2526,9 @@ footer.footer .social-icon:hover {
 .install-tab-link:hover {
     text-decoration: none !important;
 }
+
+/* Easy Installation Tab Content Background - Brightness Adjustments */
+/* Dark theme darker variant should have no background color (transparent) */
+[data-theme="night"][data-brightness="darker"] .install-tab-content.bg-base-100 {
+    background-color: transparent !important;
+}
