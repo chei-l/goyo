@@ -2536,3 +2536,15 @@ footer.footer .social-icon:hover {
 [data-theme="night"][data-brightness="darker"] .install-tab-content.border-base-300 {
     border-color: transparent !important;
 }
+
+/* Easy Installation Tab Buttons - Make tabs transparent in darker mode */
+[data-theme="night"][data-brightness="darker"] .tabs-lift > .tab {
+    --tab-bg: transparent;
+    --tab-border-color: transparent;
+    background-color: transparent !important;
+}
+
+[data-theme="night"][data-brightness="darker"] .tabs-lift > .tab:is(.tab-active, [aria-selected="true"], input:checked, label:has(:checked)) {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
