@@ -29,8 +29,8 @@ cta_buttons = [
 - **`badge`** (optional): Small badge text displayed above the title
 - **`description`** (required): Descriptive text below the title
 - **`image`** (optional): Path to background image
-- **`gradient_opacity`** (optional): Opacity of the animated gradient background (0-100, default: 20)
-- **`image_opacity`** (optional): Opacity of the background image (0-100, default: 20)
+- **`gradient_opacity`** (optional): Opacity of the animated gradient background. Valid values: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100 (default: 20)
+- **`image_opacity`** (optional): Opacity of the background image. Valid values: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100 (default: 20)
 - **`cta_buttons`** (optional): Array of call-to-action buttons
   - `text`: Button label
   - `url`: Link destination

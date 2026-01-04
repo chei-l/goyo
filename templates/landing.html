@@ -8,6 +8,7 @@
             <!-- Subtle Animated Background -->
             <div class="absolute inset-0">
                 <div class="absolute inset-0 hero-background"></div>
+                {# Opacity values should be TailwindCSS compatible (0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100) #}
                 {% set gradient_opacity = section.extra.hero.gradient_opacity | default(value=20) %}
                 <div class="absolute inset-0 opacity-{{ gradient_opacity }}">
                     <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-gray-500/10 to-slate-500/10 rounded-full filter blur-3xl animate-pulse"></div>
