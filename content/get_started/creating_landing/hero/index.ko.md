@@ -15,6 +15,8 @@ title = "Goyo에 오신 것을 환영합니다!"
 badge = "Clean Theme, Tranquil Feel"
 description = "문서화를 위한 간단하고 깔끔한 Zola 테마입니다."
 image = "/images/landing.jpg" # 배경 이미지
+gradient_opacity = 20         # 애니메이션 그라데이션 배경의 불투명도 (0-100, 기본값: 20)
+image_opacity = 20            # 배경 이미지의 불투명도 (0-100, 기본값: 20)
 cta_buttons = [
     { text = "시작하기", url = "/get-started/installation/", style = "primary" },
     { text = "GitHub에서 보기", url = "https://github.com/your/repo", style = "secondary" },
@@ -27,6 +29,8 @@ cta_buttons = [
 - **`badge`** (선택): 제목 위에 표시되는 작은 배지 텍스트
 - **`description`** (필수): 제목 아래의 설명 텍스트
 - **`image`** (선택): 배경 이미지 경로
+- **`gradient_opacity`** (선택): 애니메이션 그라데이션 배경의 불투명도. 유효한 값: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100 (기본값: 20)
+- **`image_opacity`** (선택): 배경 이미지의 불투명도. 유효한 값: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100 (기본값: 20)
 - **`cta_buttons`** (선택): 행동 유도 버튼 배열
   - `text`: 버튼 레이블
   - `url`: 링크 대상
