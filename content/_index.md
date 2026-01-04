@@ -15,6 +15,8 @@ title = "Welcome to Goyo!"
 badge = "Clean Theme, Tranquil Feel"
 description = "Inspired by the Korean word \"Goyo\" (고요), meaning calm or serene, Goyo is a Zola theme that aims for simplicity and clean documentation. With Goyo, you can easily create beautiful and practical documentation pages."
 image = "/images/landing.jpg"
+gradient_opacity = 30
+image_opacity = 25
 cta_buttons = [
     { text = "Get Started", url = "/introduction", style = "primary" },
     { text = "View on GitHub", url = "https://github.com/hahwul/goyo", style = "secondary" },
