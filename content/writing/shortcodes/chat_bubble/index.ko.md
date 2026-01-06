@@ -20,11 +20,11 @@ taxonomies = { tags = ["shortcodes", "chat", "ui"], categories = ["shortcodes"] 
 
 ## 예제
 
-{{ chat_bubble(img="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg", title="앨리스", body="카드의 모든 섹터를 읽지 못한 경우 어떻게 하나요? 카드나 리더에서 nonce를 추출하여 읽지 못한 섹터의 키를 검색한 다음 누락된 키를 계산할 수 있습니다. [더 알아보기](#).") }}
+{{ chat_bubble(img="/writing/shortcodes/gallery/images/image1.jpeg", title="앨리스", body="카드의 모든 섹터를 읽지 못한 경우 어떻게 하나요? 카드나 리더에서 nonce를 추출하여 읽지 못한 섹터의 키를 검색한 다음 누락된 키를 계산할 수 있습니다. [더 알아보기](#).") }}
 
 ```jinja
 {{/* chat_bubble(
-  img="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
+  img="/writing/shortcodes/gallery/images/image1.jpeg",
   title="앨리스",
   body="카드의 모든 섹터를 읽지 못한 경우 어떻게 하나요? 카드나 리더에서 nonce를 추출하여..."
 ) */}}

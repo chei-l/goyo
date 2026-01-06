@@ -20,11 +20,11 @@ The `chat_bubble` shortcode creates a character chat bubble component with an av
 
 ## Example
 
-{{ chat_bubble(img="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg", title="Alice", body="What if not all sectors of the card were read? You can try to retrieve the keys for the unread sectors by extracting nonces from the card or the reader, and then calculate the missing keys. [Learn more](#).") }}
+{{ chat_bubble(img="/writing/shortcodes/gallery/images/image1.jpeg", title="Alice", body="What if not all sectors of the card were read? You can try to retrieve the keys for the unread sectors by extracting nonces from the card or the reader, and then calculate the missing keys. [Learn more](#).") }}
 
 ```jinja
 {{/* chat_bubble(
-  img="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
+  img="/writing/shortcodes/gallery/images/image1.jpeg",
   title="Alice",
   body="What if not all sectors of the card were read? You can try to retrieve the keys..."
 ) */}}
