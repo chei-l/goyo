@@ -25,6 +25,9 @@
 /* Gallery shortcode: lg:grid-cols-{{ cols }} (supports 1-6 columns) */
 @source inline("lg:grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 lg:grid-cols-4 lg:grid-cols-5 lg:grid-cols-6");
 
+/* Members shortcode: lg:grid-cols-{{ cols }} (supports 1-6 columns) */
+@source inline("lg:grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 lg:grid-cols-4 lg:grid-cols-5 lg:grid-cols-6");
+
 /* Alert shortcode styles: alert-{{ style }} (soft, outline, dash) */
 @source inline("alert-soft alert-outline alert-dash");
 
