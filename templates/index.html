@@ -150,11 +150,12 @@
 
         {% set lang_root_path = "/" ~ lang ~ "/" %}
         {# Sidebar configuration with backward compatibility (reuse the value from above) #}
+        {% set sidebar_classes = "drawer-side pt-16 border-e border-gray-500/15 overflow-hidden" %}
+        {# Keep sidebar available for mobile drawer on the landing page, but hide it on large screens unless explicitly enabled #}
         {% if section is defined and (section.path == "/" or section.path == lang_root_path) and not disable_root_sidebar_hide %}
-        <div id="sidebar" class="hidden">
-        {% else %}
-        <div id="sidebar" class="drawer-side pt-16 border-e border-gray-500/15 overflow-hidden">
+            {% set sidebar_classes = sidebar_classes ~ " lg:hidden" %}
         {% endif %}
+        <div id="sidebar" class="{{ sidebar_classes }}">
             {% if section is defined %}
                 {{ macros_sidebar::sidebar(config=config, lang=lang, current_path=current_path, section=section) }}
             {% else %}
