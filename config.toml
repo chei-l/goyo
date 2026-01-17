@@ -14,9 +14,10 @@ taxonomies = [
 ]
 
 [markdown]
-highlight_code = true
 bottom_footnotes = true
-highlight_theme = "ayu-mirage"
+
+[markdown.highlighting]
+theme = "github-dark"
 
 [languages.ko]
 generate_feeds = true
