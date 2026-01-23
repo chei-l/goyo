@@ -297,7 +297,7 @@ function initSearch() {
 
 function initTheme() {
     var themeControllers = document.querySelectorAll(".theme-controller");
-    if (!themeControllers) {
+    if (!themeControllers.length) {
         return;
     }
 
