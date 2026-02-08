@@ -183,3 +183,9 @@ zola serve
 
 # and open http://localhost:1111 in your browser.
 ```
+
+## Contributing
+
+Goyo is an open-source project made with ❤️. If you would like to contribute, please check [CONTRIBUTING.md](CONTRIBUTING.md) and submit a Pull Request.
+
+![](static/images/CONTRIBUTORS.svg)
