@@ -106,9 +106,9 @@ After making any changes to the theme or content:
 /home/runner/work/goyo/goyo/
 ├── .github/
 │   ├── workflows/           # GitHub Actions deployment (zola.yml, labeler.yml)
-│   ├── copilot-instructions.md  # Development instructions for AI assistants
 │   ├── labeler.yml          # GitHub labeler configuration
 │   └── FUNDING.yml          # Sponsorship configuration
+├── AGENTS.md                # Development instructions for AI assistants
 ├── content/                 # Markdown content files (multilingual: .md for EN, .ko.md for KR)
 │   ├── _index.md            # Landing page configuration
 │   ├── introduction/        # Introduction section
